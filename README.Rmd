@@ -64,13 +64,15 @@ info[c("name", "version")]
 ## `get_plays_by`
 
 ```{r}
-plays <- get_plays_by_date()
+plays <- get_plays_by_date(time_range = lubridate::yday(lubridate::now()))
 
 plays %>% 
   gather(category, playcount, tv, movies, music) %>%
   ggplot(data = ., aes(x = date, y = playcount, fill = category)) +
   geom_col() +
-  scale_fill_brewer(palette = "Set1") +
+  scale_fill_brewer(palette = "Set1", 
+                    labels = c("Movies", "TV", "Music"),
+                    breaks = c("movies", "tv", "music")) +
   labs(title = "Plex Plays by Date",
        subtitle = "Showing Movie, TV and Music Categories",
        x = "Date", y = "Plays", fill = "Category") +
