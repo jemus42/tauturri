@@ -2,20 +2,21 @@ Type: Package
 Package: tauturri
 Title: Get data out of Tautilli (PlexPy)
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Authors@R: person("Lukas Burk", email = "lukas@quantenbrot.de",
+                  role = c("aut", "cre"))
+Description: Tautulli is a monitoring application for Plex Media Servers which 
+  collects a lot of data about media items and server usage such as play counts. 
+  This package interacts with the Tautulli API of a specified server to get said data into R.
 License: MIT + file LICENSE
+Depends: 
+    R (>= 3.1)
 Imports: 
     httr,
     purrr
+Suggests: 
+    covr,
+    testthat
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.0.1
-Suggests: 
-    testthat,
-    covr
-Depends: 
-    R (>= 3.1)

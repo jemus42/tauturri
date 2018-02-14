@@ -9,6 +9,31 @@ The goal of `tauturri` is to get data out of [**Tautulli**](https://github.com/J
 
 The project is in the initial setup phase. Nothing works yet.
 
+Installation
+------------
+
+Do not expect this to make it to CRAN anytime soon.
+
+``` r
+if (!("remotes" %in% installed.packages())){
+  install.packages("remotes")
+}
+
+remotes::install_github("jemus42/tauturri")
+```
+
+Setup
+-----
+
+In your `~/.Renviron`, set the following:
+
+    # Tautulli
+    tautulli_url=<Tautulli URL (with port)>
+    tautulli_apikey=<Tautilli API key>
+
+That's it.
+Alternatively use `Sys.setenv()` to set the appropriate values in a script.
+
 Server Info
 -----------
 
