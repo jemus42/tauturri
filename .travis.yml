@@ -1,15 +1,15 @@
-# R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
-
 language: R
 sudo: false
 cache: packages
-
 r:
 - 3.1
 - 3.2
 - oldrel
 - release
 - devel
-
 after_success:
-  - Rscript -e 'covr::codecov()'
+- Rscript -e 'covr::codecov()'
+env:
+  matrix:
+  - secure: E3enSswnsmQkYyvXEMm/wbEQ++fUej7ATN0NvSfbYlvQQUvs2XpaVLRF/1KhHWXUk+AOwS5ZZJWfZ2t/mFn3joRHXSuMWgDWedSBOEjS7LGTYhGZaaxY9osdaPj/8p1LSA4XKmLKpsdOcg1zdNtP3st0aevyp3Fnp2KizNa1uw+YxZw2B6msNaT0200ha6m6xPWZJ+Z8EbPiPuMGdXVFjyUOfdS1q7mYUf/tg3uXMBs1KOSHuEDBZo1MXrcuoZTfT4dvsmCooQ5KU8krFd0cJlxgV8AsbWgJLVtKfSVmhLfPcjSFstuy3sQxJOhfnMghb3PC1HfL+Ic2gmqXFBvXBbTB4e/GszsQGvs+Cz2zAKgmWwCFDOHGmW4R8WxxunRHPY6/bu5x4qSk5gG130cuaNummYGi9R6+KF8U0R7LPcznZDgNGIiXEO8tzPc0wWFmdt8tt32gd+rSj64tIL9l7bVrhAKmq+m/YMsmb4mp+9XxQX40+qriMmeEsYnvHD7TQeO/x8J2WrAs+tfyRwWXkyBTylMTogrjWdAkCizpHyiK4gth6OtXa+KewsMdiAClsYuncWK1y3NiLxiJrEXvlzoxeCdEieKn47OLCa0ZzyXVeiaw0N9eFcjRBlWwHaztUMDFZLvRcFA7KvFpdhjbpHaNu34j+4trPOwL2LHLq/8=
+  - secure: lWvJpCYTKss6tYwbDuQeFDFwufLsPvijlv6dusC/CR7ovxowG05B8QtMP2kNbS6bD9p+6qdFO4tjF+8YRMYz/LdDhj4OpRHdo3zwkeEx9rCfCeJi9tWlnFlggS0/+sxPwrf8fb/WwN9HXsRVWwxqbF6h+O2rFBcioobvWa82RzaQ9s8JOWRVLuSfpi2flq7d1PsU6d8QELMXZ902+RfAXmVrIC08UKNleOJa/3uXgIv1G7jt2l8U+Ww7TEZpXJNXMCnCPFbKaMAywmI/3qrzE8hLB5WFXNR5WQ2Iq3++UttOCKomcJIVAUxGfDcvu/UiNuEZZSam31CJDcDobk7WY0cW9kykXocpgQfT8Xsp4nkCGQ4wvSCbpWZYiGRHIYJ8mXz3YHtk4jAyipGQvDnYBoNMhfaNbDyM+VUNv3OVRrdiW+KqFyjtcS/jFLrP3R8KL2gbPGTMCN+S0rJL88RbrHff+GZWO8eeYmduK8O5cs7QG8KAa3Z1KFUz5AICzaFciK2v31qJOL69U8gEYkNCDtZlZHQJC4bCGIoLZuV1fbtb1MYoqOnCcI8mvaInWp4vMNOM1Nmej123trwBTLrK1PqLk4YLg7a6Gufx2DDaXrMHzU7EfYdjvsFh1vrBZJVsGnddq9BZEJbkc22gySyAl5+QbelVrSRN0xJ1NOFKjIk=
