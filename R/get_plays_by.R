@@ -6,7 +6,9 @@
 #' @param user_id The user id to filter the data
 #' @return A `data.frame`
 #' @export
-#' @import purrr
+#' @importFrom purrr map_chr
+#' @importFrom purrr pluck
+#' @importFrom purrr map
 #' @source <https://github.com/Tautulli/Tautulli/blob/master/API.md#get_plays_by_date>
 #'
 #' @examples
@@ -33,7 +35,6 @@ get_plays_by_date <- function(url = NULL, apikey = NULL,
     warning("Error in 'get_plays_by_date': ", result$result)
     return(data.frame())
   }
-
 
   cat_names  <- map_chr(pluck(result, "data", "series"), "name")
   values     <- map(pluck(result, "data", "series"), function(x) {as.numeric(x$data)})
