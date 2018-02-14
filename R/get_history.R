@@ -60,8 +60,8 @@ get_history <- function(url = NULL, apikey = NULL,
     as.data.frame(stringsAsFactors = FALSE)
 
   history <- map(result[["data"]][["data"]], compact) %>%
-    map(as.data.frame, stringsAsFactors = FALSE) %>%
-    Reduce(rbind, .)
+    map(as.data.frame, stringsAsFactors = FALSE)
+  history <- Reduce(rbind, history)
 
   history$started <- as.POSIXct(history$started, origin = "1970-01-01")
   history$stopped <- as.POSIXct(history$stopped, origin = "1970-01-01")
