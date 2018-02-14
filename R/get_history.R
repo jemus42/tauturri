@@ -21,6 +21,8 @@
 #' @export
 #' @importFrom purrr map
 #' @importFrom purrr compact
+#' @importFrom purrr reduce
+#' @importFrom plyr rbind.fill
 #' @examples
 #' \dontrun{
 #' get_history(length = 10)
@@ -61,7 +63,7 @@ get_history <- function(url = NULL, apikey = NULL,
 
   history <- map(result[["data"]][["data"]], compact) %>%
     map(as.data.frame, stringsAsFactors = FALSE)
-  history <- Reduce(rbind, history)
+  history <- reduce(history, plyr::rbind.fill)
 
   history$started <- as.POSIXct(history$started, origin = "1970-01-01")
   history$stopped <- as.POSIXct(history$stopped, origin = "1970-01-01")
