@@ -1,5 +1,7 @@
 ---
 output: github_document
+editor_options: 
+  chunk_output_type: console
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -11,6 +13,9 @@ knitr::opts_chunk$set(
   fig.path = "man/figures/README-",
   out.width = "100%"
 )
+library(tauturri)
+library(ggplot2)
+library(tidyr)
 ```
 # tauturri
 
@@ -21,6 +26,34 @@ knitr::opts_chunk$set(
 The goal of `tauturri` is to get data out of [**Tautulli**](https://github.com/JonnyWong16/plexpy) (formerly **PlexPy**) as simply as possible.
 
 The project is in the initial setup phase. Nothing works yet.
+
+## Server Info
+
+```{r}
+info <- get_servers_info()
+names(info)
+# Probably shouldn't show URL etc.
+info[c("name", "version")]
+```
+
+
+## `get_plays_by`
+
+```{r}
+plays <- get_plays_by_date()
+
+plays %>% 
+  gather(category, playcount, tv, movies, music) %>%
+  ggplot(data = ., aes(x = date, y = playcount, fill = category)) +
+  geom_col() +
+  scale_fill_brewer(palette = "Set1") +
+  labs(title = "Plex Plays by Date",
+       subtitle = "Showing Movie, TV and Music Categories",
+       x = "Date", y = "Plays", fill = "Category") +
+  theme_minimal() +
+  theme(legend.position = "top")
+```
+
 
 ## CoC
 
