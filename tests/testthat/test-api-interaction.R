@@ -1,0 +1,13 @@
+context("test-api-interaction.R")
+
+test_that("API-requests work", {
+ res <- api_request()
+ expect_is(res$result, "character")
+ expect_equal(res$result, "success")
+ expect_is(res$data, "list")
+
+ expect_error(api_request(url = "google.com"))
+
+ res <- api_request(cmd = "poopybutthole")
+ expect_equal(res$result, "error")
+})
