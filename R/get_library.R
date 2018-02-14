@@ -23,7 +23,7 @@ get_library_names <- function(url = NULL, apikey = NULL) {
   result <- api_request(url = url, apikey = apikey, cmd = "get_library_names")
 
   if (result$result != "success") {
-    warning("Error in 'get_plays_by_date': ", result$result)
+    warning("Error in 'get_library_names': ", result$result)
     return(data.frame())
   }
 

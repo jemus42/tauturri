@@ -5,6 +5,7 @@
 #' @return A `list` with bandwidth + stream info and a session `data.frame`.
 #' @export
 #' @importFrom purrr map
+#' @importFrom purrr discard
 #' @examples
 #' \dontrun{
 #' get_activity()
@@ -35,7 +36,10 @@ get_activity <- function(url = NULL, apikey = NULL) {
 
   if (!identical(sessions, list())) {
 
-    #NYI
+    sessions <- sessions %>%
+      map(discard, is.list) %>%
+      map(discard, is.null) %>%
+      as.data.frame(stringsAsFactors = FALSE)
 
   }
 

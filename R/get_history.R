@@ -43,8 +43,8 @@ get_history <- function(url = NULL, apikey = NULL,
   }
 
   result <- api_request(url, apikey, cmd = "get_history",
-                        grouping = grouping, user = user, user_id = user_id, rating_key = rating_key,
-                        parent_rating_key = parent_rating_key,
+                        grouping = grouping, user = user, user_id = user_id,
+                        rating_key = rating_key, parent_rating_key = parent_rating_key,
                         grandparent_rating_key = grandparent_rating_key,
                         start_date = start_date, section_id = section_id,
                         media_type = media_type, transcode_decision = transcode_decision,
@@ -65,6 +65,7 @@ get_history <- function(url = NULL, apikey = NULL,
 
   history$started <- as.POSIXct(history$started, origin = "1970-01-01")
   history$stopped <- as.POSIXct(history$stopped, origin = "1970-01-01")
+  history$date    <- as.POSIXct(history$date, origin = "1970-01-01")
 
   list(totals = totals,
        history = history)
