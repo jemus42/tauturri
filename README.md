@@ -5,7 +5,7 @@ tauturri
 
 [![Travis build status](https://travis-ci.org/jemus42/tauturri.svg?branch=master)](https://travis-ci.org/jemus42/tauturri) [![Coverage status](https://codecov.io/gh/jemus42/tauturri/branch/master/graph/badge.svg)](https://codecov.io/github/jemus42/tauturri?branch=master)
 
-The goal of `tauturri` is to get data out of [**Tautulli**](https://github.com/JonnyWong16/plexpy) (formerly **PlexPy**) as simply as possible.
+The goal of `tauturri` is to get data out of [**Tautulli**](https://github.com/Tautulli/Tautulli) (formerly **PlexPy**) as simply as possible.
 
 The project is in the initial setup phase. Nothing works yet.
 
@@ -48,17 +48,21 @@ info[c("name", "version")]
 #> 1 PPTH 1.11.2.4772-3e88ad3ba
 ```
 
-`get_plays_by`
---------------
+`get_plays_by` \[data|dayofweek|...\]
+-------------------------------------
+
+All plays in the current year, per day:
 
 ``` r
-plays <- get_plays_by_date()
+plays <- get_plays_by_date(time_range = lubridate::yday(lubridate::now()))
 
 plays %>% 
   gather(category, playcount, tv, movies, music) %>%
   ggplot(data = ., aes(x = date, y = playcount, fill = category)) +
   geom_col() +
-  scale_fill_brewer(palette = "Set1") +
+  scale_fill_brewer(palette = "Set1", 
+                    labels = c("Movies", "TV", "Music"),
+                    breaks = c("movies", "tv", "music")) +
   labs(title = "Plex Plays by Date",
        subtitle = "Showing Movie, TV and Music Categories",
        x = "Date", y = "Plays", fill = "Category") +
@@ -66,7 +70,7 @@ plays %>%
   theme(legend.position = "top")
 ```
 
-<img src="man/figures/README-unnamed-chunk-2-1.png" width="100%" />
+<img src="man/figures/README-get_plays_by_date-1.png" width="100%" />
 
 CoC
 ---
