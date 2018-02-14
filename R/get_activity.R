@@ -41,6 +41,8 @@ get_activity <- function(url = NULL, apikey = NULL) {
       map(discard, is.null) %>%
       as.data.frame(stringsAsFactors = FALSE)
 
+  } else {
+    sessions <- data.frame()
   }
 
   # Return things compactly
