@@ -27,6 +27,6 @@ get_library_names <- function(url = NULL, apikey = NULL) {
     return(data.frame())
   }
 
-  result <- map_df(result$data, ~data.frame(.x, stringsAsFactors = FALSE))
+  result <- Reduce(rbind, map(result$data, ~data.frame(.x, stringsAsFactors = FALSE)))
   result[order(result$section_id), ]
 }
