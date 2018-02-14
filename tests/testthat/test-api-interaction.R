@@ -11,3 +11,9 @@ test_that("API-requests work", {
  res <- api_request(cmd = "poopybutthole")
  expect_equal(res$result, "error")
 })
+
+test_that("get_servers_info works", {
+  res <- get_servers_info()
+  expect_is(res, "data.frame")
+  expect_named(res, c("port", "host", "version", "name", "machine_identifier"))
+})
