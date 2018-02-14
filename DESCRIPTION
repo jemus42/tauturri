@@ -12,7 +12,8 @@ Depends:
     R (>= 3.1)
 Imports: 
     httr,
-    purrr
+    purrr,
+    magrittr
 Suggests: 
     covr,
     testthat
