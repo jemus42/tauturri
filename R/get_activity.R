@@ -5,7 +5,9 @@
 #' @return A `list` with bandwidth + stream info and a session `tbl`.
 #' @export
 #' @importFrom purrr map
+#' @importFrom purrr map_df
 #' @importFrom purrr discard
+#' @importFrom purrr transpose
 #' @importFrom tibble as_tibble
 #' @importFrom tibble tibble
 #' @examples
@@ -31,17 +33,17 @@ get_activity <- function(url = NULL, apikey = NULL) {
   }
 
   info      <- result$data[names(result$data) != "sessions"]
-  bandwidth <- map(info[grepl(pattern = "bandwidth", names(info))], as.numeric)
-  streams   <- map(info[grepl(pattern = "stream", names(info))], as.numeric)
-
-  sessions <- result$data$sessions
+  info      <- map(info, as.numeric)
+  bandwidth <- info[grepl(pattern = "bandwidth", names(info))]
+  streams   <- info[grepl(pattern = "stream", names(info))]
+  sessions  <- result$data$sessions
 
   if (!identical(sessions, list())) {
 
     sessions <- sessions %>%
       map(discard, is.list) %>%
-      map(discard, is.null) %>%
-      as_tibble()
+      transpose() %>%
+      map_df(unlist)
 
   } else {
     sessions <- tibble()

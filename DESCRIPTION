@@ -14,7 +14,8 @@ Imports:
     httr,
     purrr,
     magrittr,
-    tibble
+    tibble,
+    plyr
 Suggests: 
     covr,
     testthat,

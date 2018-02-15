@@ -24,6 +24,7 @@
 #' @importFrom purrr reduce
 #' @importFrom tibble tibble
 #' @importFrom tibble as_tibble
+#' @importFrom plyr rbind.fill
 #' @examples
 #' \dontrun{
 #' get_history(length = 10)
@@ -56,14 +57,14 @@ get_history <- function(url = NULL, apikey = NULL,
 
   if (result$result != "success") {
     warning("Error in 'get_history': ", result$result)
-    return(tibble())
+    return(list(totals = tibble(),
+                history = tibble()))
   }
 
   totals  <- as_tibble(result$data[names(result$data) != "data"])
 
   history <- map(result[["data"]][["data"]], ~as_tibble(flatten(.x))) %>%
-    reduce(rbind) %>%
-    as_tibble()
+    reduce(plyr::rbind.fill)
 
   history$started <- as.POSIXct(history$started, origin = "1970-01-01")
   history$stopped <- as.POSIXct(history$stopped, origin = "1970-01-01")
