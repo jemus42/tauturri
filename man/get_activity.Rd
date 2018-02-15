@@ -12,7 +12,7 @@ get_activity(url = NULL, apikey = NULL)
 \item{apikey}{API key.}
 }
 \value{
-A \code{list} with bandwidth + stream info and a session \code{data.frame}.
+A \code{list} with bandwidth + stream info and a session \code{tbl}.
 }
 \description{
 Get Current Server Activity

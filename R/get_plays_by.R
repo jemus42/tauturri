@@ -9,6 +9,10 @@
 #' @importFrom purrr map_chr
 #' @importFrom purrr pluck
 #' @importFrom purrr map
+#' @importFrom purrr set_names
+#' @importFrom purrr flatten_chr
+#' @importFrom tibble tibble
+#' @importFrom tibble as_tibble
 #' @source <https://github.com/Tautulli/Tautulli/blob/master/API.md#get_plays_by_date>
 #'
 #' @examples
@@ -33,15 +37,17 @@ get_plays_by_date <- function(url = NULL, apikey = NULL,
 
   if (result$result != "success") {
     warning("Error in 'get_plays_by_date': ", result$result)
-    return(data.frame())
+    return(tibble())
   }
 
-  cat_names  <- map_chr(pluck(result, "data", "series"), "name")
-  values     <- map(pluck(result, "data", "series"), function(x) {as.numeric(x$data)})
-  names(values) <- tolower(cat_names)
-  res           <- as.data.frame(values)
-  res$date      <- as.Date(unlist(pluck(result, "data", "categories")))
-  res           <- res[c("date", names(res)[names(res) != "date"])]
+  res     <- pluck(result, "data", "series") %>%
+               map(~as.numeric(.x$data)) %>%
+               set_names(map_chr(result$data$series, "name")) %>%
+               as_tibble()
+  res$date <- pluck(result, "data", "categories") %>%
+                flatten_chr() %>%
+                as.Date()
+  res      <- res[c("date", names(res)[names(res) != "date"])]
 
   return(res)
 }

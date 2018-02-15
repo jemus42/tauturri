@@ -57,12 +57,11 @@ All plays in the current year, per day:
 plays <- get_plays_by_date(time_range = lubridate::yday(lubridate::now()))
 
 plays %>% 
-  gather(category, playcount, tv, movies, music) %>%
+  gather(category, playcount, TV, Movies, Music) %>%
   ggplot(data = ., aes(x = date, y = playcount, fill = category)) +
   geom_col() +
   scale_fill_brewer(palette = "Set1", 
-                    labels = c("Movies", "TV", "Music"),
-                    breaks = c("movies", "tv", "music")) +
+                    breaks = c("Movies", "TV", "Music")) +
   labs(title = "Plex Plays by Date",
        subtitle = "Showing Movie, TV and Music Categories",
        x = "Date", y = "Plays", fill = "Category") +

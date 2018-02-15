@@ -2,10 +2,12 @@
 #'
 #' @inheritParams api_request
 #'
-#' @return A `list` with bandwidth + stream info and a session `data.frame`.
+#' @return A `list` with bandwidth + stream info and a session `tbl`.
 #' @export
 #' @importFrom purrr map
 #' @importFrom purrr discard
+#' @importFrom tibble as_tibble
+#' @importFrom tibble tibble
 #' @examples
 #' \dontrun{
 #' get_activity()
@@ -39,10 +41,10 @@ get_activity <- function(url = NULL, apikey = NULL) {
     sessions <- sessions %>%
       map(discard, is.list) %>%
       map(discard, is.null) %>%
-      as.data.frame(stringsAsFactors = FALSE)
+      as_tibble()
 
   } else {
-    sessions <- data.frame()
+    sessions <- tibble()
   }
 
   # Return things compactly
