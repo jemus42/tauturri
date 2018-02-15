@@ -3,6 +3,9 @@
 \name{get_library_media_info}
 \alias{get_library_media_info}
 \title{Get A Library's Media Info}
+\source{
+\url{https://github.com/Tautulli/Tautulli/blob/master/API.md#get_library_media_info}
+}
 \usage{
 get_library_media_info(url = NULL, apikey = NULL, section_id = NULL,
   rating_key = NULL, section_type = "movie", order_column = "added_at",

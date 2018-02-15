@@ -17,3 +17,10 @@ test_that("get_library_media_info works", {
 
   expect_error(get_library_media_info())
 })
+
+test_that("get_library_watch_time_stats works", {
+  res <- get_library_watch_time_stats(section_id = 2)
+  expect_is(res, "tbl")
+  expect_length(res, 3)
+  expect_named(res, c("query_days", "total_time", "total_plays"))
+})

@@ -49,8 +49,10 @@ get_library_names <- function(url = NULL, apikey = NULL) {
 #'
 #' @return A `list` with a `totals` list and an `items` `tbl`
 #' @export
+#' @source <https://github.com/Tautulli/Tautulli/blob/master/API.md#get_library_media_info>
 #' @importFrom purrr map_df
 #' @importFrom purrr flatten
+#' @importFrom tibble tibble
 #' @examples
 #' \dontrun{
 #' get_library_media_info(section_id = 2)
@@ -97,4 +99,43 @@ get_library_media_info <- function(url = NULL, apikey = NULL,
   list(totals = totals,
        items = items)
 
+}
+
+
+#' Get Library Watch Time Stats
+#'
+#' @inheritParams api_request
+#' @inheritParams get_library_media_info
+#'
+#' @return A `tbl` of length 3
+#' @export
+#' @source <https://github.com/Tautulli/Tautulli/blob/master/API.md#get_library_watch_time_stats>
+#' @importFrom purrr map_df
+#' @importFrom tibble as_tibble
+#' @importFrom tibble tibble
+#' @examples
+#' \dontrun{
+#' get_library_watch_time_stats(section_id = 2)
+#' }
+get_library_watch_time_stats <- function(url = NULL, apikey = NULL,
+                                         section_id = NULL) {
+  if (is.null(url)) {
+    url <- Sys.getenv("tautulli_url")
+  }
+  if (is.null(apikey)) {
+    apikey <- Sys.getenv("tautulli_apikey")
+  }
+  if (apikey == "" | url == "") {
+    stop("No URL or API-Key set, please see setup instructions")
+  }
+
+  result <- api_request(url = url, apikey = apikey, cmd = "get_library_watch_time_stats",
+                        section_id = section_id)
+
+  if (result$result != "success") {
+    warning("Error in 'get_library_watch_time_stats': ", result$result)
+    return(tibble())
+  }
+
+  map_df(result$data, as_tibble)
 }
