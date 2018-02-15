@@ -46,7 +46,7 @@ get_history(url = NULL, apikey = NULL, grouping = 0, user = NULL,
 \item{search}{A string to search for, "Thrones"}
 }
 \value{
-A \code{list} with totals and the history as \code{data.frame}
+A \code{list} with totals and the history as \code{tbl}
 }
 \description{
 Get Playback History

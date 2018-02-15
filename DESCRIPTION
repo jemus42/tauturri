@@ -13,8 +13,7 @@ Depends:
 Imports: 
     httr,
     purrr,
-    magrittr,
-    plyr
+    magrittr
 Suggests: 
     covr,
     testthat,

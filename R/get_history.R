@@ -17,12 +17,13 @@
 #' @param length  Number of items to return, 25
 #' @param search  A string to search for, "Thrones"
 #'
-#' @return A `list` with totals and the history as `data.frame`
+#' @return A `list` with totals and the history as `tbl`
 #' @export
 #' @importFrom purrr map
-#' @importFrom purrr compact
+#' @importFrom purrr flatten
 #' @importFrom purrr reduce
-#' @importFrom plyr rbind.fill
+#' @importFrom tibble tibble
+#' @importFrom tibble as_tibble
 #' @examples
 #' \dontrun{
 #' get_history(length = 10)
@@ -55,15 +56,14 @@ get_history <- function(url = NULL, apikey = NULL,
 
   if (result$result != "success") {
     warning("Error in 'get_history': ", result$result)
-    return(data.frame())
+    return(tibble())
   }
 
-  totals  <- result$data[names(result$data) != "data"] %>%
-    as.data.frame(stringsAsFactors = FALSE)
+  totals  <- as_tibble(result$data[names(result$data) != "data"])
 
-  history <- map(result[["data"]][["data"]], compact) %>%
-    map(as.data.frame, stringsAsFactors = FALSE)
-  history <- reduce(history, plyr::rbind.fill)
+  history <- map(result[["data"]][["data"]], ~as_tibble(flatten(.x))) %>%
+    reduce(rbind) %>%
+    as_tibble()
 
   history$started <- as.POSIXct(history$started, origin = "1970-01-01")
   history$stopped <- as.POSIXct(history$stopped, origin = "1970-01-01")
