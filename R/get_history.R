@@ -1,4 +1,4 @@
-#' Title
+#' Get Playback History
 #'
 #' @inheritParams api_request
 #' @param grouping  0 (default) or 1

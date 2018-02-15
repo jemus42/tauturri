@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_history.R
 \name{get_history}
 \alias{get_history}
-\title{Title}
+\title{Get Playback History}
 \usage{
 get_history(url = NULL, apikey = NULL, grouping = 0, user = NULL,
   user_id = NULL, rating_key = NULL, parent_rating_key = NULL,
@@ -49,7 +49,7 @@ get_history(url = NULL, apikey = NULL, grouping = 0, user = NULL,
 A \code{list} with totals and the history as \code{data.frame}
 }
 \description{
-Title
+Get Playback History
 }
 \examples{
 \dontrun{
