@@ -21,7 +21,10 @@ Suggests:
     testthat,
     dplyr,
     knitr,
-    rmarkdown
+    rmarkdown,
+    tidyr,
+    ggplot2,
+    hrbrthemes
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
