@@ -1,0 +1,81 @@
+---
+title: "Vignette Title"
+author: "Vignette Author"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r, message=FALSE}
+library(tauturri)
+library(knitr) # kable()
+library(dplyr)
+library(magrittr)
+library(tidyr)
+
+history <- get_plays_by_date(time_range = 365)
+
+history %>% 
+  head %>% 
+  kable()
+```
+
+So far so good.
+
+```{r}
+history %<>% 
+  gather(Type, Plays, -date)
+
+history %>%
+  head %>%
+  kable()
+```
+
+Better.
+
+```{r}
+library(ggplot2)
+library(hrbrthemes)
+
+ggplot(data = history, aes(x = date, y = Plays, fill = Type)) +
+  geom_col() +
+  scale_fill_brewer(palette = "Set1") +
+  theme_ipsum() +
+  theme(legend.position = "top") +
+  labs(title = "Plex Server Usage by Day",
+       subtitle = "Last Year of Activity",
+       y = "# of Plays", x = "Date")
+```
+
+Neat.
+
+```{r}
+history %>%
+  group_by(date) %>%
+  mutate(total = sum(Plays),
+         perc = Plays / total) %>%
+  ggplot(aes(x = date, y = perc, fill = Type)) +
+  geom_col(width = 1) +
+  scale_y_percent() +
+  scale_fill_brewer(palette = "Set1") +
+  theme_ipsum() +
+  theme(legend.position = "top") +
+  labs(title = "Plex Server Usage by Day and Media Type",
+       subtitle = "Last Year of Activity",
+       y = "% of Plays", x = "Date")
+```
+
+Oh, I accidentally built an area chart with bars.  
+Whoops.
