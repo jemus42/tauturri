@@ -11,7 +11,7 @@ get_user_names(url = NULL, apikey = NULL, add_pseudonym = FALSE)
 
 \item{apikey}{API key.}
 
-\item{add_pseudoyn}{Set to \code{TRUE} if you want to pseudonymize your user's names.}
+\item{add_pseudonym}{Set to \code{TRUE} if you want to pseudonymize your user's names.}
 }
 \value{
 A \code{tbl}

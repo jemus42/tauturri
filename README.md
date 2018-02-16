@@ -45,7 +45,7 @@ names(info)
 # Probably shouldn't show URL etc.
 info[c("name", "version")]
 #>   name               version
-#> 1 PPTH 1.11.2.4772-3e88ad3ba
+#> 1 PPTH 1.11.3.4793-482972920
 ```
 
 `get_plays_by` \[data|dayofweek|...\]

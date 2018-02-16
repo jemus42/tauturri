@@ -24,7 +24,8 @@ Suggests:
     rmarkdown,
     tidyr,
     ggplot2,
-    hrbrthemes
+    hrbrthemes,
+    hms
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)

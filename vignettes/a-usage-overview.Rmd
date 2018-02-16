@@ -18,6 +18,8 @@ knitr::opts_chunk$set(
 )
 ```
 
+## By Date
+
 ```{r, message=FALSE}
 library(tauturri)
 library(knitr) # kable()
@@ -79,3 +81,36 @@ history %>%
 
 Oh, I accidentally built an area chart with bars.  
 Whoops.
+
+## By Time of Day
+
+```{r}
+history_hours <- get_plays_by_hourofday(time_range = 365) %>%
+  gather(Type, Plays, -hour) %>%
+  mutate(hour = hms::hms(hours = hour))
+
+ggplot(data = history_hours, aes(x = hour, y = Plays, fill = Type)) +
+  geom_col() +
+  scale_fill_brewer(palette = "Set1") +
+  theme_ipsum() +
+  theme(legend.position = "top") +
+  labs(title = "Plex Server Usage by Time of Day",
+       subtitle = "Last Year of Activity",
+       y = "# of Plays", x = "Hour")
+```
+
+```{r}
+history_users <- get_plays_by_top_10_users(time_range = 365) %>%
+  gather(Type, Plays, -user)
+
+ggplot(data = history_users, aes(x = reorder(user, Plays), y = Plays, fill = Type)) +
+  geom_col() +
+  coord_flip() +
+  scale_x_discrete(labels = sample(words, nrow(history_users))) +
+  scale_fill_brewer(palette = "Set1") +
+  theme_ipsum() +
+  theme(legend.position = "top") +
+  labs(title = "Plex Server Usage by User",
+       subtitle = "Last Year of Activity",
+       y = "# of Plays", x = "User")
+```

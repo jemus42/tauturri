@@ -1,7 +1,7 @@
 #' Get User Names and IDs
 #'
 #' @inheritParams api_request
-#' @param add_pseudoyn Set to `TRUE` if you want to pseudonymize your user's names.
+#' @param add_pseudonym Set to `TRUE` if you want to pseudonymize your user's names.
 #' @return A `tbl`
 #' @export
 #'
