@@ -45,7 +45,6 @@ get_activity <- function(url = NULL, apikey = NULL) {
      map(as_tibble) %>%
      plyr::rbind.fill()
 
-
   } else {
     sessions <- tibble()
   }
