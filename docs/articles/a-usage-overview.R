@@ -1,27 +1,11 @@
----
-title: "A Usage Overview"
-author: "Lukas"
-date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
-vignette: >
-  %\VignetteIndexEntry{Vignette Title}
-  %\VignetteEncoding{UTF-8}
-  %\VignetteEngine{knitr::rmarkdown}
-editor_options: 
-  chunk_output_type: console
----
-
-```{r setup, include = FALSE}
+## ----setup, include = FALSE----------------------------------------------
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
 set.seed(0)
-```
 
-## By Date
-
-```{r setup_plays_by_date, message=FALSE}
+## ----setup_plays_by_date, message=FALSE----------------------------------
 library(tauturri)
 library(knitr) # kable()
 library(dplyr)
@@ -33,22 +17,16 @@ history <- get_plays_by_date(time_range = 365)
 history %>% 
   head %>% 
   kable()
-```
 
-So far so good.
-
-```{r plays_by_date_2}
+## ----plays_by_date_2-----------------------------------------------------
 history %<>% 
   gather(Type, Plays, -date)
 
 history %>%
   head %>%
   kable()
-```
 
-Better.
-
-```{r plays_by_date_3}
+## ----plays_by_date_3-----------------------------------------------------
 library(ggplot2)
 library(hrbrthemes)
 
@@ -60,11 +38,8 @@ ggplot(data = history, aes(x = date, y = Plays, fill = Type)) +
   labs(title = "Plex Server Usage by Day",
        subtitle = "Last Year of Activity",
        y = "# of Plays", x = "Date")
-```
 
-Neat.
-
-```{r plays_by_date_perc}
+## ----plays_by_date_perc--------------------------------------------------
 history %>%
   group_by(date) %>%
   mutate(total = sum(Plays),
@@ -78,14 +53,8 @@ history %>%
   labs(title = "Plex Server Usage by Day and Media Type",
        subtitle = "Last Year of Activity",
        y = "% of Plays", x = "Date")
-```
 
-Oh, I accidentally built an area chart with bars.  
-Whoops.
-
-## By Time of Day
-
-```{r plays_by_hourofday}
+## ----plays_by_hourofday--------------------------------------------------
 history_hours <- get_plays_by_hourofday(time_range = 365) %>%
   gather(Type, Plays, -hour) %>%
   mutate(hour = hms::hms(hours = hour))
@@ -98,9 +67,8 @@ ggplot(data = history_hours, aes(x = hour, y = Plays, fill = Type)) +
   labs(title = "Plex Server Usage by Time of Day",
        subtitle = "Last Year of Activity",
        y = "# of Plays", x = "Hour")
-```
 
-```{r plays_by_top_10_users}
+## ----plays_by_top_10_users-----------------------------------------------
 history_users <- get_plays_by_top_10_users(time_range = 365) %>%
   gather(Type, Plays, -user)
 
@@ -114,4 +82,4 @@ ggplot(data = history_users, aes(x = reorder(user, Plays), y = Plays, fill = Typ
   labs(title = "Plex Server Usage by User",
        subtitle = "Last Year of Activity",
        y = "# of Plays", x = "User")
-```
+

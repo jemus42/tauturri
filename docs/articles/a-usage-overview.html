@@ -59,6 +59,9 @@
     
     
 <div class="contents">
+<div id="by-date" class="section level2">
+<h2 class="hasAnchor">
+<a href="#by-date" class="anchor"></a>By Date</h2>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tauturri)
 <span class="kw">library</span>(knitr) <span class="co"># kable()</span>
 <span class="kw">library</span>(dplyr)
@@ -174,7 +177,7 @@ history <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">"Plex Server Usage by Day"</span>,
        <span class="dt">subtitle =</span> <span class="st">"Last Year of Activity"</span>,
        <span class="dt">y =</span> <span class="st">"# of Plays"</span>, <span class="dt">x =</span> <span class="st">"Date"</span>)</code></pre></div>
-<p><img src="a-usage-overview_files/figure-html/unnamed-chunk-3-1.png" width="672"></p>
+<p><img src="a-usage-overview_files/figure-html/plays_by_date_3-1.png" width="672"></p>
 <p>Neat.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">history <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">group_by</span>(date) <span class="op">%&gt;%</span>
@@ -190,13 +193,52 @@ history <span class="op">%&gt;%</span>
        <span class="dt">subtitle =</span> <span class="st">"Last Year of Activity"</span>,
        <span class="dt">y =</span> <span class="st">"% of Plays"</span>, <span class="dt">x =</span> <span class="st">"Date"</span>)
 <span class="co">#&gt; Warning: Removed 69 rows containing missing values (position_stack).</span></code></pre></div>
-<p><img src="a-usage-overview_files/figure-html/unnamed-chunk-4-1.png" width="672"></p>
+<p><img src="a-usage-overview_files/figure-html/plays_by_date_perc-1.png" width="672"></p>
 <p>Oh, I accidentally built an area chart with bars.<br>
 Whoops.</p>
+</div>
+<div id="by-time-of-day" class="section level2">
+<h2 class="hasAnchor">
+<a href="#by-time-of-day" class="anchor"></a>By Time of Day</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">history_hours &lt;-<span class="st"> </span><span class="kw"><a href="../reference/get_plays_by_hourofday.html">get_plays_by_hourofday</a></span>(<span class="dt">time_range =</span> <span class="dv">365</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">gather</span>(Type, Plays, <span class="op">-</span>hour) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">hour =</span> hms<span class="op">::</span><span class="kw">hms</span>(<span class="dt">hours =</span> hour))
+
+<span class="kw">ggplot</span>(<span class="dt">data =</span> history_hours, <span class="kw">aes</span>(<span class="dt">x =</span> hour, <span class="dt">y =</span> Plays, <span class="dt">fill =</span> Type)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_col</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_fill_brewer</span>(<span class="dt">palette =</span> <span class="st">"Set1"</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme_ipsum</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">"top"</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">"Plex Server Usage by Time of Day"</span>,
+       <span class="dt">subtitle =</span> <span class="st">"Last Year of Activity"</span>,
+       <span class="dt">y =</span> <span class="st">"# of Plays"</span>, <span class="dt">x =</span> <span class="st">"Hour"</span>)</code></pre></div>
+<p><img src="a-usage-overview_files/figure-html/plays_by_hourofday-1.png" width="672"></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">history_users &lt;-<span class="st"> </span><span class="kw"><a href="../reference/get_plays_by_top_10_users.html">get_plays_by_top_10_users</a></span>(<span class="dt">time_range =</span> <span class="dv">365</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">gather</span>(Type, Plays, <span class="op">-</span>user)
+
+<span class="kw">ggplot</span>(<span class="dt">data =</span> history_users, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">reorder</span>(user, Plays), <span class="dt">y =</span> Plays, <span class="dt">fill =</span> Type)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_col</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">coord_flip</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_x_discrete</span>(<span class="dt">labels =</span> <span class="kw">sample</span>(words, <span class="kw">nrow</span>(history_users))) <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_fill_brewer</span>(<span class="dt">palette =</span> <span class="st">"Set1"</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme_ipsum</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">"top"</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">"Plex Server Usage by User"</span>,
+       <span class="dt">subtitle =</span> <span class="st">"Last Year of Activity"</span>,
+       <span class="dt">y =</span> <span class="st">"# of Plays"</span>, <span class="dt">x =</span> <span class="st">"User"</span>)</code></pre></div>
+<p><img src="a-usage-overview_files/figure-html/plays_by_top_10_users-1.png" width="672"></p>
+</div>
 </div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+        <div id="tocnav">
+      <h2>Contents</h2>
+      <ul class="nav nav-pills nav-stacked">
+<li><a href="#by-date">By Date</a></li>
+      <li><a href="#by-time-of-day">By Time of Day</a></li>
+      </ul>
+</div>
       </div>
 
 </div>
