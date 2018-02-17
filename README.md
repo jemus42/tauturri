@@ -7,7 +7,8 @@ tauturri
 
 The goal of `tauturri` is to get data out of [**Tautulli**](https://github.com/Tautulli/Tautulli) (formerly **PlexPy**) as simply as possible.
 
-The project is in the initial setup phase. Nothing works yet.
+The project is in the initial setup phase.
+Dragons and such, they be there.
 
 Installation
 ------------
