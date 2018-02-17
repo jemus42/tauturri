@@ -25,6 +25,7 @@
 #' @importFrom tibble tibble
 #' @importFrom tibble as_tibble
 #' @importFrom plyr rbind.fill
+#' @source <https://github.com/Tautulli/Tautulli/blob/master/API.md#get_history>
 #' @examples
 #' \dontrun{
 #' get_history(length = 10)
@@ -72,8 +73,8 @@ get_history <- function(url = NULL, apikey = NULL,
   history$year        <- as.numeric(history$year)
   history$media_index <- as.character(history$media_index)
   history$rating_key  <- as.character(history$rating_key)
-  history$parent_rating_key <- as.character(history$parent_rating_key)
-  history$parent_media_index <- as.character(history$parent_media_index)
+  history$parent_rating_key      <- as.character(history$parent_rating_key)
+  history$parent_media_index     <- as.character(history$parent_media_index)
   history$grandparent_rating_key <- as.character(history$grandparent_rating_key)
 
   if ("session_key" %in% names(history)) {

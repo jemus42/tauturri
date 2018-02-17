@@ -113,6 +113,7 @@ get_library_media_info <- function(url = NULL, apikey = NULL,
 #' @importFrom purrr map_df
 #' @importFrom tibble as_tibble
 #' @importFrom tibble tibble
+#' @source <https://github.com/Tautulli/Tautulli/blob/master/API.md#get_library_names>
 #' @examples
 #' \dontrun{
 #' get_library_watch_time_stats(section_id = 2)

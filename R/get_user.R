@@ -4,7 +4,7 @@
 #' @param add_pseudonym Set to `TRUE` if you want to pseudonymize your user's names.
 #' @return A `tbl`
 #' @export
-#'
+#' @source <https://github.com/Tautulli/Tautulli/blob/master/API.md#get_user_names>
 #' @examples
 #' \dontrun{
 #' get_user_names()

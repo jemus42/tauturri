@@ -3,6 +3,9 @@
 \name{get_user_names}
 \alias{get_user_names}
 \title{Get User Names and IDs}
+\source{
+\url{https://github.com/Tautulli/Tautulli/blob/master/API.md#get_user_names}
+}
 \usage{
 get_user_names(url = NULL, apikey = NULL, add_pseudonym = FALSE)
 }

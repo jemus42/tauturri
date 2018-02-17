@@ -3,6 +3,9 @@
 \name{get_history}
 \alias{get_history}
 \title{Get Playback History}
+\source{
+\url{https://github.com/Tautulli/Tautulli/blob/master/API.md#get_history}
+}
 \usage{
 get_history(url = NULL, apikey = NULL, grouping = 0, user = NULL,
   user_id = NULL, rating_key = NULL, parent_rating_key = NULL,
