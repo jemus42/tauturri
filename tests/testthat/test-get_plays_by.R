@@ -16,3 +16,11 @@ test_that("get_plays_by_top_10_users works", {
   expect_named(res, c("user", "TV", "Movies", "Music"))
   expect_error(get_plays_by_top_10_users(url = "", apikey = ""))
 })
+
+test_that("get_plays_by_hourofday works", {
+  res <- get_plays_by_hourofday()
+  expect_is(res, "tbl")
+  expect_length(res, 4)
+  expect_named(res, c("hour", "TV", "Movies", "Music"))
+  expect_error(get_plays_by_hourofday(url = "", apikey = ""))
+})

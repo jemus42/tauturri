@@ -5,6 +5,7 @@ test_that("get_library_names returns results", {
   expect_is(res, "data.frame")
   expect_length(res, 2)
   expect_error(get_library_names(url = "323hhg"))
+  expect_error(get_library_names(url = "", apikey = ""))
 })
 
 test_that("get_library_media_info works", {
@@ -16,6 +17,7 @@ test_that("get_library_media_info works", {
   expect_equal(nrow(data$items), 10)
 
   expect_error(get_library_media_info())
+  expect_error(get_library_media_info("", ""))
 })
 
 test_that("get_library_watch_time_stats works", {
@@ -23,4 +25,5 @@ test_that("get_library_watch_time_stats works", {
   expect_is(res, "tbl")
   expect_length(res, 3)
   expect_named(res, c("query_days", "total_time", "total_plays"))
+  expect_error(get_library_watch_time_stats("", ""))
 })
