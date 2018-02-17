@@ -8,6 +8,7 @@ test_that("API-requests work", {
 
  expect_error(api_request(url = "google.com"))
  expect_error(api_request(url = "", apikey = ""))
+ expect_error(api_request(url = "http://example.com/hello"))
 
  res <- api_request(cmd = "poopybutthole")
  expect_equal(res$result, "error")
