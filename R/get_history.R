@@ -66,9 +66,19 @@ get_history <- function(url = NULL, apikey = NULL,
   history <- map(result[["data"]][["data"]], ~as_tibble(flatten(.x))) %>%
     reduce(plyr::rbind.fill)
 
-  history$started <- as.POSIXct(history$started, origin = "1970-01-01")
-  history$stopped <- as.POSIXct(history$stopped, origin = "1970-01-01")
-  history$date    <- as.POSIXct(history$date, origin = "1970-01-01")
+  history$started     <- as.POSIXct(history$started, origin = "1970-01-01")
+  history$stopped     <- as.POSIXct(history$stopped, origin = "1970-01-01")
+  history$date        <- as.POSIXct(history$date, origin = "1970-01-01")
+  history$year        <- as.numeric(history$year)
+  history$media_index <- as.character(history$media_index)
+  history$rating_key  <- as.character(history$rating_key)
+  history$parent_rating_key <- as.character(history$parent_rating_key)
+  history$parent_media_index <- as.character(history$parent_media_index)
+  history$grandparent_rating_key <- as.character(history$grandparent_rating_key)
+
+  if ("session_key" %in% names(history)) {
+    history$session_key <- as.character(history$session_key)
+  }
 
   list(totals = totals,
        history = history)
