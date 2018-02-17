@@ -43,3 +43,12 @@ test_that("get_plays_by_source_resolution works", {
 
   expect_error(get_plays_by_source_resolution(url = "", apikey = ""))
 })
+
+test_that("get_plays_by_stream_resolution works", {
+  res <- get_plays_by_stream_resolution()
+  expect_is(res, "tbl")
+  expect_length(res, 4)
+  expect_named(res, c("resolution", "Direct_Play", "Direct_Stream", "Transcode"))
+
+  expect_error(get_plays_by_stream_resolution(url = "", apikey = ""))
+})

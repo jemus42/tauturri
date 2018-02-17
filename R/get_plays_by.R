@@ -256,3 +256,55 @@ get_plays_by_source_resolution <- function(url = NULL, apikey = NULL,
 
   return(res)
 }
+
+#' Get Plays by Stream Resolution
+#'
+#' @inheritParams api_request
+#' @inheritParams get_plays_by_date
+#' @return A `tbl` with columns `hour`, `Movies`, `TV`, `Music`
+#' @export
+#' @importFrom purrr map_chr
+#' @importFrom purrr pluck
+#' @importFrom purrr map
+#' @importFrom purrr set_names
+#' @importFrom purrr flatten_chr
+#' @importFrom tibble tibble
+#' @importFrom tibble as_tibble
+#' @source <https://github.com/Tautulli/Tautulli/blob/master/API.md#get_plays_by_source_resolution>
+#'
+#' @examples
+#' \dontrun{
+#' get_plays_by_stream_resolution()
+#' }
+get_plays_by_stream_resolution <- function(url = NULL, apikey = NULL,
+                                           time_range = 30, y_axis = "plays", user_id = NULL) {
+  if (is.null(url)) {
+    url <- Sys.getenv("tautulli_url")
+  }
+  if (is.null(apikey)) {
+    apikey <- Sys.getenv("tautulli_apikey")
+  }
+  if (apikey == "" | url == "") {
+    stop("No URL or API-Key set, please see setup instructions")
+  }
+
+  result <- api_request(url, apikey, cmd = "get_plays_by_stream_resolution",
+                        time_range = time_range, y_axis = y_axis, user_id = user_id)
+
+  if (result$result != "success") {
+    warning("Error in 'get_plays_by_stream_resolution': ", result$result)
+    return(tibble())
+  }
+
+  res     <- pluck(result, "data", "series") %>%
+    map(~as.numeric(.x$data)) %>%
+    set_names(map_chr(result$data$series, "name")) %>%
+    as_tibble()
+  names(res) <- sub(" ", replacement = "_", x = names(res))
+
+  res$resolution <- pluck(result, "data", "categories") %>%
+    flatten_chr()
+  res      <- res[c("resolution", names(res)[names(res) != "resolution"])]
+
+  return(res)
+}
