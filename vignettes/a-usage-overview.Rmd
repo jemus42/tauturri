@@ -100,6 +100,8 @@ ggplot(data = history_hours, aes(x = hour, y = Plays, fill = Type)) +
        y = "# of Plays", x = "Hour")
 ```
 
+## By User
+
 ```{r plays_by_top_10_users}
 history_users <- get_plays_by_top_10_users(time_range = 365) %>%
   gather(Type, Plays, -user)
