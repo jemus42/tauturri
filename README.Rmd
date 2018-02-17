@@ -61,7 +61,7 @@ info[c("name", "version")]
 ```
 
 
-## `get_plays_by` [data|dayofweek|...]
+## `get_plays_by` [date|dayofweek|...]
 
 All plays in the current year, per day:
 
@@ -70,7 +70,7 @@ plays <- get_plays_by_date(time_range = lubridate::yday(lubridate::now()))
 
 plays %>% 
   gather(category, playcount, TV, Movies, Music) %>%
-  ggplot(data = ., aes(x = date, y = playcount, fill = category)) +
+  ggplot(aes(x = date, y = playcount, fill = category)) +
   geom_col() +
   scale_fill_brewer(palette = "Set1", 
                     breaks = c("Movies", "TV", "Music")) +
@@ -81,6 +81,41 @@ plays %>%
   theme(legend.position = "top")
 ```
 
+... per day of week:
+
+```{r get_plays_by_dayofweek}
+plays <- get_plays_by_dayofweek(time_range = lubridate::yday(lubridate::now()))
+
+plays %>% 
+  gather(category, playcount, TV, Movies, Music) %>%
+  ggplot(aes(x = day, y = playcount, fill = category)) +
+  geom_col() +
+  scale_fill_brewer(palette = "Set1", 
+                    breaks = c("Movies", "TV", "Music")) +
+  labs(title = "Plex Plays by Day of Week",
+       subtitle = "Showing Movie, TV and Music Categories",
+       x = "Day", y = "Plays", fill = "Category") +
+  theme_minimal() +
+  theme(legend.position = "top")
+```
+
+... and per hour of day:
+
+```{r get_plays_by_hourofday}
+plays <- get_plays_by_hourofday(time_range = lubridate::yday(lubridate::now()))
+
+plays %>% 
+  gather(category, playcount, TV, Movies, Music) %>%
+  ggplot(aes(x = hms::hms(hours = hour), y = playcount, fill = category)) +
+  geom_col() +
+  scale_fill_brewer(palette = "Set1", 
+                    breaks = c("Movies", "TV", "Music")) +
+  labs(title = "Plex Plays by Hour of Day",
+       subtitle = "Showing Movie, TV and Music Categories",
+       x = "Hour", y = "Plays", fill = "Category") +
+  theme_minimal() +
+  theme(legend.position = "top")
+```
 
 ## CoC
 

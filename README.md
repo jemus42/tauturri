@@ -48,7 +48,7 @@ info[c("name", "version")]
 #> 1 PPTH 1.11.3.4793-482972920
 ```
 
-`get_plays_by` \[data|dayofweek|...\]
+`get_plays_by` \[date|dayofweek|...\]
 -------------------------------------
 
 All plays in the current year, per day:
@@ -58,7 +58,7 @@ plays <- get_plays_by_date(time_range = lubridate::yday(lubridate::now()))
 
 plays %>% 
   gather(category, playcount, TV, Movies, Music) %>%
-  ggplot(data = ., aes(x = date, y = playcount, fill = category)) +
+  ggplot(aes(x = date, y = playcount, fill = category)) +
   geom_col() +
   scale_fill_brewer(palette = "Set1", 
                     breaks = c("Movies", "TV", "Music")) +
@@ -70,6 +70,46 @@ plays %>%
 ```
 
 <img src="man/figures/README-get_plays_by_date-1.png" width="100%" />
+
+... per day of week:
+
+``` r
+plays <- get_plays_by_dayofweek(time_range = lubridate::yday(lubridate::now()))
+
+plays %>% 
+  gather(category, playcount, TV, Movies, Music) %>%
+  ggplot(aes(x = day, y = playcount, fill = category)) +
+  geom_col() +
+  scale_fill_brewer(palette = "Set1", 
+                    breaks = c("Movies", "TV", "Music")) +
+  labs(title = "Plex Plays by Day of Week",
+       subtitle = "Showing Movie, TV and Music Categories",
+       x = "Day", y = "Plays", fill = "Category") +
+  theme_minimal() +
+  theme(legend.position = "top")
+```
+
+<img src="man/figures/README-get_plays_by_dayofweek-1.png" width="100%" />
+
+... and per hour of day:
+
+``` r
+plays <- get_plays_by_hourofday(time_range = lubridate::yday(lubridate::now()))
+
+plays %>% 
+  gather(category, playcount, TV, Movies, Music) %>%
+  ggplot(aes(x = hms::hms(hours = hour), y = playcount, fill = category)) +
+  geom_col() +
+  scale_fill_brewer(palette = "Set1", 
+                    breaks = c("Movies", "TV", "Music")) +
+  labs(title = "Plex Plays by Hour of Day",
+       subtitle = "Showing Movie, TV and Music Categories",
+       x = "Hour", y = "Plays", fill = "Category") +
+  theme_minimal() +
+  theme(legend.position = "top")
+```
+
+<img src="man/figures/README-get_plays_by_hourofday-1.png" width="100%" />
 
 CoC
 ---
