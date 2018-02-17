@@ -93,15 +93,15 @@ info[<span class="kw">c</span>(<span class="st">"name"</span>, <span class="st">
 <span class="co">#&gt;   name               version</span>
 <span class="co">#&gt; 1 PPTH 1.11.3.4793-482972920</span></code></pre></div>
 </div>
-<div id="get_plays_by-datadayofweek" class="section level2">
+<div id="get_plays_by-datedayofweek" class="section level2">
 <h2 class="hasAnchor">
-<a href="#get_plays_by-datadayofweek" class="anchor"></a><code>get_plays_by</code> [data|dayofweek|…]</h2>
+<a href="#get_plays_by-datedayofweek" class="anchor"></a><code>get_plays_by</code> [date|dayofweek|…]</h2>
 <p>All plays in the current year, per day:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">plays &lt;-<span class="st"> </span><span class="kw"><a href="reference/get_plays_by_date.html">get_plays_by_date</a></span>(<span class="dt">time_range =</span> lubridate<span class="op">::</span><span class="kw">yday</span>(lubridate<span class="op">::</span><span class="kw">now</span>()))
 
 plays <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">gather</span>(category, playcount, TV, Movies, Music) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">ggplot</span>(<span class="dt">data =</span> ., <span class="kw">aes</span>(<span class="dt">x =</span> date, <span class="dt">y =</span> playcount, <span class="dt">fill =</span> category)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> date, <span class="dt">y =</span> playcount, <span class="dt">fill =</span> category)) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_col</span>() <span class="op">+</span>
 <span class="st">  </span><span class="kw">scale_fill_brewer</span>(<span class="dt">palette =</span> <span class="st">"Set1"</span>, 
                     <span class="dt">breaks =</span> <span class="kw">c</span>(<span class="st">"Movies"</span>, <span class="st">"TV"</span>, <span class="st">"Music"</span>)) <span class="op">+</span>
@@ -111,6 +111,36 @@ plays <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">theme_minimal</span>() <span class="op">+</span>
 <span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">"top"</span>)</code></pre></div>
 <p><img src="reference/figures/README-get_plays_by_date-1.png" width="100%"></p>
+<p>… per day of week:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">plays &lt;-<span class="st"> </span><span class="kw"><a href="reference/get_plays_by_dayofweek.html">get_plays_by_dayofweek</a></span>(<span class="dt">time_range =</span> lubridate<span class="op">::</span><span class="kw">yday</span>(lubridate<span class="op">::</span><span class="kw">now</span>()))
+
+plays <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">gather</span>(category, playcount, TV, Movies, Music) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> day, <span class="dt">y =</span> playcount, <span class="dt">fill =</span> category)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_col</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_fill_brewer</span>(<span class="dt">palette =</span> <span class="st">"Set1"</span>, 
+                    <span class="dt">breaks =</span> <span class="kw">c</span>(<span class="st">"Movies"</span>, <span class="st">"TV"</span>, <span class="st">"Music"</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">"Plex Plays by Day of Week"</span>,
+       <span class="dt">subtitle =</span> <span class="st">"Showing Movie, TV and Music Categories"</span>,
+       <span class="dt">x =</span> <span class="st">"Day"</span>, <span class="dt">y =</span> <span class="st">"Plays"</span>, <span class="dt">fill =</span> <span class="st">"Category"</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme_minimal</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">"top"</span>)</code></pre></div>
+<p><img src="reference/figures/README-get_plays_by_dayofweek-1.png" width="100%"></p>
+<p>… and per hour of day:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">plays &lt;-<span class="st"> </span><span class="kw"><a href="reference/get_plays_by_hourofday.html">get_plays_by_hourofday</a></span>(<span class="dt">time_range =</span> lubridate<span class="op">::</span><span class="kw">yday</span>(lubridate<span class="op">::</span><span class="kw">now</span>()))
+
+plays <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">gather</span>(category, playcount, TV, Movies, Music) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> hms<span class="op">::</span><span class="kw">hms</span>(<span class="dt">hours =</span> hour), <span class="dt">y =</span> playcount, <span class="dt">fill =</span> category)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_col</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_fill_brewer</span>(<span class="dt">palette =</span> <span class="st">"Set1"</span>, 
+                    <span class="dt">breaks =</span> <span class="kw">c</span>(<span class="st">"Movies"</span>, <span class="st">"TV"</span>, <span class="st">"Music"</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">"Plex Plays by Hour of Day"</span>,
+       <span class="dt">subtitle =</span> <span class="st">"Showing Movie, TV and Music Categories"</span>,
+       <span class="dt">x =</span> <span class="st">"Hour"</span>, <span class="dt">y =</span> <span class="st">"Plays"</span>, <span class="dt">fill =</span> <span class="st">"Category"</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme_minimal</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">"top"</span>)</code></pre></div>
+<p><img src="reference/figures/README-get_plays_by_hourofday-1.png" width="100%"></p>
 </div>
 <div id="coc" class="section level2">
 <h2 class="hasAnchor">
