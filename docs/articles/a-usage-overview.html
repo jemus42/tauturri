@@ -213,6 +213,10 @@ Whoops.</p>
        <span class="dt">subtitle =</span> <span class="st">"Last Year of Activity"</span>,
        <span class="dt">y =</span> <span class="st">"# of Plays"</span>, <span class="dt">x =</span> <span class="st">"Hour"</span>)</code></pre></div>
 <p><img src="a-usage-overview_files/figure-html/plays_by_hourofday-1.png" width="672"></p>
+</div>
+<div id="by-user" class="section level2">
+<h2 class="hasAnchor">
+<a href="#by-user" class="anchor"></a>By User</h2>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">history_users &lt;-<span class="st"> </span><span class="kw"><a href="../reference/get_plays_by_top_10_users.html">get_plays_by_top_10_users</a></span>(<span class="dt">time_range =</span> <span class="dv">365</span>) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">gather</span>(Type, Plays, <span class="op">-</span>user)
 
@@ -237,6 +241,7 @@ Whoops.</p>
       <ul class="nav nav-pills nav-stacked">
 <li><a href="#by-date">By Date</a></li>
       <li><a href="#by-time-of-day">By Time of Day</a></li>
+      <li><a href="#by-user">By User</a></li>
       </ul>
 </div>
       </div>
