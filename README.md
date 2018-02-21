@@ -118,53 +118,41 @@ API Functions Not Yet Implemented
 ---------------------------------
 
 ``` r
-library(stringr)
-#> 
-#> Attaching package: 'stringr'
-#> The following object is masked from 'package:tauturri':
-#> 
-#>     words
-library(purrr)
-
-api_functions <- api_request(cmd = "docs") %>%
-  pluck("data") %>%
-  names()
-
-api_functions <- api_functions[str_detect(api_functions, "^get_")]
-
-api_functions[!(api_functions %in% getNamespaceExports("tauturri"))]
-#>  [1] "get_notifier_config"                
-#>  [2] "get_geoip_lookup"                   
-#>  [3] "get_libraries_table"                
-#>  [4] "get_plays_by_stream_type"           
-#>  [5] "get_settings"                       
-#>  [6] "get_recently_added"                 
-#>  [7] "get_notification_log"               
-#>  [8] "get_notifier_parameters"            
-#>  [9] "get_pms_token"                      
-#> [10] "get_apikey"                         
-#> [11] "get_stream_type_by_top_10_platforms"
-#> [12] "get_logs"                           
-#> [13] "get_stream_type_by_top_10_users"    
-#> [14] "get_old_rating_keys"                
-#> [15] "get_new_rating_keys"                
-#> [16] "get_library_user_stats"             
-#> [17] "get_home_stats"                     
-#> [18] "get_pms_update"                     
-#> [19] "get_server_id"                      
-#> [20] "get_server_friendly_name"           
-#> [21] "get_user_logins"                    
-#> [22] "get_server_pref"                    
-#> [23] "get_notifiers"                      
-#> [24] "get_library"                        
-#> [25] "get_metadata"                       
-#> [26] "get_user"                           
-#> [27] "get_user_ips"                       
-#> [28] "get_whois_lookup"                   
-#> [29] "get_synced_items"                   
-#> [30] "get_date_formats"                   
-#> [31] "get_libraries"                      
-#> [32] "get_plex_log"
+api_functions <- names(api_request(cmd = "docs")$data)
+api_functions <- api_functions[grepl("^get_", api_functions)]
+sort(api_functions[!(api_functions %in% getNamespaceExports("tauturri"))])
+#>  [1] "get_apikey"                         
+#>  [2] "get_date_formats"                   
+#>  [3] "get_geoip_lookup"                   
+#>  [4] "get_home_stats"                     
+#>  [5] "get_libraries"                      
+#>  [6] "get_libraries_table"                
+#>  [7] "get_library"                        
+#>  [8] "get_library_user_stats"             
+#>  [9] "get_logs"                           
+#> [10] "get_metadata"                       
+#> [11] "get_new_rating_keys"                
+#> [12] "get_notification_log"               
+#> [13] "get_notifier_config"                
+#> [14] "get_notifier_parameters"            
+#> [15] "get_notifiers"                      
+#> [16] "get_old_rating_keys"                
+#> [17] "get_plays_by_stream_type"           
+#> [18] "get_plex_log"                       
+#> [19] "get_pms_token"                      
+#> [20] "get_pms_update"                     
+#> [21] "get_recently_added"                 
+#> [22] "get_server_friendly_name"           
+#> [23] "get_server_id"                      
+#> [24] "get_server_pref"                    
+#> [25] "get_settings"                       
+#> [26] "get_stream_type_by_top_10_platforms"
+#> [27] "get_stream_type_by_top_10_users"    
+#> [28] "get_synced_items"                   
+#> [29] "get_user"                           
+#> [30] "get_user_ips"                       
+#> [31] "get_user_logins"                    
+#> [32] "get_whois_lookup"
 ```
 
 CoC

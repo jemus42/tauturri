@@ -121,16 +121,9 @@ plays %>%
 ## API Functions Not Yet Implemented
 
 ```{r}
-library(stringr)
-library(purrr)
-
-api_functions <- api_request(cmd = "docs") %>%
-  pluck("data") %>%
-  names()
-
-api_functions <- api_functions[str_detect(api_functions, "^get_")]
-
-api_functions[!(api_functions %in% getNamespaceExports("tauturri"))]
+api_functions <- names(api_request(cmd = "docs")$data)
+api_functions <- api_functions[grepl("^get_", api_functions)]
+sort(api_functions[!(api_functions %in% getNamespaceExports("tauturri"))])
 ```
 
 
