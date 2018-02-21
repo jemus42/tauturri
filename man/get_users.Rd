@@ -7,7 +7,7 @@
 \url{https://github.com/Tautulli/Tautulli/blob/master/API.md#get_users}
 }
 \usage{
-get_users(url = NULL, apikey = NULL, add_pseudonym = FALSE)
+get_users(url = NULL, apikey = NULL)
 }
 \arguments{
 \item{url}{Server URL.}

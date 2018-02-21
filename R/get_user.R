@@ -8,7 +8,7 @@
 #' \dontrun{
 #' get_users()
 #' }
-get_users <- function(url = NULL, apikey = NULL, add_pseudonym = FALSE) {
+get_users <- function(url = NULL, apikey = NULL) {
   if (is.null(url)) {
     url <- Sys.getenv("tautulli_url")
   }
