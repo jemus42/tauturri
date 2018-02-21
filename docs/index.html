@@ -148,53 +148,41 @@ plays <span class="op">%&gt;%</span><span class="st"> </span>
 <div id="api-functions-not-yet-implemented" class="section level2">
 <h2 class="hasAnchor">
 <a href="#api-functions-not-yet-implemented" class="anchor"></a>API Functions Not Yet Implemented</h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(stringr)
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Attaching package: 'stringr'</span>
-<span class="co">#&gt; The following object is masked from 'package:tauturri':</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;     words</span>
-<span class="kw">library</span>(purrr)
-
-api_functions &lt;-<span class="st"> </span><span class="kw"><a href="reference/api_request.html">api_request</a></span>(<span class="dt">cmd =</span> <span class="st">"docs"</span>) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">pluck</span>(<span class="st">"data"</span>) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">names</span>()
-
-api_functions &lt;-<span class="st"> </span>api_functions[<span class="kw">str_detect</span>(api_functions, <span class="st">"^get_"</span>)]
-
-api_functions[<span class="op">!</span>(api_functions <span class="op">%in%</span><span class="st"> </span><span class="kw">getNamespaceExports</span>(<span class="st">"tauturri"</span>))]
-<span class="co">#&gt;  [1] "get_notifier_config"                </span>
-<span class="co">#&gt;  [2] "get_geoip_lookup"                   </span>
-<span class="co">#&gt;  [3] "get_libraries_table"                </span>
-<span class="co">#&gt;  [4] "get_plays_by_stream_type"           </span>
-<span class="co">#&gt;  [5] "get_settings"                       </span>
-<span class="co">#&gt;  [6] "get_recently_added"                 </span>
-<span class="co">#&gt;  [7] "get_notification_log"               </span>
-<span class="co">#&gt;  [8] "get_notifier_parameters"            </span>
-<span class="co">#&gt;  [9] "get_pms_token"                      </span>
-<span class="co">#&gt; [10] "get_apikey"                         </span>
-<span class="co">#&gt; [11] "get_stream_type_by_top_10_platforms"</span>
-<span class="co">#&gt; [12] "get_logs"                           </span>
-<span class="co">#&gt; [13] "get_stream_type_by_top_10_users"    </span>
-<span class="co">#&gt; [14] "get_old_rating_keys"                </span>
-<span class="co">#&gt; [15] "get_new_rating_keys"                </span>
-<span class="co">#&gt; [16] "get_library_user_stats"             </span>
-<span class="co">#&gt; [17] "get_home_stats"                     </span>
-<span class="co">#&gt; [18] "get_pms_update"                     </span>
-<span class="co">#&gt; [19] "get_server_id"                      </span>
-<span class="co">#&gt; [20] "get_server_friendly_name"           </span>
-<span class="co">#&gt; [21] "get_user_logins"                    </span>
-<span class="co">#&gt; [22] "get_server_pref"                    </span>
-<span class="co">#&gt; [23] "get_notifiers"                      </span>
-<span class="co">#&gt; [24] "get_library"                        </span>
-<span class="co">#&gt; [25] "get_metadata"                       </span>
-<span class="co">#&gt; [26] "get_user"                           </span>
-<span class="co">#&gt; [27] "get_user_ips"                       </span>
-<span class="co">#&gt; [28] "get_whois_lookup"                   </span>
-<span class="co">#&gt; [29] "get_synced_items"                   </span>
-<span class="co">#&gt; [30] "get_date_formats"                   </span>
-<span class="co">#&gt; [31] "get_libraries"                      </span>
-<span class="co">#&gt; [32] "get_plex_log"</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">api_functions &lt;-<span class="st"> </span><span class="kw">names</span>(<span class="kw"><a href="reference/api_request.html">api_request</a></span>(<span class="dt">cmd =</span> <span class="st">"docs"</span>)<span class="op">$</span>data)
+api_functions &lt;-<span class="st"> </span>api_functions[<span class="kw">grepl</span>(<span class="st">"^get_"</span>, api_functions)]
+<span class="kw">sort</span>(api_functions[<span class="op">!</span>(api_functions <span class="op">%in%</span><span class="st"> </span><span class="kw">getNamespaceExports</span>(<span class="st">"tauturri"</span>))])
+<span class="co">#&gt;  [1] "get_apikey"                         </span>
+<span class="co">#&gt;  [2] "get_date_formats"                   </span>
+<span class="co">#&gt;  [3] "get_geoip_lookup"                   </span>
+<span class="co">#&gt;  [4] "get_home_stats"                     </span>
+<span class="co">#&gt;  [5] "get_libraries"                      </span>
+<span class="co">#&gt;  [6] "get_libraries_table"                </span>
+<span class="co">#&gt;  [7] "get_library"                        </span>
+<span class="co">#&gt;  [8] "get_library_user_stats"             </span>
+<span class="co">#&gt;  [9] "get_logs"                           </span>
+<span class="co">#&gt; [10] "get_metadata"                       </span>
+<span class="co">#&gt; [11] "get_new_rating_keys"                </span>
+<span class="co">#&gt; [12] "get_notification_log"               </span>
+<span class="co">#&gt; [13] "get_notifier_config"                </span>
+<span class="co">#&gt; [14] "get_notifier_parameters"            </span>
+<span class="co">#&gt; [15] "get_notifiers"                      </span>
+<span class="co">#&gt; [16] "get_old_rating_keys"                </span>
+<span class="co">#&gt; [17] "get_plays_by_stream_type"           </span>
+<span class="co">#&gt; [18] "get_plex_log"                       </span>
+<span class="co">#&gt; [19] "get_pms_token"                      </span>
+<span class="co">#&gt; [20] "get_pms_update"                     </span>
+<span class="co">#&gt; [21] "get_recently_added"                 </span>
+<span class="co">#&gt; [22] "get_server_friendly_name"           </span>
+<span class="co">#&gt; [23] "get_server_id"                      </span>
+<span class="co">#&gt; [24] "get_server_pref"                    </span>
+<span class="co">#&gt; [25] "get_settings"                       </span>
+<span class="co">#&gt; [26] "get_stream_type_by_top_10_platforms"</span>
+<span class="co">#&gt; [27] "get_stream_type_by_top_10_users"    </span>
+<span class="co">#&gt; [28] "get_synced_items"                   </span>
+<span class="co">#&gt; [29] "get_user"                           </span>
+<span class="co">#&gt; [30] "get_user_ips"                       </span>
+<span class="co">#&gt; [31] "get_user_logins"                    </span>
+<span class="co">#&gt; [32] "get_whois_lookup"</span></code></pre></div>
 </div>
 <div id="coc" class="section level2">
 <h2 class="hasAnchor">
@@ -217,6 +205,7 @@ By participating in this project you agree to abide by its terms.</p>
 <ul class="list-unstyled">
 <li><a href="https://travis-ci.org/jemus42/tauturri"><img src="https://travis-ci.org/jemus42/tauturri.svg?branch=master" alt="Travis build status"></a></li>
 <li><a href="https://codecov.io/github/jemus42/tauturri?branch=master"><img src="https://codecov.io/gh/jemus42/tauturri/branch/master/graph/badge.svg" alt="Coverage status"></a></li>
+<li><a href="https://cran.r-project.org/package=tauturri"><img src="http://www.r-pkg.org/badges/version/tauturri" alt="CRAN status"></a></li>
 </ul>
 </div>
 
