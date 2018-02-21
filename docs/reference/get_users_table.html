@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get Plays by Top 10 Users — get_plays_by_top_10_users • tauturri</title>
+<title>Get a Users Table — get_users_table • tauturri</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -74,15 +74,14 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get Plays by Top 10 Users</h1>
+    <h1>Get a Users Table</h1>
     </div>
 
     
-    <p>Get Plays by Top 10 Users</p>
+    <p>Get a Users Table</p>
     
 
-    <pre class="usage"><span class='fu'>get_plays_by_top_10_users</span>(<span class='kw'>url</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>apikey</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>time_range</span> <span class='kw'>=</span> <span class='fl'>30</span>,
-  <span class='kw'>y_axis</span> <span class='kw'>=</span> <span class='st'>"plays"</span>, <span class='kw'>user_id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>get_users_table</span>(<span class='kw'>url</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>apikey</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>length</span> <span class='kw'>=</span> <span class='fl'>50</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -96,31 +95,23 @@
       <td><p>API key.</p></td>
     </tr>
     <tr>
-      <th>time_range</th>
-      <td><p>The number of days of data to return, default is <code>30</code>.</p></td>
-    </tr>
-    <tr>
-      <th>y_axis</th>
-      <td><p><code>"plays"</code> (default) or <code>"duration"</code></p></td>
-    </tr>
-    <tr>
-      <th>user_id</th>
-      <td><p>The user id to filter the data</p></td>
+      <th>length</th>
+      <td><p>Number of items to return, default is 50.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
 
-    <p><a href = 'https://github.com/Tautulli/Tautulli/blob/master/API.md#get_plays_by_top_10_users'>https://github.com/Tautulli/Tautulli/blob/master/API.md#get_plays_by_top_10_users</a></p>
+    <p><a href = 'https://github.com/Tautulli/Tautulli/blob/master/API.md#get_users_table'>https://github.com/Tautulli/Tautulli/blob/master/API.md#get_users_table</a></p>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code>tbl</code> with columns <code>user</code>, <code>Movies</code>, <code>TV</code>, <code>Music</code></p>
+    <p>A <code>tbl</code></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>not_run</span>({
-  <span class='fu'>get_plays_by_top_10_users</span>()
+  <span class='fu'>get_users_table</span>()
 })</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
