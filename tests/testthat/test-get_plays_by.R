@@ -35,6 +35,16 @@ test_that("get_plays_by_dayofweek works", {
   expect_error(get_plays_by_dayofweek(url = "", apikey = ""))
 })
 
+test_that("get_plays_per_month works", {
+  res <- get_plays_per_month()
+  expect_is(res, "tbl")
+  expect_length(res, 4)
+  expect_named(res, c("month", "TV", "Movies", "Music"))
+
+  expect_error(get_plays_by_dayofweek(url = "", apikey = ""))
+})
+
+
 test_that("get_plays_by_source_resolution works", {
   res <- get_plays_by_source_resolution()
   expect_is(res, "tbl")

@@ -15,7 +15,7 @@ get_servers_info(url = NULL, apikey = NULL)
 \item{apikey}{API key.}
 }
 \value{
-A \code{data.frame} with 5 columns minimum.
+A \code{tbl} with 5 columns minimum.
 }
 \description{
 Get Server Information
@@ -24,4 +24,8 @@ Get Server Information
 \dontrun{
 get_servers_info()
 }
+}
+\seealso{
+Other Server Information: \code{\link{get_server_identity}},
+  \code{\link{get_server_list}}
 }

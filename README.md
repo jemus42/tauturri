@@ -45,8 +45,10 @@ names(info)
 #> [4] "name"               "machine_identifier"
 # Probably shouldn't show URL etc.
 info[c("name", "version")]
-#>   name               version
-#> 1 PPTH 1.11.3.4793-482972920
+#> # A tibble: 1 x 2
+#>   name  version              
+#>   <chr> <chr>                
+#> 1 PPTH  1.11.3.4803-c40bba82e
 ```
 
 `get_plays_by` \[date|dayofweek|...\]
@@ -111,6 +113,62 @@ plays %>%
 ```
 
 <img src="man/figures/README-get_plays_by_hourofday-1.png" width="100%" />
+
+API Functions Not Yet Implemented
+---------------------------------
+
+``` r
+library(stringr)
+#> 
+#> Attaching package: 'stringr'
+#> The following object is masked from 'package:tauturri':
+#> 
+#>     words
+library(purrr)
+
+api_functions <- api_request(cmd = "docs") %>%
+  pluck("data") %>%
+  names()
+
+api_functions <- api_functions[str_detect(api_functions, "^get_")]
+
+api_functions[!(api_functions %in% getNamespaceExports("tauturri"))]
+#>  [1] "get_notifier_config"                
+#>  [2] "get_plays_by_top_10_platforms"      
+#>  [3] "get_geoip_lookup"                   
+#>  [4] "get_libraries_table"                
+#>  [5] "get_plays_by_stream_type"           
+#>  [6] "get_settings"                       
+#>  [7] "get_recently_added"                 
+#>  [8] "get_notification_log"               
+#>  [9] "get_notifier_parameters"            
+#> [10] "get_pms_token"                      
+#> [11] "get_apikey"                         
+#> [12] "get_stream_type_by_top_10_platforms"
+#> [13] "get_logs"                           
+#> [14] "get_stream_type_by_top_10_users"    
+#> [15] "get_old_rating_keys"                
+#> [16] "get_new_rating_keys"                
+#> [17] "get_library_user_stats"             
+#> [18] "get_home_stats"                     
+#> [19] "get_pms_update"                     
+#> [20] "get_server_id"                      
+#> [21] "get_users"                          
+#> [22] "get_server_friendly_name"           
+#> [23] "get_user_logins"                    
+#> [24] "get_server_pref"                    
+#> [25] "get_notifiers"                      
+#> [26] "get_library"                        
+#> [27] "get_metadata"                       
+#> [28] "get_user"                           
+#> [29] "get_users_table"                    
+#> [30] "get_user_ips"                       
+#> [31] "get_whois_lookup"                   
+#> [32] "get_synced_items"                   
+#> [33] "get_date_formats"                   
+#> [34] "get_libraries"                      
+#> [35] "get_plex_log"
+```
 
 CoC
 ---

@@ -118,6 +118,22 @@ plays %>%
   theme(legend.position = "top")
 ```
 
+## API Functions Not Yet Implemented
+
+```{r}
+library(stringr)
+library(purrr)
+
+api_functions <- api_request(cmd = "docs") %>%
+  pluck("data") %>%
+  names()
+
+api_functions <- api_functions[str_detect(api_functions, "^get_")]
+
+api_functions[!(api_functions %in% getNamespaceExports("tauturri"))]
+```
+
+
 ## CoC
 
 Please note that this project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md).  
