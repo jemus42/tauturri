@@ -91,8 +91,10 @@ Alternatively use <code>Sys.setenv()</code> to set the appropriate values in a s
 <span class="co">#&gt; [4] "name"               "machine_identifier"</span>
 <span class="co"># Probably shouldn't show URL etc.</span>
 info[<span class="kw">c</span>(<span class="st">"name"</span>, <span class="st">"version"</span>)]
-<span class="co">#&gt;   name               version</span>
-<span class="co">#&gt; 1 PPTH 1.11.3.4793-482972920</span></code></pre></div>
+<span class="co">#&gt; # A tibble: 1 x 2</span>
+<span class="co">#&gt;   name  version              </span>
+<span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;                </span>
+<span class="co">#&gt; 1 PPTH  1.11.3.4803-c40bba82e</span></code></pre></div>
 </div>
 <div id="get_plays_by-datedayofweek" class="section level2">
 <h2 class="hasAnchor">
@@ -142,6 +144,60 @@ plays <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">theme_minimal</span>() <span class="op">+</span>
 <span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">"top"</span>)</code></pre></div>
 <p><img src="reference/figures/README-get_plays_by_hourofday-1.png" width="100%"></p>
+</div>
+<div id="api-functions-not-yet-implemented" class="section level2">
+<h2 class="hasAnchor">
+<a href="#api-functions-not-yet-implemented" class="anchor"></a>API Functions Not Yet Implemented</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(stringr)
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Attaching package: 'stringr'</span>
+<span class="co">#&gt; The following object is masked from 'package:tauturri':</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;     words</span>
+<span class="kw">library</span>(purrr)
+
+api_functions &lt;-<span class="st"> </span><span class="kw"><a href="reference/api_request.html">api_request</a></span>(<span class="dt">cmd =</span> <span class="st">"docs"</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">pluck</span>(<span class="st">"data"</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">names</span>()
+
+api_functions &lt;-<span class="st"> </span>api_functions[<span class="kw">str_detect</span>(api_functions, <span class="st">"^get_"</span>)]
+
+api_functions[<span class="op">!</span>(api_functions <span class="op">%in%</span><span class="st"> </span><span class="kw">getNamespaceExports</span>(<span class="st">"tauturri"</span>))]
+<span class="co">#&gt;  [1] "get_notifier_config"                </span>
+<span class="co">#&gt;  [2] "get_plays_by_top_10_platforms"      </span>
+<span class="co">#&gt;  [3] "get_geoip_lookup"                   </span>
+<span class="co">#&gt;  [4] "get_libraries_table"                </span>
+<span class="co">#&gt;  [5] "get_plays_by_stream_type"           </span>
+<span class="co">#&gt;  [6] "get_settings"                       </span>
+<span class="co">#&gt;  [7] "get_recently_added"                 </span>
+<span class="co">#&gt;  [8] "get_notification_log"               </span>
+<span class="co">#&gt;  [9] "get_notifier_parameters"            </span>
+<span class="co">#&gt; [10] "get_pms_token"                      </span>
+<span class="co">#&gt; [11] "get_apikey"                         </span>
+<span class="co">#&gt; [12] "get_stream_type_by_top_10_platforms"</span>
+<span class="co">#&gt; [13] "get_logs"                           </span>
+<span class="co">#&gt; [14] "get_stream_type_by_top_10_users"    </span>
+<span class="co">#&gt; [15] "get_old_rating_keys"                </span>
+<span class="co">#&gt; [16] "get_new_rating_keys"                </span>
+<span class="co">#&gt; [17] "get_library_user_stats"             </span>
+<span class="co">#&gt; [18] "get_home_stats"                     </span>
+<span class="co">#&gt; [19] "get_pms_update"                     </span>
+<span class="co">#&gt; [20] "get_server_id"                      </span>
+<span class="co">#&gt; [21] "get_users"                          </span>
+<span class="co">#&gt; [22] "get_server_friendly_name"           </span>
+<span class="co">#&gt; [23] "get_user_logins"                    </span>
+<span class="co">#&gt; [24] "get_server_pref"                    </span>
+<span class="co">#&gt; [25] "get_notifiers"                      </span>
+<span class="co">#&gt; [26] "get_library"                        </span>
+<span class="co">#&gt; [27] "get_metadata"                       </span>
+<span class="co">#&gt; [28] "get_user"                           </span>
+<span class="co">#&gt; [29] "get_users_table"                    </span>
+<span class="co">#&gt; [30] "get_user_ips"                       </span>
+<span class="co">#&gt; [31] "get_whois_lookup"                   </span>
+<span class="co">#&gt; [32] "get_synced_items"                   </span>
+<span class="co">#&gt; [33] "get_date_formats"                   </span>
+<span class="co">#&gt; [34] "get_libraries"                      </span>
+<span class="co">#&gt; [35] "get_plex_log"</span></code></pre></div>
 </div>
 <div id="coc" class="section level2">
 <h2 class="hasAnchor">
