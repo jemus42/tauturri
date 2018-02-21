@@ -1,28 +1,27 @@
-  reference:
-    - title: Basic API Interaction
-      desc:  The, well, basics.
-      contents:
-      - api_request
-      - get_servers_info
-      - get_activity
-    - title: Server Data
-      desc:  Know your servers.
-      contents:
-      - starts_with("get_server")
-    - title: Library Data
-      desc: Info about media items
-      contents:
-      - starts_with("get_library")
-    - title: Playback Data
-      desc: Playback history data
-      contents:
-      - get_history
-      - starts_with("get_plays")
-    - title: User specific data
-      desc: Data about people's usage
-      contents:
-      - starts_with("get_user")
-    - title: Data
-      desc: Just, well, data.
-      contents:
-      - words
+reference:
+  - title: Basic API Interaction
+    desc:  The, well, basics.
+    contents:
+    - api_request
+    - get_activity
+  - title: Server Data
+    desc:  Know your servers.
+    contents:
+    - starts_with("get_server")
+  - title: Library Data
+    desc: Info about media items
+    contents:
+    - starts_with("get_library")
+  - title: Playback Data
+    desc: Playback history data
+    contents:
+    - get_history
+    - starts_with("get_plays")
+  - title: User specific data
+    desc: Data about people's usage
+    contents:
+    - starts_with("get_user")
+  - title: Data
+    desc: Just, well, data.
+    contents:
+    - words
