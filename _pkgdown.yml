@@ -5,6 +5,10 @@
       - api_request
       - get_servers_info
       - get_activity
+    - title: Server Data
+      desc:  Know your servers.
+      contents:
+      - starts_with("get_server")
     - title: Library Data
       desc: Info about media items
       contents:
