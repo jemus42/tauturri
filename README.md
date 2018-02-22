@@ -29,7 +29,7 @@ Setup
 In your `~/.Renviron`, set the following:
 
     # Tautulli
-    tautulli_url=<Tautulli URL (with port)>
+    tautulli_url=<Tautulli URL (with port, if necessary)>
     tautulli_apikey=<Tautilli API key>
 
 That's it.

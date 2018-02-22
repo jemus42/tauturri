@@ -39,13 +39,14 @@ if (!("remotes" %in% installed.packages())){
 
 remotes::install_github("jemus42/tauturri")
 ```
+
 ## Setup
 
 In your `~/.Renviron`, set the following:
 
 ```
 # Tautulli
-tautulli_url=<Tautulli URL (with port)>
+tautulli_url=<Tautulli URL (with port, if necessary)>
 tautulli_apikey=<Tautilli API key>
 ```
 
