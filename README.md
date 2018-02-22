@@ -122,17 +122,17 @@ api_functions <- names(api_request(cmd = "docs")$data)
 api_functions <- api_functions[grepl("^get_", api_functions)]
 sort(api_functions[!(api_functions %in% getNamespaceExports("tauturri"))])
 #>  [1] "get_apikey"               "get_date_formats"        
-#>  [3] "get_geoip_lookup"         "get_home_stats"          
-#>  [5] "get_logs"                 "get_metadata"            
-#>  [7] "get_new_rating_keys"      "get_notification_log"    
-#>  [9] "get_notifier_config"      "get_notifier_parameters" 
-#> [11] "get_notifiers"            "get_old_rating_keys"     
-#> [13] "get_plex_log"             "get_pms_token"           
-#> [15] "get_pms_update"           "get_server_friendly_name"
-#> [17] "get_server_id"            "get_server_pref"         
-#> [19] "get_settings"             "get_synced_items"        
-#> [21] "get_user"                 "get_user_ips"            
-#> [23] "get_user_logins"          "get_whois_lookup"
+#>  [3] "get_geoip_lookup"         "get_logs"                
+#>  [5] "get_metadata"             "get_new_rating_keys"     
+#>  [7] "get_notification_log"     "get_notifier_config"     
+#>  [9] "get_notifier_parameters"  "get_notifiers"           
+#> [11] "get_old_rating_keys"      "get_plex_log"            
+#> [13] "get_pms_token"            "get_pms_update"          
+#> [15] "get_server_friendly_name" "get_server_id"           
+#> [17] "get_server_pref"          "get_settings"            
+#> [19] "get_synced_items"         "get_user"                
+#> [21] "get_user_ips"             "get_user_logins"         
+#> [23] "get_whois_lookup"
 ```
 
 CoC
