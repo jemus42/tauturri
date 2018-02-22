@@ -127,13 +127,6 @@ api_functions <- api_functions[grepl("^get_", api_functions)]
 sort(api_functions[!(api_functions %in% getNamespaceExports("tauturri"))])
 ```
 
-## Test Results
-
-```{r tests}
-date()
-devtools::test()
-```
-
 ## CoC
 
 Please note that this project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md).  
