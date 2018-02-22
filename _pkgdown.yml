@@ -17,6 +17,7 @@ reference:
     desc: Playback history data
     contents:
     - get_history
+    - get_home_stats
     - starts_with("get_plays")
     - contains("top_10")
   - title: User specific data
