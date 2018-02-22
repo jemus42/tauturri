@@ -8,15 +8,17 @@ reference:
     desc: Know your servers.
     contents:
     - starts_with("get_server")
-  - title: Library Data
+  - title: Library and Media Data
     desc: Info about media items
     contents:
-    - starts_with("get_library")
+    - starts_with("get_libra")
+    - get_recently_added
   - title: Playback Data
     desc: Playback history data
     contents:
     - get_history
     - starts_with("get_plays")
+    - contains("top_10")
   - title: User specific data
     desc: Data about people's usage
     contents:

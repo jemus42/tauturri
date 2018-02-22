@@ -54,20 +54,3 @@ test_that("get_plays_by_stream_resolution works", {
 
   expect_error(get_plays_by_stream_resolution(url = "", apikey = ""))
 })
-
-# Top 10 ----
-test_that("get_plays_by_top_10_users works", {
-  res <- get_plays_by_top_10_users()
-  expect_is(res, "tbl")
-  expect_length(res, 4)
-  expect_named(res, c("user", "TV", "Movies", "Music"))
-  expect_error(get_plays_by_top_10_users(url = "", apikey = ""))
-})
-
-test_that("get_plays_by_top_10_platforms works", {
-  res <- get_plays_by_top_10_platforms()
-  expect_is(res, "tbl")
-  expect_length(res, 4)
-  expect_named(res, c("platform", "TV", "Movies", "Music"))
-  expect_error(get_plays_by_top_10_platforms(url = "", apikey = ""))
-})

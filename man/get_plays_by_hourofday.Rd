@@ -32,3 +32,10 @@ Get Plays by Hour of Day
 get_plays_by_hourofday()
 }
 }
+\seealso{
+Other Playback History: \code{\link{get_plays_by_date}},
+  \code{\link{get_plays_by_dayofweek}},
+  \code{\link{get_plays_by_source_resolution}},
+  \code{\link{get_plays_by_stream_resolution}},
+  \code{\link{get_plays_per_month}}
+}

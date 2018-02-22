@@ -32,3 +32,10 @@ Get Plays by Date
 get_plays_by_date(y_axis = "duration")
 }
 }
+\seealso{
+Other Playback History: \code{\link{get_plays_by_dayofweek}},
+  \code{\link{get_plays_by_hourofday}},
+  \code{\link{get_plays_by_source_resolution}},
+  \code{\link{get_plays_by_stream_resolution}},
+  \code{\link{get_plays_per_month}}
+}

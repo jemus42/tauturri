@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get Plays by Month — get_plays_per_month • tauturri</title>
+<title>Get All the Libraries' Data — get_libraries • tauturri</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -74,15 +74,14 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get Plays by Month</h1>
+    <h1>Get All the Libraries' Data</h1>
     </div>
 
     
-    <p>Get Plays by Month</p>
+    <p>Get All the Libraries' Data</p>
     
 
-    <pre class="usage"><span class='fu'>get_plays_per_month</span>(<span class='kw'>url</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>apikey</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>time_range</span> <span class='kw'>=</span> <span class='fl'>30</span>,
-  <span class='kw'>y_axis</span> <span class='kw'>=</span> <span class='st'>"plays"</span>, <span class='kw'>user_id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>get_libraries</span>(<span class='kw'>url</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>apikey</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -95,40 +94,16 @@
       <th>apikey</th>
       <td><p>API key.</p></td>
     </tr>
-    <tr>
-      <th>time_range</th>
-      <td><p>The number of days of data to return, default is <code>30</code>.</p></td>
-    </tr>
-    <tr>
-      <th>y_axis</th>
-      <td><p><code>"plays"</code> (default) or <code>"duration"</code></p></td>
-    </tr>
-    <tr>
-      <th>user_id</th>
-      <td><p>The user id to filter the data</p></td>
-    </tr>
     </table>
-    
-    <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
-
-    <p><a href = 'https://github.com/Tautulli/Tautulli/blob/master/API.md#get_plays_by_month'>https://github.com/Tautulli/Tautulli/blob/master/API.md#get_plays_by_month</a></p>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code>tbl</code> with columns <code>month</code>, <code>Movies</code>, <code>TV</code>, <code>Music</code></p>
-    
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <p>Other Playback History: <code><a href='get_plays_by_date.html'>get_plays_by_date</a></code>,
-  <code><a href='get_plays_by_dayofweek.html'>get_plays_by_dayofweek</a></code>,
-  <code><a href='get_plays_by_hourofday.html'>get_plays_by_hourofday</a></code>,
-  <code><a href='get_plays_by_source_resolution.html'>get_plays_by_source_resolution</a></code>,
-  <code><a href='get_plays_by_stream_resolution.html'>get_plays_by_stream_resolution</a></code></p>
+    <p>A <code>tbl</code> with columns <code>section_id</code> and <code>section_name</code></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>not_run</span>({
-  <span class='fu'>get_plays_per_month</span>()
+  <span class='fu'><a href='get_library.html'>get_library</a></span>(<span class='kw'>section_id</span> <span class='kw'>=</span> <span class='fl'>1</span>)
 })</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -136,11 +111,7 @@
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#source">Source</a></li>
-
       <li><a href="#value">Value</a></li>
-
-      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>
