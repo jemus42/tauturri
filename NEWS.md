@@ -1,6 +1,8 @@
 # tauturri 0.1.1
 
 - Add `get_home_stats`. It was nasty.
+- Apply `use_tidy_style()`
+- Add GitHub links to `DESCRIPTION`
 
 # tauturri 0.1.0
 

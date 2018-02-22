@@ -13,7 +13,6 @@
 #' get_servers_info()
 #' }
 get_servers_info <- function(url = NULL, apikey = NULL) {
-
   if (is.null(url)) {
     url <- Sys.getenv("tautulli_url")
   }
@@ -42,7 +41,6 @@ get_servers_info <- function(url = NULL, apikey = NULL) {
 #' get_server_identity()
 #' }
 get_server_identity <- function(url = NULL, apikey = NULL) {
-
   if (is.null(url)) {
     url <- Sys.getenv("tautulli_url")
   }
@@ -73,7 +71,6 @@ get_server_identity <- function(url = NULL, apikey = NULL) {
 #' get_server_list()
 #' }
 get_server_list <- function(url = NULL, apikey = NULL) {
-
   if (is.null(url)) {
     url <- Sys.getenv("tautulli_url")
   }

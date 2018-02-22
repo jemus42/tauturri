@@ -33,9 +33,11 @@ test_that("get_library works", {
   expect_is(res, "tbl")
   expect_length(res, 11)
   expect_equal(nrow(res), 1)
-  expect_named(res, c("count", "section_id", "section_name", "library_art",
-                      "parent_count", "section_type", "do_notify_created",
-                      "keep_history", "child_count", "library_thumb", "do_notify"))
+  expect_named(res, c(
+    "count", "section_id", "section_name", "library_art",
+    "parent_count", "section_type", "do_notify_created",
+    "keep_history", "child_count", "library_thumb", "do_notify"
+  ))
   expect_error(get_library_watch_time_stats("", ""))
 })
 
@@ -43,8 +45,10 @@ test_that("get_libraries works", {
   res <- get_libraries()
   expect_is(res, "tbl")
   expect_length(res, 8)
-  expect_named(res, c("count", "art", "thumb", "section_type", "section_id", "section_name",
-                      "parent_count", "child_count"))
+  expect_named(res, c(
+    "count", "art", "thumb", "section_type", "section_id", "section_name",
+    "parent_count", "child_count"
+  ))
   expect_error(get_library_watch_time_stats("", ""))
 })
 
@@ -52,12 +56,14 @@ test_that("get_libraries_table works", {
   res <- get_libraries_table()
   expect_is(res, "tbl")
   expect_length(res, 25)
-  expect_named(res, c("labels", "year", "duration", "rating_key", "plays",
-                      "thumb", "parent_count", "section_type", "id", "child_count",
-                      "media_type", "do_notify", "parent_title", "library_art",
-                      "last_played", "last_accessed", "section_id", "section_name",
-                      "library_thumb", "count", "media_index", "content_rating",
-                      "do_notify_created", "keep_history", "parent_media_index"))
+  expect_named(res, c(
+    "labels", "year", "duration", "rating_key", "plays",
+    "thumb", "parent_count", "section_type", "id", "child_count",
+    "media_type", "do_notify", "parent_title", "library_art",
+    "last_played", "last_accessed", "section_id", "section_name",
+    "library_thumb", "count", "media_index", "content_rating",
+    "do_notify_created", "keep_history", "parent_media_index"
+  ))
   expect_error(get_libraries_table("", ""))
 })
 

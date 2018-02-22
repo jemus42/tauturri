@@ -76,11 +76,13 @@ get_library_media_info <- function(url = NULL, apikey = NULL,
     stop("Either 'section_id' OR 'rating_key' must be supplied")
   }
 
-  result <- api_request(url = url, apikey = apikey, cmd = "get_library_media_info",
-                        section_id = section_id, rating_key = rating_key,
-                        section_type = section_type, order_column = order_column,
-                        order_dir = order_dir, start = start, length = length,
-                        search = search)
+  result <- api_request(
+    url = url, apikey = apikey, cmd = "get_library_media_info",
+    section_id = section_id, rating_key = rating_key,
+    section_type = section_type, order_column = order_column,
+    order_dir = order_dir, start = start, length = length,
+    search = search
+  )
 
   if (result$result != "success") {
     warning("Error in 'get_library_media_info': ", result$result)
@@ -96,9 +98,10 @@ get_library_media_info <- function(url = NULL, apikey = NULL,
   items <- result$data$data %>%
     map_df(flatten)
 
-  list(totals = totals,
-       items = items)
-
+  list(
+    totals = totals,
+    items = items
+  )
 }
 
 
@@ -130,8 +133,10 @@ get_library_watch_time_stats <- function(url = NULL, apikey = NULL,
     stop("No URL or API-Key set, please see setup instructions")
   }
 
-  result <- api_request(url = url, apikey = apikey, cmd = "get_library_watch_time_stats",
-                        section_id = section_id)
+  result <- api_request(
+    url = url, apikey = apikey, cmd = "get_library_watch_time_stats",
+    section_id = section_id
+  )
 
   if (result$result != "success") {
     warning("Error in 'get_library_watch_time_stats': ", result$result)
@@ -165,8 +170,10 @@ get_library <- function(url = NULL, apikey = NULL, section_id) {
     stop("No URL or API-Key set, please see setup instructions")
   }
 
-  result <- api_request(url = url, apikey = apikey, cmd = "get_library",
-                        section_id = section_id)
+  result <- api_request(
+    url = url, apikey = apikey, cmd = "get_library",
+    section_id = section_id
+  )
 
   if (result$result != "success") {
     warning("Error in 'get_library_names': ", result$result)
@@ -235,9 +242,11 @@ get_libraries_table <- function(url = NULL, apikey = NULL,
     stop("No URL or API-Key set, please see setup instructions")
   }
 
-  result <- api_request(url = url, apikey = apikey, cmd = "get_libraries_table",
-                        order_column = order_column, order_dir = order_dir,
-                        start = start, length = length, search = search)
+  result <- api_request(
+    url = url, apikey = apikey, cmd = "get_libraries_table",
+    order_column = order_column, order_dir = order_dir,
+    start = start, length = length, search = search
+  )
 
   if (result$result != "success") {
     warning("Error in 'get_libraries': ", result$result)
@@ -252,10 +261,10 @@ get_libraries_table <- function(url = NULL, apikey = NULL,
     as_tibble(x)
   })
 
-  res$duration     <- as.numeric(res$duration)
-  res$year         <- as.numeric(res$year)
-  res$plays        <- as.numeric(res$plays)
-  res$child_count  <- as.numeric(res$child_count)
+  res$duration <- as.numeric(res$duration)
+  res$year <- as.numeric(res$year)
+  res$plays <- as.numeric(res$plays)
+  res$child_count <- as.numeric(res$child_count)
   res$parent_count <- as.numeric(res$parent_count)
 
   res
@@ -286,8 +295,10 @@ get_library_user_stats <- function(url = NULL, apikey = NULL, section_id) {
     stop("No URL or API-Key set, please see setup instructions")
   }
 
-  result <- api_request(url = url, apikey = apikey, cmd = "get_library_user_stats",
-                        section_id = section_id)
+  result <- api_request(
+    url = url, apikey = apikey, cmd = "get_library_user_stats",
+    section_id = section_id
+  )
 
   if (result$result != "success") {
     warning("Error in 'get_library_user_stats': ", result$result)

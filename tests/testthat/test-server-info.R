@@ -19,7 +19,9 @@ test_that("get_server_identity works", {
 test_that("get_server_list works", {
   res <- get_server_list()
   expect_is(res, "tbl")
-  expect_named(res, c("httpsRequired", "is_cloud", "ip", "local", "clientIdentifier",
-                      "port", "value", "label"))
+  expect_named(res, c(
+    "httpsRequired", "is_cloud", "ip", "local", "clientIdentifier",
+    "port", "value", "label"
+  ))
   expect_error(get_server_list("", ""))
 })

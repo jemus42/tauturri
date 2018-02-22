@@ -6,7 +6,6 @@ test_that("get_plays_by_date", {
   expect_length(res, 4)
   expect_named(res, c("date", "TV", "Movies", "Music"))
   expect_error(get_plays_by_date(url = "", apikey = ""))
-
 })
 
 test_that("get_plays_by_hourofday works", {
@@ -22,8 +21,10 @@ test_that("get_plays_by_dayofweek works", {
   expect_is(res, "tbl")
   expect_length(res, 4)
   expect_named(res, c("day", "TV", "Movies", "Music"))
-  expect_equal(levels(res$day), c("Monday", "Tuesday", "Wednesday", "Thursday",
-                                  "Friday", "Saturday", "Sunday"))
+  expect_equal(levels(res$day), c(
+    "Monday", "Tuesday", "Wednesday", "Thursday",
+    "Friday", "Saturday", "Sunday"
+  ))
   expect_error(get_plays_by_dayofweek(url = "", apikey = ""))
 })
 

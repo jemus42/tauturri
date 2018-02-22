@@ -15,7 +15,6 @@
 #' api_request("http://example.com/plexpy", "asdf", "get_servers_info")
 #' }
 api_request <- function(url = NULL, apikey = NULL, cmd = "get_servers_info", ...) {
-
   if (is.null(url)) {
     url <- Sys.getenv("tautulli_url")
   }
@@ -27,15 +26,17 @@ api_request <- function(url = NULL, apikey = NULL, cmd = "get_servers_info", ...
     stop("No URL or API-Key set, please see setup instructions")
   }
 
-  request_url       <- parse_url(paste0(url, "/api/v2"))
+  request_url <- parse_url(paste0(url, "/api/v2"))
   request_url$query <- list(apikey = apikey, cmd = cmd, ...)
-  result            <- httr::GET(request_url)
+  result <- httr::GET(request_url)
 
   httr::stop_for_status(result)
 
   if (status_code(result) != 200) {
-    list(result = "error",
-         message = "Can't reach PlexPy")
+    list(
+      result = "error",
+      message = "Can't reach PlexPy"
+    )
   } else {
     httr::content(result)$response
   }

@@ -21,7 +21,6 @@
 #' }
 get_plays_by_date <- function(url = NULL, apikey = NULL,
                               time_range = 30, y_axis = "plays", user_id = NULL) {
-
   if (is.null(url)) {
     url <- Sys.getenv("tautulli_url")
   }
@@ -32,22 +31,24 @@ get_plays_by_date <- function(url = NULL, apikey = NULL,
     stop("No URL or API-Key set, please see setup instructions")
   }
 
-  result <- api_request(url, apikey, cmd = "get_plays_by_date",
-                        time_range = time_range, y_axis = y_axis, user_id = user_id)
+  result <- api_request(
+    url, apikey, cmd = "get_plays_by_date",
+    time_range = time_range, y_axis = y_axis, user_id = user_id
+  )
 
   if (result$result != "success") {
     warning("Error in 'get_plays_by_date': ", result$result)
     return(tibble())
   }
 
-  res     <- pluck(result, "data", "series") %>%
-               map(~as.numeric(.x$data)) %>%
-               set_names(map_chr(result$data$series, "name")) %>%
-               as_tibble()
+  res <- pluck(result, "data", "series") %>%
+    map(~as.numeric(.x$data)) %>%
+    set_names(map_chr(result$data$series, "name")) %>%
+    as_tibble()
   res$date <- pluck(result, "data", "categories") %>%
-                flatten_chr() %>%
-                as.Date()
-  res      <- res[c("date", names(res)[names(res) != "date"])]
+    flatten_chr() %>%
+    as.Date()
+  res <- res[c("date", names(res)[names(res) != "date"])]
 
   return(res)
 }
@@ -83,22 +84,24 @@ get_plays_by_hourofday <- function(url = NULL, apikey = NULL,
     stop("No URL or API-Key set, please see setup instructions")
   }
 
-  result <- api_request(url, apikey, cmd = "get_plays_by_hourofday",
-                        time_range = time_range, y_axis = y_axis, user_id = user_id)
+  result <- api_request(
+    url, apikey, cmd = "get_plays_by_hourofday",
+    time_range = time_range, y_axis = y_axis, user_id = user_id
+  )
 
   if (result$result != "success") {
     warning("Error in 'get_plays_by_hourofday': ", result$result)
     return(tibble())
   }
 
-  res     <- pluck(result, "data", "series") %>%
+  res <- pluck(result, "data", "series") %>%
     map(~as.numeric(.x$data)) %>%
     set_names(map_chr(result$data$series, "name")) %>%
     as_tibble()
   res$hour <- pluck(result, "data", "categories") %>%
     flatten_chr() %>%
     as.numeric()
-  res      <- res[c("hour", names(res)[names(res) != "hour"])]
+  res <- res[c("hour", names(res)[names(res) != "hour"])]
 
   return(res)
 }
@@ -134,22 +137,24 @@ get_plays_by_dayofweek <- function(url = NULL, apikey = NULL,
     stop("No URL or API-Key set, please see setup instructions")
   }
 
-  result <- api_request(url, apikey, cmd = "get_plays_by_dayofweek",
-                        time_range = time_range, y_axis = y_axis, user_id = user_id)
+  result <- api_request(
+    url, apikey, cmd = "get_plays_by_dayofweek",
+    time_range = time_range, y_axis = y_axis, user_id = user_id
+  )
 
   if (result$result != "success") {
     warning("Error in 'get_plays_by_dayofweek': ", result$result)
     return(tibble())
   }
 
-  res     <- pluck(result, "data", "series") %>%
+  res <- pluck(result, "data", "series") %>%
     map(~as.numeric(.x$data)) %>%
     set_names(map_chr(result$data$series, "name")) %>%
     as_tibble()
   res$day <- pluck(result, "data", "categories") %>%
     flatten_chr()
   res$day <- factor(res$day, levels = res$day, ordered = TRUE)
-  res      <- res[c("day", names(res)[names(res) != "day"])]
+  res <- res[c("day", names(res)[names(res) != "day"])]
 
   return(res)
 }
@@ -174,7 +179,7 @@ get_plays_by_dayofweek <- function(url = NULL, apikey = NULL,
 #' get_plays_per_month()
 #' }
 get_plays_per_month <- function(url = NULL, apikey = NULL,
-                               time_range = 30, y_axis = "plays", user_id = NULL) {
+                                time_range = 30, y_axis = "plays", user_id = NULL) {
   if (is.null(url)) {
     url <- Sys.getenv("tautulli_url")
   }
@@ -185,22 +190,24 @@ get_plays_per_month <- function(url = NULL, apikey = NULL,
     stop("No URL or API-Key set, please see setup instructions")
   }
 
-  result <- api_request(url, apikey, cmd = "get_plays_per_month",
-                        time_range = time_range, y_axis = y_axis, user_id = user_id)
+  result <- api_request(
+    url, apikey, cmd = "get_plays_per_month",
+    time_range = time_range, y_axis = y_axis, user_id = user_id
+  )
 
   if (result$result != "success") {
     warning("Error in 'get_plays_per_month': ", result$result)
     return(tibble())
   }
 
-  res     <- pluck(result, "data", "series") %>%
+  res <- pluck(result, "data", "series") %>%
     map(~as.numeric(.x$data)) %>%
     set_names(map_chr(result$data$series, "name")) %>%
     as_tibble()
   res$month <- pluck(result, "data", "categories") %>%
     flatten_chr()
   res$month <- factor(res$month, levels = res$month, ordered = TRUE)
-  res      <- res[c("month", names(res)[names(res) != "month"])]
+  res <- res[c("month", names(res)[names(res) != "month"])]
 
   return(res)
 }
@@ -225,7 +232,7 @@ get_plays_per_month <- function(url = NULL, apikey = NULL,
 #' get_plays_by_source_resolution()
 #' }
 get_plays_by_source_resolution <- function(url = NULL, apikey = NULL,
-                                   time_range = 30, y_axis = "plays", user_id = NULL) {
+                                           time_range = 30, y_axis = "plays", user_id = NULL) {
   if (is.null(url)) {
     url <- Sys.getenv("tautulli_url")
   }
@@ -236,15 +243,17 @@ get_plays_by_source_resolution <- function(url = NULL, apikey = NULL,
     stop("No URL or API-Key set, please see setup instructions")
   }
 
-  result <- api_request(url, apikey, cmd = "get_plays_by_source_resolution",
-                        time_range = time_range, y_axis = y_axis, user_id = user_id)
+  result <- api_request(
+    url, apikey, cmd = "get_plays_by_source_resolution",
+    time_range = time_range, y_axis = y_axis, user_id = user_id
+  )
 
   if (result$result != "success") {
     warning("Error in 'get_plays_by_source_resolution': ", result$result)
     return(tibble())
   }
 
-  res     <- pluck(result, "data", "series") %>%
+  res <- pluck(result, "data", "series") %>%
     map(~as.numeric(.x$data)) %>%
     set_names(map_chr(result$data$series, "name")) %>%
     as_tibble()
@@ -252,7 +261,7 @@ get_plays_by_source_resolution <- function(url = NULL, apikey = NULL,
 
   res$resolution <- pluck(result, "data", "categories") %>%
     flatten_chr()
-  res      <- res[c("resolution", names(res)[names(res) != "resolution"])]
+  res <- res[c("resolution", names(res)[names(res) != "resolution"])]
 
   return(res)
 }
@@ -288,15 +297,17 @@ get_plays_by_stream_resolution <- function(url = NULL, apikey = NULL,
     stop("No URL or API-Key set, please see setup instructions")
   }
 
-  result <- api_request(url, apikey, cmd = "get_plays_by_stream_resolution",
-                        time_range = time_range, y_axis = y_axis, user_id = user_id)
+  result <- api_request(
+    url, apikey, cmd = "get_plays_by_stream_resolution",
+    time_range = time_range, y_axis = y_axis, user_id = user_id
+  )
 
   if (result$result != "success") {
     warning("Error in 'get_plays_by_stream_resolution': ", result$result)
     return(tibble())
   }
 
-  res     <- pluck(result, "data", "series") %>%
+  res <- pluck(result, "data", "series") %>%
     map(~as.numeric(.x$data)) %>%
     set_names(map_chr(result$data$series, "name")) %>%
     as_tibble()
@@ -304,7 +315,7 @@ get_plays_by_stream_resolution <- function(url = NULL, apikey = NULL,
 
   res$resolution <- pluck(result, "data", "categories") %>%
     flatten_chr()
-  res      <- res[c("resolution", names(res)[names(res) != "resolution"])]
+  res <- res[c("resolution", names(res)[names(res) != "resolution"])]
 
   return(res)
 }
@@ -340,15 +351,17 @@ get_plays_by_stream_type <- function(url = NULL, apikey = NULL,
     stop("No URL or API-Key set, please see setup instructions")
   }
 
-  result <- api_request(url, apikey, cmd = "get_plays_by_stream_type",
-                        time_range = time_range, y_axis = y_axis, user_id = user_id)
+  result <- api_request(
+    url, apikey, cmd = "get_plays_by_stream_type",
+    time_range = time_range, y_axis = y_axis, user_id = user_id
+  )
 
   if (result$result != "success") {
     warning("Error in 'get_plays_by_stream_type': ", result$result)
     return(tibble())
   }
 
-  res     <- pluck(result, "data", "series") %>%
+  res <- pluck(result, "data", "series") %>%
     map(~as.numeric(.x$data)) %>%
     set_names(map_chr(result$data$series, "name")) %>%
     as_tibble()
@@ -357,7 +370,7 @@ get_plays_by_stream_type <- function(url = NULL, apikey = NULL,
   res$date <- pluck(result, "data", "categories") %>%
     flatten_chr() %>%
     as.Date()
-  res      <- res[c("date", names(res)[names(res) != "date"])]
+  res <- res[c("date", names(res)[names(res) != "date"])]
 
   return(res)
 }

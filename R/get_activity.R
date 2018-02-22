@@ -31,26 +31,26 @@ get_activity <- function(url = NULL, apikey = NULL) {
     return(data.frame())
   }
 
-  info      <- result$data[names(result$data) != "sessions"]
-  info      <- map(info, as.numeric)
+  info <- result$data[names(result$data) != "sessions"]
+  info <- map(info, as.numeric)
   bandwidth <- info[grepl(pattern = "bandwidth", names(info))]
-  streams   <- info[grepl(pattern = "stream", names(info))]
-  sessions  <- result$data$sessions
+  streams <- info[grepl(pattern = "stream", names(info))]
+  sessions <- result$data$sessions
 
   if (!identical(sessions, list())) {
-
     sessions <- sessions %>%
-     map(discard, is.list) %>%
-     map(discard, is.null) %>%
-     map(as_tibble) %>%
-     plyr::rbind.fill()
-
+      map(discard, is.list) %>%
+      map(discard, is.null) %>%
+      map(as_tibble) %>%
+      plyr::rbind.fill()
   } else {
     sessions <- tibble()
   }
 
   # Return things compactly
-  list(streams = streams,
-       bandwidth = bandwidth,
-       sessions = sessions)
+  list(
+    streams = streams,
+    bandwidth = bandwidth,
+    sessions = sessions
+  )
 }

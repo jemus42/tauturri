@@ -47,41 +47,46 @@ get_history <- function(url = NULL, apikey = NULL,
     stop("No URL or API-Key set, please see setup instructions")
   }
 
-  result <- api_request(url, apikey, cmd = "get_history",
-                        grouping = grouping, user = user, user_id = user_id,
-                        rating_key = rating_key, parent_rating_key = parent_rating_key,
-                        grandparent_rating_key = grandparent_rating_key,
-                        start_date = start_date, section_id = section_id,
-                        media_type = media_type, transcode_decision = transcode_decision,
-                        order_column = order_column, order_dir = order_dir,
-                        start = start, length = length, search = search)
+  result <- api_request(
+    url, apikey, cmd = "get_history",
+    grouping = grouping, user = user, user_id = user_id,
+    rating_key = rating_key, parent_rating_key = parent_rating_key,
+    grandparent_rating_key = grandparent_rating_key,
+    start_date = start_date, section_id = section_id,
+    media_type = media_type, transcode_decision = transcode_decision,
+    order_column = order_column, order_dir = order_dir,
+    start = start, length = length, search = search
+  )
 
   if (result$result != "success") {
     warning("Error in 'get_history': ", result$result)
-    return(list(totals = tibble(),
-                history = tibble()))
+    return(list(
+      totals = tibble(),
+      history = tibble()
+    ))
   }
 
-  totals  <- as_tibble(result$data[names(result$data) != "data"])
+  totals <- as_tibble(result$data[names(result$data) != "data"])
 
   history <- map(result[["data"]][["data"]], ~as_tibble(flatten(.x))) %>%
     reduce(plyr::rbind.fill)
 
-  history$started     <- as.POSIXct(history$started, origin = "1970-01-01")
-  history$stopped     <- as.POSIXct(history$stopped, origin = "1970-01-01")
-  history$date        <- as.POSIXct(history$date, origin = "1970-01-01")
-  history$year        <- as.numeric(history$year)
+  history$started <- as.POSIXct(history$started, origin = "1970-01-01")
+  history$stopped <- as.POSIXct(history$stopped, origin = "1970-01-01")
+  history$date <- as.POSIXct(history$date, origin = "1970-01-01")
+  history$year <- as.numeric(history$year)
   history$media_index <- as.character(history$media_index)
-  history$rating_key  <- as.character(history$rating_key)
-  history$parent_rating_key      <- as.character(history$parent_rating_key)
-  history$parent_media_index     <- as.character(history$parent_media_index)
+  history$rating_key <- as.character(history$rating_key)
+  history$parent_rating_key <- as.character(history$parent_rating_key)
+  history$parent_media_index <- as.character(history$parent_media_index)
   history$grandparent_rating_key <- as.character(history$grandparent_rating_key)
 
   if ("session_key" %in% names(history)) {
     history$session_key <- as.character(history$session_key)
   }
 
-  list(totals = totals,
-       history = history)
-
+  list(
+    totals = totals,
+    history = history
+  )
 }

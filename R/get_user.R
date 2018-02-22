@@ -26,11 +26,11 @@ get_users <- function(url = NULL, apikey = NULL) {
     return(tibble())
   }
 
-  result               <- map_df(result$data, flatten)
-  result$user_id       <- as.character(result$user_id)
-  result$is_admin      <- ifelse(result$is_admin == 1, TRUE, FALSE)
+  result <- map_df(result$data, flatten)
+  result$user_id <- as.character(result$user_id)
+  result$is_admin <- ifelse(result$is_admin == 1, TRUE, FALSE)
   result$is_restricted <- ifelse(result$is_restricted == 1, TRUE, FALSE)
-  result$is_home_user  <- ifelse(result$is_home_user == 1, TRUE, FALSE)
+  result$is_home_user <- ifelse(result$is_home_user == 1, TRUE, FALSE)
   result$is_allow_sync <- ifelse(result$is_allow_sync == 1, TRUE, FALSE)
 
   result
@@ -65,7 +65,7 @@ get_user_names <- function(url = NULL, apikey = NULL, add_pseudonym = FALSE) {
     return(tibble())
   }
 
-  result         <- map_df(result$data, flatten)
+  result <- map_df(result$data, flatten)
   result$user_id <- as.character(result$user_id)
 
   if (add_pseudonym) {
@@ -106,9 +106,9 @@ get_user_player_stats <- function(url = NULL, apikey = NULL, user_id) {
     return(tibble())
   }
 
-  result         <- map_df(result$data, as_tibble)
+  result <- map_df(result$data, as_tibble)
   result$user_id <- as.character(user_id)
-  result         <- result[c("user_id", names(result)[names(result) != "user_id"])]
+  result <- result[c("user_id", names(result)[names(result) != "user_id"])]
 
   result
 }
@@ -143,9 +143,9 @@ get_user_watch_time_stats <- function(url = NULL, apikey = NULL, user_id) {
     return(tibble())
   }
 
-  result         <- map_df(result$data, as_tibble)
+  result <- map_df(result$data, as_tibble)
   result$user_id <- as.character(user_id)
-  result         <- result[c("user_id", names(result)[names(result) != "user_id"])]
+  result <- result[c("user_id", names(result)[names(result) != "user_id"])]
 
   result
 }
@@ -183,7 +183,9 @@ get_users_table <- function(url = NULL, apikey = NULL, length = 50) {
   }
 
   result <- map_df(result$data$data, function(x) {
-    x <- map_if(x, is.null, function(y) {return("")})
+    x <- map_if(x, is.null, function(y) {
+      return("")
+    })
     x <- map_if(x, is.numeric, as.character)
 
     x$duration <- as.numeric(x$duration)

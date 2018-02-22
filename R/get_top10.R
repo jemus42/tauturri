@@ -29,22 +29,24 @@ get_plays_by_top_10_users <- function(url = NULL, apikey = NULL,
     stop("No URL or API-Key set, please see setup instructions")
   }
 
-  result <- api_request(url, apikey, cmd = "get_plays_by_top_10_users",
-                        time_range = time_range, y_axis = y_axis, user_id = user_id)
+  result <- api_request(
+    url, apikey, cmd = "get_plays_by_top_10_users",
+    time_range = time_range, y_axis = y_axis, user_id = user_id
+  )
 
   if (result$result != "success") {
     warning("Error in 'get_plays_by_top_10_users': ", result$result)
     return(tibble())
   }
 
-  res     <- pluck(result, "data", "series") %>%
+  res <- pluck(result, "data", "series") %>%
     map(~as.numeric(.x$data)) %>%
     set_names(map_chr(result$data$series, "name")) %>%
     as_tibble()
   res$user <- pluck(result, "data", "categories") %>%
     flatten_chr()
 
-  res      <- res[c("user", names(res)[names(res) != "user"])]
+  res <- res[c("user", names(res)[names(res) != "user"])]
 
   return(res)
 }
@@ -80,22 +82,24 @@ get_plays_by_top_10_platforms <- function(url = NULL, apikey = NULL,
     stop("No URL or API-Key set, please see setup instructions")
   }
 
-  result <- api_request(url, apikey, cmd = "get_plays_by_top_10_platforms",
-                        time_range = time_range, y_axis = y_axis, user_id = user_id)
+  result <- api_request(
+    url, apikey, cmd = "get_plays_by_top_10_platforms",
+    time_range = time_range, y_axis = y_axis, user_id = user_id
+  )
 
   if (result$result != "success") {
     warning("Error in 'get_plays_by_top_10_platforms': ", result$result)
     return(tibble())
   }
 
-  res     <- pluck(result, "data", "series") %>%
+  res <- pluck(result, "data", "series") %>%
     map(~as.numeric(.x$data)) %>%
     set_names(map_chr(result$data$series, "name")) %>%
     as_tibble()
   res$platform <- pluck(result, "data", "categories") %>%
     flatten_chr()
 
-  res      <- res[c("platform", names(res)[names(res) != "platform"])]
+  res <- res[c("platform", names(res)[names(res) != "platform"])]
 
   return(res)
 }
@@ -120,7 +124,7 @@ get_plays_by_top_10_platforms <- function(url = NULL, apikey = NULL,
 #' get_stream_type_by_top_10_users()
 #' }
 get_stream_type_by_top_10_users <- function(url = NULL, apikey = NULL,
-                                      time_range = 30, y_axis = "plays", user_id = NULL) {
+                                            time_range = 30, y_axis = "plays", user_id = NULL) {
   if (is.null(url)) {
     url <- Sys.getenv("tautulli_url")
   }
@@ -131,24 +135,26 @@ get_stream_type_by_top_10_users <- function(url = NULL, apikey = NULL,
     stop("No URL or API-Key set, please see setup instructions")
   }
 
-  result <- api_request(url, apikey, cmd = "get_stream_type_by_top_10_users",
-                        time_range = time_range, y_axis = y_axis, user_id = user_id)
+  result <- api_request(
+    url, apikey, cmd = "get_stream_type_by_top_10_users",
+    time_range = time_range, y_axis = y_axis, user_id = user_id
+  )
 
   if (result$result != "success") {
     warning("Error in 'get_stream_type_by_top_10_users': ", result$result)
     return(tibble())
   }
 
-  res     <- pluck(result, "data", "series") %>%
-                map(~as.numeric(.x$data)) %>%
-                set_names(map_chr(result$data$series, function(x) {
-                  sub(" ", "_", x$name)
-                })) %>%
-                as_tibble()
+  res <- pluck(result, "data", "series") %>%
+    map(~as.numeric(.x$data)) %>%
+    set_names(map_chr(result$data$series, function(x) {
+      sub(" ", "_", x$name)
+    })) %>%
+    as_tibble()
   res$user <- pluck(result, "data", "categories") %>%
-                    flatten_chr()
+    flatten_chr()
 
-  res      <- res[c("user", names(res)[names(res) != "user"])]
+  res <- res[c("user", names(res)[names(res) != "user"])]
 
   return(res)
 }
@@ -184,15 +190,17 @@ get_stream_type_by_top_10_platforms <- function(url = NULL, apikey = NULL,
     stop("No URL or API-Key set, please see setup instructions")
   }
 
-  result <- api_request(url, apikey, cmd = "get_stream_type_by_top_10_platforms",
-                        time_range = time_range, y_axis = y_axis, user_id = user_id)
+  result <- api_request(
+    url, apikey, cmd = "get_stream_type_by_top_10_platforms",
+    time_range = time_range, y_axis = y_axis, user_id = user_id
+  )
 
   if (result$result != "success") {
     warning("Error in 'get_stream_type_by_top_10_platforms': ", result$result)
     return(tibble())
   }
 
-  res     <- pluck(result, "data", "series") %>%
+  res <- pluck(result, "data", "series") %>%
     map(~as.numeric(.x$data)) %>%
     set_names(map_chr(result$data$series, function(x) {
       sub(" ", "_", x$name)
@@ -201,7 +209,7 @@ get_stream_type_by_top_10_platforms <- function(url = NULL, apikey = NULL,
   res$platform <- pluck(result, "data", "categories") %>%
     flatten_chr()
 
-  res      <- res[c("platform", names(res)[names(res) != "platform"])]
+  res <- res[c("platform", names(res)[names(res) != "platform"])]
 
   return(res)
 }

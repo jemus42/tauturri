@@ -26,8 +26,10 @@ get_recently_added <- function(url = NULL, apikey = NULL, count = 10,
     stop("No URL or API-Key set, please see setup instructions")
   }
 
-  result <- api_request(url = url, apikey = apikey, cmd = "get_recently_added",
-                        count = count, section_id = section_id, start = start)
+  result <- api_request(
+    url = url, apikey = apikey, cmd = "get_recently_added",
+    count = count, section_id = section_id, start = start
+  )
 
   map_df(result$data$recently_added, as_tibble)
 }
