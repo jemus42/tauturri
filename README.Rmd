@@ -25,12 +25,11 @@ library(tidyr)
 
 The goal of `tauturri` is to get data out of [**Tautulli**](https://github.com/Tautulli/Tautulli) (formerly **PlexPy**) as simply as possible.
 
-The project is in the initial setup phase.  
-Dragons and such, they be there.
+The project is still pretty young, and while it's reasonably functional, there might still be some issues. At least it passes all the tests, I guess?
 
 ## Installation
 
-Do not expect this to make it to CRAN anytime soon.
+I don't know if I want to push this to CRAN yet, so we stick with the GitHub version for no.
 
 ```r
 if (!("remotes" %in% installed.packages())){
@@ -57,8 +56,9 @@ Alternatively use `Sys.setenv()` to set the appropriate values in a script.
 
 ```{r server_info}
 info <- get_servers_info()
-names(info)
+
 # Probably shouldn't show URL etc.
+names(info)
 info[c("name", "version")]
 ```
 
@@ -127,6 +127,12 @@ api_functions <- api_functions[grepl("^get_", api_functions)]
 sort(api_functions[!(api_functions %in% getNamespaceExports("tauturri"))])
 ```
 
+## Test Results
+
+```{r tests}
+date()
+devtools::test()
+```
 
 ## CoC
 
