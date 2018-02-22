@@ -77,7 +77,7 @@ remotes<span class="op">::</span><span class="kw">install_github</span>(<span cl
 <a href="#setup" class="anchor"></a>Setup</h2>
 <p>In your <code>~/.Renviron</code>, set the following:</p>
 <pre><code># Tautulli
-tautulli_url=&lt;Tautulli URL (with port)&gt;
+tautulli_url=&lt;Tautulli URL (with port, if necessary)&gt;
 tautulli_apikey=&lt;Tautilli API key&gt;</code></pre>
 <p>That’s it.<br>
 Alternatively use <code>Sys.setenv()</code> to set the appropriate values in a script.</p>
@@ -153,18 +153,16 @@ api_functions &lt;-<span class="st"> </span>api_functions[<span class="kw">grepl
 <span class="kw">sort</span>(api_functions[<span class="op">!</span>(api_functions <span class="op">%in%</span><span class="st"> </span><span class="kw">getNamespaceExports</span>(<span class="st">"tauturri"</span>))])
 <span class="co">#&gt;  [1] "get_apikey"               "get_date_formats"        </span>
 <span class="co">#&gt;  [3] "get_geoip_lookup"         "get_home_stats"          </span>
-<span class="co">#&gt;  [5] "get_libraries_table"      "get_library_user_stats"  </span>
-<span class="co">#&gt;  [7] "get_logs"                 "get_metadata"            </span>
-<span class="co">#&gt;  [9] "get_new_rating_keys"      "get_notification_log"    </span>
-<span class="co">#&gt; [11] "get_notifier_config"      "get_notifier_parameters" </span>
-<span class="co">#&gt; [13] "get_notifiers"            "get_old_rating_keys"     </span>
-<span class="co">#&gt; [15] "get_plays_by_stream_type" "get_plex_log"            </span>
-<span class="co">#&gt; [17] "get_pms_token"            "get_pms_update"          </span>
-<span class="co">#&gt; [19] "get_server_friendly_name" "get_server_id"           </span>
-<span class="co">#&gt; [21] "get_server_pref"          "get_settings"            </span>
-<span class="co">#&gt; [23] "get_synced_items"         "get_user"                </span>
-<span class="co">#&gt; [25] "get_user_ips"             "get_user_logins"         </span>
-<span class="co">#&gt; [27] "get_whois_lookup"</span></code></pre></div>
+<span class="co">#&gt;  [5] "get_logs"                 "get_metadata"            </span>
+<span class="co">#&gt;  [7] "get_new_rating_keys"      "get_notification_log"    </span>
+<span class="co">#&gt;  [9] "get_notifier_config"      "get_notifier_parameters" </span>
+<span class="co">#&gt; [11] "get_notifiers"            "get_old_rating_keys"     </span>
+<span class="co">#&gt; [13] "get_plex_log"             "get_pms_token"           </span>
+<span class="co">#&gt; [15] "get_pms_update"           "get_server_friendly_name"</span>
+<span class="co">#&gt; [17] "get_server_id"            "get_server_pref"         </span>
+<span class="co">#&gt; [19] "get_settings"             "get_synced_items"        </span>
+<span class="co">#&gt; [21] "get_user"                 "get_user_ips"            </span>
+<span class="co">#&gt; [23] "get_user_logins"          "get_whois_lookup"</span></code></pre></div>
 </div>
 <div id="coc" class="section level2">
 <h2 class="hasAnchor">

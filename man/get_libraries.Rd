@@ -19,6 +19,6 @@ Get All the Libraries' Data
 }
 \examples{
 \dontrun{
-get_library(section_id = 1)
+get_libraries()
 }
 }

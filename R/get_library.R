@@ -173,7 +173,7 @@ get_library <- function(url = NULL, apikey = NULL, section_id) {
     return(tibble())
   }
 
-  result$data <- map_if(result$data, is.null, function(x) {return("")})
+  result$data <- map_if(result$data, is.null, ~return(""))
   as_tibble(result$data)
 }
 
@@ -187,7 +187,7 @@ get_library <- function(url = NULL, apikey = NULL, section_id) {
 #' @importFrom purrr map_df
 #' @examples
 #' \dontrun{
-#' get_library(section_id = 1)
+#' get_libraries()
 #' }
 get_libraries <- function(url = NULL, apikey = NULL) {
   if (is.null(url)) {
@@ -204,6 +204,93 @@ get_libraries <- function(url = NULL, apikey = NULL) {
 
   if (result$result != "success") {
     warning("Error in 'get_libraries': ", result$result)
+    return(tibble())
+  }
+
+  map_df(result$data, as_tibble)
+}
+
+#' Get All the Libraries-Table
+#'
+#' @inheritParams api_request
+#' @inheritParams get_library_media_info
+#' @return A `tbl` with columns `section_id` and `section_name`
+#' @export
+#' @importFrom purrr map_if
+#' @importFrom purrr map_df
+#' @examples
+#' \dontrun{
+#' get_libraries_table()
+#' }
+get_libraries_table <- function(url = NULL, apikey = NULL,
+                                order_column = NULL, order_dir = "desc",
+                                start = 0, length = 25, search = NULL) {
+  if (is.null(url)) {
+    url <- Sys.getenv("tautulli_url")
+  }
+  if (is.null(apikey)) {
+    apikey <- Sys.getenv("tautulli_apikey")
+  }
+  if (apikey == "" | url == "") {
+    stop("No URL or API-Key set, please see setup instructions")
+  }
+
+  result <- api_request(url = url, apikey = apikey, cmd = "get_libraries_table",
+                        order_column = order_column, order_dir = order_dir,
+                        start = start, length = length, search = search)
+
+  if (result$result != "success") {
+    warning("Error in 'get_libraries': ", result$result)
+    return(tibble())
+  }
+
+  res <- map_df(result$data$data, function(x) {
+    x <- map_if(x, ~identical(list(), .x), ~return(""))
+    x <- map_if(x, is.null, ~return(""))
+    x <- map_if(x, is.list, ~paste0(.x, collapse = ", "))
+    x <- map(x, as.character)
+    as_tibble(x)
+  })
+
+  res$duration     <- as.numeric(res$duration)
+  res$year         <- as.numeric(res$year)
+  res$plays        <- as.numeric(res$plays)
+  res$child_count  <- as.numeric(res$child_count)
+  res$parent_count <- as.numeric(res$parent_count)
+
+  res
+}
+
+#' Get Library User Stats
+#'
+#' @inheritParams api_request
+#' @param section_id The library's `section_id`, e.g. `1`.
+#' @return A `tbl` with 4 columns and one row per user.
+#' @export
+#' @importFrom tibble as_tibble
+#' @importFrom tibble tibble
+#' @importFrom purrr map_df
+#' @source <https://github.com/Tautulli/Tautulli/blob/master/API.md#get_library_user_stats>
+#' @examples
+#' \dontrun{
+#' get_library_user_stats(section_id = 1)
+#' }
+get_library_user_stats <- function(url = NULL, apikey = NULL, section_id) {
+  if (is.null(url)) {
+    url <- Sys.getenv("tautulli_url")
+  }
+  if (is.null(apikey)) {
+    apikey <- Sys.getenv("tautulli_apikey")
+  }
+  if (apikey == "" | url == "") {
+    stop("No URL or API-Key set, please see setup instructions")
+  }
+
+  result <- api_request(url = url, apikey = apikey, cmd = "get_library_user_stats",
+                        section_id = section_id)
+
+  if (result$result != "success") {
+    warning("Error in 'get_library_user_stats': ", result$result)
     return(tibble())
   }
 

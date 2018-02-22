@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get Plays by Month — get_plays_per_month • tauturri</title>
+<title>Get Plays by Stream Type — get_plays_by_stream_type • tauturri</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -74,14 +74,14 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get Plays by Month</h1>
+    <h1>Get Plays by Stream Type</h1>
     </div>
 
     
-    <p>Get Plays by Month</p>
+    <p>Get Plays by Stream Type</p>
     
 
-    <pre class="usage"><span class='fu'>get_plays_per_month</span>(<span class='kw'>url</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>apikey</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>time_range</span> <span class='kw'>=</span> <span class='fl'>30</span>,
+    <pre class="usage"><span class='fu'>get_plays_by_stream_type</span>(<span class='kw'>url</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>apikey</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>time_range</span> <span class='kw'>=</span> <span class='fl'>30</span>,
   <span class='kw'>y_axis</span> <span class='kw'>=</span> <span class='st'>"plays"</span>, <span class='kw'>user_id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
@@ -111,11 +111,11 @@
     
     <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
 
-    <p><a href = 'https://github.com/Tautulli/Tautulli/blob/master/API.md#get_plays_by_month'>https://github.com/Tautulli/Tautulli/blob/master/API.md#get_plays_by_month</a></p>
+    <p><a href = 'https://github.com/Tautulli/Tautulli/blob/master/API.md#get_plays_by_stream_type'>https://github.com/Tautulli/Tautulli/blob/master/API.md#get_plays_by_stream_type</a></p>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code>tbl</code> with columns <code>month</code>, <code>Movies</code>, <code>TV</code>, <code>Music</code></p>
+    <p>A <code>tbl</code> with columns <code>date</code>, <code>Movies</code>, <code>TV</code>, <code>Music</code></p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
@@ -124,12 +124,12 @@
   <code><a href='get_plays_by_hourofday.html'>get_plays_by_hourofday</a></code>,
   <code><a href='get_plays_by_source_resolution.html'>get_plays_by_source_resolution</a></code>,
   <code><a href='get_plays_by_stream_resolution.html'>get_plays_by_stream_resolution</a></code>,
-  <code><a href='get_plays_by_stream_type.html'>get_plays_by_stream_type</a></code></p>
+  <code><a href='get_plays_per_month.html'>get_plays_per_month</a></code></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>not_run</span>({
-  <span class='fu'>get_plays_per_month</span>()
+  <span class='fu'>get_plays_by_stream_type</span>()
 })</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
