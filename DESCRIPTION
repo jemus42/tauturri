@@ -1,11 +1,13 @@
 Type: Package
 Package: tauturri
-Title: Get Data Out of "Tautulli" (Formerly "PlexPy")
+Title: Get Data Out of 'Tautulli' (Formerly 'PlexPyÄ)
 Version: 0.1.1
 Authors@R: person("Lukas Burk", email = "lukas@quantenbrot.de", role = c("aut", "cre"))
-Description: "Tautulli" is a monitoring application for "Plex" Media Servers which 
-  collects a lot of data about media items and server usage such as play counts. 
-  This package interacts with the "Tautulli" API of a specified server to get said data into R.
+Description: 'Tautulli' <http://tautulli.com> is a monitoring application for 'Plex' Media Servers 
+  (<https://www.plex.tv>) which collects a lot of data about media items and server 
+  usage such as play counts. This package interacts with the 'Tautulli' API of any 
+  specified server to get said data into R. The 'Tautulli' API documentation is available
+  at <https://github.com/Tautulli/Tautulli/blob/master/API.md>.
 License: MIT + file LICENSE
 Depends: 
     R (>= 3.1)
@@ -18,14 +20,8 @@ Imports:
 Suggests: 
     covr,
     dplyr,
-    ggplot2,
-    hms,
-    hrbrthemes,
-    knitr,
-    rmarkdown,
     testthat,
     tidyr
-VignetteBuilder: knitr
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
