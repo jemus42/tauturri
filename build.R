@@ -1,6 +1,8 @@
 #! /usr/bin/env Rscript
 
+devtools::document(roclets = c('rd', 'collate', 'namespace', 'vignette'))
 devtools::build()
+devtools::reload()
 devtools::test()
 pkgdown::build_site()
 
