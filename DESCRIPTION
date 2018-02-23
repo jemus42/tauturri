@@ -1,11 +1,11 @@
 Type: Package
 Package: tauturri
-Title: Get data out of Tautilli (PlexPy)
+Title: Get Data Out of "Tautulli" (Formerly "PlexPy")
 Version: 0.1.1
 Authors@R: person("Lukas Burk", email = "lukas@quantenbrot.de", role = c("aut", "cre"))
-Description: Tautulli is a monitoring application for Plex Media Servers which 
+Description: "Tautulli" is a monitoring application for "Plex" Media Servers which 
   collects a lot of data about media items and server usage such as play counts. 
-  This package interacts with the Tautulli API of a specified server to get said data into R.
+  This package interacts with the "Tautulli" API of a specified server to get said data into R.
 License: MIT + file LICENSE
 Depends: 
     R (>= 3.1)
