@@ -7,9 +7,8 @@
 
 0 errors | 0 warnings | 1 note
 
-* Fix quoting of applicatin names in DESCRIPTION (single instead of double quotes)
-* Add links for both Tautulli and Plex
-    - There is no generic URL for the Tautulli API since it's intended to be self-hosted by 
-    individual users, therefore it's not a public API like e.g. the Twitter API. 
-* Remove VignetteBuilder field (along with various "Suggest")
+* This is a new release
 
+## Fixes from previous submissions
+
+* Fix quoting typo of application name in DESCRIPTION title
