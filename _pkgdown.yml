@@ -1,4 +1,7 @@
 reference:
+  - title: This Package
+    contents:
+    - tauturri
   - title: Basic API Interaction
     desc: The, well, basics.
     contents:
