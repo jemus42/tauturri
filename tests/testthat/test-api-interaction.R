@@ -13,3 +13,9 @@ test_that("API-requests work", {
   res <- api_request(cmd = "poopybutthole")
   expect_equal(res$result, "error")
 })
+
+test_that("Arnold... works?", {
+  res <- arnold()
+  expect_is(res, "character")
+  expect_length(res, 1)
+})

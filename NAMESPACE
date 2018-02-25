@@ -2,6 +2,7 @@
 
 export("%>%")
 export(api_request)
+export(arnold)
 export(get_activity)
 export(get_history)
 export(get_home_stats)

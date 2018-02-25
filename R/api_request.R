@@ -33,3 +33,35 @@ api_request <- function(url = NULL, apikey = NULL, cmd = "get_servers_info", ...
   httr::stop_for_status(result)
   httr::content(result)$response
 }
+
+#' Arnold
+#'
+#' @inheritParams api_request
+#'
+#' @source <https://github.com/Tautulli/Tautulli/blob/master/API.md#arnold>
+#' @return A `character` of length `1`.
+#' @export
+#' @examples
+#' \dontrun{
+#' arnold()
+#' }
+arnold <- function(url = NULL, apikey = NULL) {
+  if (is.null(url)) {
+    url <- Sys.getenv("tautulli_url")
+  }
+  if (is.null(apikey)) {
+    apikey <- Sys.getenv("tautulli_apikey")
+  }
+  if (apikey == "" | url == "") {
+    stop("No URL or API-Key set, please see setup instructions")
+  }
+
+  result <- api_request(
+    url, apikey, cmd = "arnold"
+  )
+  if (result$result == "error") {
+    stop("Error in 'arnold': ", result$message)
+  }
+
+  result$data
+}
