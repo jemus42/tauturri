@@ -181,9 +181,11 @@ get_users_table <- function(url = NULL, apikey = NULL, order_column = NULL,
     stop("No URL or API-Key set, please see setup instructions")
   }
 
-  result <- api_request(url, apikey, cmd = "get_users_table",
-                        order_dir = order_dir, order_column = order_column,
-                        start = start, length = length, search = search)
+  result <- api_request(
+    url, apikey, cmd = "get_users_table",
+    order_dir = order_dir, order_column = order_column,
+    start = start, length = length, search = search
+  )
 
   if (result$result != "success") {
     warning("Error in 'get_users_table': ", result$result)
@@ -219,7 +221,7 @@ get_users_table <- function(url = NULL, apikey = NULL, order_column = NULL,
 #' get_user_ips(user_id = 192023)
 #' }
 get_user_ips <- function(url = NULL, apikey = NULL, user_id, order_column = NULL,
-                            order_dir = "desc", start = 0, length = 50, search = NULL) {
+                         order_dir = "desc", start = 0, length = 50, search = NULL) {
   if (is.null(url)) {
     url <- Sys.getenv("tautulli_url")
   }
@@ -230,9 +232,11 @@ get_user_ips <- function(url = NULL, apikey = NULL, user_id, order_column = NULL
     stop("No URL or API-Key set, please see setup instructions")
   }
 
-  result <- api_request(url, apikey, cmd = "get_user_ips", user_id = user_id,
-                        order_dir = order_dir, order_column = order_column,
-                        start = start, length = length, search = search)
+  result <- api_request(
+    url, apikey, cmd = "get_user_ips", user_id = user_id,
+    order_dir = order_dir, order_column = order_column,
+    start = start, length = length, search = search
+  )
 
   if (result$result != "success") {
     warning("Error in 'get_user_ips': ", result$result)
@@ -264,7 +268,7 @@ get_user_ips <- function(url = NULL, apikey = NULL, user_id, order_column = NULL
 #' get_user_logins(user_id = 192023)
 #' }
 get_user_logins <- function(url = NULL, apikey = NULL, user_id, order_column = NULL,
-                         order_dir = "desc", start = 0, length = 50, search = NULL) {
+                            order_dir = "desc", start = 0, length = 50, search = NULL) {
   if (is.null(url)) {
     url <- Sys.getenv("tautulli_url")
   }
@@ -275,9 +279,11 @@ get_user_logins <- function(url = NULL, apikey = NULL, user_id, order_column = N
     stop("No URL or API-Key set, please see setup instructions")
   }
 
-  result <- api_request(url, apikey, cmd = "get_user_logins", user_id = user_id,
-                        order_dir = order_dir, order_column = order_column,
-                        start = start, length = length, search = search)
+  result <- api_request(
+    url, apikey, cmd = "get_user_logins", user_id = user_id,
+    order_dir = order_dir, order_column = order_column,
+    start = start, length = length, search = search
+  )
 
   if (result$result != "success") {
     warning("Error in 'get_user_logins': ", result$result)
