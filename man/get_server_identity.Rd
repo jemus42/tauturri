@@ -26,6 +26,8 @@ get_server_identity()
 }
 }
 \seealso{
-Other Server Information: \code{\link{get_server_list}},
+Other Server Information: \code{\link{get_server_friendly_name}},
+  \code{\link{get_server_id}},
+  \code{\link{get_server_list}},
   \code{\link{get_servers_info}}
 }

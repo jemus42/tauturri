@@ -25,3 +25,16 @@ test_that("get_server_list works", {
   ))
   expect_error(get_server_list("", ""))
 })
+
+test_that("get_server_friendly_name works", {
+  res <- get_server_friendly_name()
+  expect_is(res, "character")
+  expect_error(get_server_friendly_name("", ""))
+})
+
+test_that("get_server_id works", {
+  res <- get_server_id(hostname = "192.168.2.250")
+  expect_is(res, "character")
+  expect_error(get_server_id(hostname = "192.168.2.1"))
+  expect_error(get_server_id("", "", hostname = "192.168.2.250"))
+})

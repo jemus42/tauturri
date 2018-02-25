@@ -84,3 +84,69 @@ get_server_list <- function(url = NULL, apikey = NULL) {
   result <- api_request(url, apikey, cmd = "get_server_list")
   map_df(result$data, as_tibble)
 }
+
+#' Get Server Friendly Name
+#'
+#' @inheritParams api_request
+#'
+#' @source <https://github.com/Tautulli/Tautulli/blob/master/API.md#get_server_friendly_name>
+#' @return A `tbl` with 8 columns minimum with one row per server.
+#' @export
+#' @family Server Information
+#' @examples
+#' \dontrun{
+#' get_server_friendly_name()
+#' }
+get_server_friendly_name <- function(url = NULL, apikey = NULL) {
+  if (is.null(url)) {
+    url <- Sys.getenv("tautulli_url")
+  }
+  if (is.null(apikey)) {
+    apikey <- Sys.getenv("tautulli_apikey")
+  }
+  if (apikey == "" | url == "") {
+    stop("No URL or API-Key set, please see setup instructions")
+  }
+
+  result <- api_request(url, apikey, cmd = "get_server_friendly_name")
+  result$data
+}
+
+#' Get Server ID
+#'
+#' @inheritParams api_request
+#' @param hostname THe hostname
+#' @param port The server port, default is `32400`
+#' @param ssl,remote Optional, 0 for no, 1 for yes
+#'
+#' @source <https://github.com/Tautulli/Tautulli/blob/master/API.md#get_server_id>
+#' @return A `tbl` with 8 columns minimum with one row per server.
+#' @export
+#' @family Server Information
+#' @examples
+#' \dontrun{
+#' get_server_id()
+#' }
+get_server_id <- function(url = NULL, apikey = NULL, hostname, port = 32400,
+                          remote = 0, ssl = 0) {
+  if (is.null(url)) {
+    url <- Sys.getenv("tautulli_url")
+  }
+  if (is.null(apikey)) {
+    apikey <- Sys.getenv("tautulli_apikey")
+  }
+  if (apikey == "" | url == "") {
+    stop("No URL or API-Key set, please see setup instructions")
+  }
+
+  result <- api_request(
+    url, apikey, cmd = "get_server_id",
+    hostname = hostname, port = port,
+    remote = remote, ssl = ssl
+  )
+  if (result$result == "error") {
+    stop("Error in 'get_server_id': ", result$message)
+  }
+
+  result$data
+}
