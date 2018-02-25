@@ -131,8 +131,7 @@ sort(api_functions[!(api_functions %in% getNamespaceExports("tauturri"))])
 #> [15] "get_server_friendly_name" "get_server_id"           
 #> [17] "get_server_pref"          "get_settings"            
 #> [19] "get_synced_items"         "get_user"                
-#> [21] "get_user_ips"             "get_user_logins"         
-#> [23] "get_whois_lookup"
+#> [21] "get_whois_lookup"
 ```
 
 CoC
