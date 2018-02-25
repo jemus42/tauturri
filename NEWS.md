@@ -1,12 +1,13 @@
 # tauturri 0.1.1
 
 - Add `get_home_stats`. It was nasty.
-- Add `get_user_ips`
-- Add `get_user_logins`
-- Add `get_server_friendly_name`
-- Add `get_server_id`
-- Apply `use_tidy_style()`
-- Add GitHub links to `DESCRIPTION`
+- Add `get_user_ips`.
+- Add `get_user_logins`.
+- Add `get_server_friendly_name`.
+- Add `get_server_id`.
+- Add `arnold()`, probably the most crucial function of them all.
+- Apply `use_tidy_style()`.
+- Add GitHub links to `DESCRIPTION`.
 
 # tauturri 0.1.0
 
