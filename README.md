@@ -121,17 +121,16 @@ API Functions Not Yet Implemented
 api_functions <- names(api_request(cmd = "docs")$data)
 api_functions <- api_functions[grepl("^get_", api_functions)]
 sort(api_functions[!(api_functions %in% getNamespaceExports("tauturri"))])
-#>  [1] "get_apikey"               "get_date_formats"        
-#>  [3] "get_geoip_lookup"         "get_logs"                
-#>  [5] "get_metadata"             "get_new_rating_keys"     
-#>  [7] "get_notification_log"     "get_notifier_config"     
-#>  [9] "get_notifier_parameters"  "get_notifiers"           
-#> [11] "get_old_rating_keys"      "get_plex_log"            
-#> [13] "get_pms_token"            "get_pms_update"          
-#> [15] "get_server_friendly_name" "get_server_id"           
-#> [17] "get_server_pref"          "get_settings"            
-#> [19] "get_synced_items"         "get_user"                
-#> [21] "get_whois_lookup"
+#>  [1] "get_apikey"              "get_date_formats"       
+#>  [3] "get_geoip_lookup"        "get_logs"               
+#>  [5] "get_metadata"            "get_new_rating_keys"    
+#>  [7] "get_notification_log"    "get_notifier_config"    
+#>  [9] "get_notifier_parameters" "get_notifiers"          
+#> [11] "get_old_rating_keys"     "get_plex_log"           
+#> [13] "get_pms_token"           "get_pms_update"         
+#> [15] "get_server_pref"         "get_settings"           
+#> [17] "get_synced_items"        "get_user"               
+#> [19] "get_whois_lookup"
 ```
 
 CoC

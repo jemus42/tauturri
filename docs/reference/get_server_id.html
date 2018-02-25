@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get Server Information — get_servers_info • tauturri</title>
+<title>Get Server ID — get_server_id • tauturri</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -76,14 +76,15 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get Server Information</h1>
+    <h1>Get Server ID</h1>
     </div>
 
     
-    <p>Get Server Information</p>
+    <p>Get Server ID</p>
     
 
-    <pre class="usage"><span class='fu'>get_servers_info</span>(<span class='kw'>url</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>apikey</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>get_server_id</span>(<span class='kw'>url</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>apikey</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>hostname</span>, <span class='kw'>port</span> <span class='kw'>=</span> <span class='fl'>32400</span>,
+  <span class='kw'>remote</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>ssl</span> <span class='kw'>=</span> <span class='fl'>0</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -96,27 +97,39 @@
       <th>apikey</th>
       <td><p>API key.</p></td>
     </tr>
+    <tr>
+      <th>hostname</th>
+      <td><p>THe hostname</p></td>
+    </tr>
+    <tr>
+      <th>port</th>
+      <td><p>The server port, default is <code>32400</code></p></td>
+    </tr>
+    <tr>
+      <th>ssl, remote</th>
+      <td><p>Optional, 0 for no, 1 for yes</p></td>
+    </tr>
     </table>
     
     <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
 
-    <p><a href = 'https://github.com/Tautulli/Tautulli/blob/master/API.md#get_servers_info'>https://github.com/Tautulli/Tautulli/blob/master/API.md#get_servers_info</a></p>
+    <p><a href = 'https://github.com/Tautulli/Tautulli/blob/master/API.md#get_server_id'>https://github.com/Tautulli/Tautulli/blob/master/API.md#get_server_id</a></p>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code>tbl</code> with 5 columns minimum.</p>
+    <p>A <code>tbl</code> with 8 columns minimum with one row per server.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <p>Other Server Information: <code><a href='get_server_friendly_name.html'>get_server_friendly_name</a></code>,
   <code><a href='get_server_identity.html'>get_server_identity</a></code>,
-  <code><a href='get_server_id.html'>get_server_id</a></code>,
-  <code><a href='get_server_list.html'>get_server_list</a></code></p>
+  <code><a href='get_server_list.html'>get_server_list</a></code>,
+  <code><a href='get_servers_info.html'>get_servers_info</a></code></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>not_run</span>({
-  <span class='fu'>get_servers_info</span>()
+  <span class='fu'>get_server_id</span>()
 })</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
