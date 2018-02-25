@@ -31,13 +31,5 @@ api_request <- function(url = NULL, apikey = NULL, cmd = "get_servers_info", ...
   result <- httr::GET(request_url)
 
   httr::stop_for_status(result)
-
-  if (status_code(result) != 200) {
-    list(
-      result = "error",
-      message = "Can't reach PlexPy"
-    )
-  } else {
-    httr::content(result)$response
-  }
+  httr::content(result)$response
 }
