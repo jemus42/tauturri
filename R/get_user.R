@@ -152,7 +152,12 @@ get_user_watch_time_stats <- function(url = NULL, apikey = NULL, user_id) {
 
 #' Get a Users Table
 #' @inheritParams api_request
+#' @param order_column "user_thumb", "friendly_name", "last_seen", "ip_address", "platform",
+#' "player", "last_played", "plays", "duration"
+#' @param order_dir "desc" (default) or "asc"
+#' @param start Row to start from, default is 0
 #' @param length Number of items to return, default is 50.
+#' @param search A string to search for
 #'
 #' @return A `tbl`
 #' @export
@@ -164,7 +169,8 @@ get_user_watch_time_stats <- function(url = NULL, apikey = NULL, user_id) {
 #' \dontrun{
 #' get_users_table()
 #' }
-get_users_table <- function(url = NULL, apikey = NULL, length = 50) {
+get_users_table <- function(url = NULL, apikey = NULL, order_column = NULL,
+                            order_dir = "desc", start = 0, length = 50, search = NULL) {
   if (is.null(url)) {
     url <- Sys.getenv("tautulli_url")
   }
@@ -175,7 +181,9 @@ get_users_table <- function(url = NULL, apikey = NULL, length = 50) {
     stop("No URL or API-Key set, please see setup instructions")
   }
 
-  result <- api_request(url, apikey, cmd = "get_users_table", length = length)
+  result <- api_request(url, apikey, cmd = "get_users_table",
+                        order_dir = order_dir, order_column = order_column,
+                        start = start, length = length, search = search)
 
   if (result$result != "success") {
     warning("Error in 'get_users_table': ", result$result)
@@ -190,6 +198,95 @@ get_users_table <- function(url = NULL, apikey = NULL, length = 50) {
 
     x$duration <- as.numeric(x$duration)
     x$year <- as.numeric(x$year)
+    as_tibble(x)
+  })
+
+  result
+}
+
+#' Get User IPs
+#' @inheritParams api_request
+#' @inheritParams get_users_table
+#' @param user_id The `user_id` of the user.
+#'
+#' @return A `tbl`
+#' @export
+#' @importFrom purrr map_df
+#' @importFrom tibble as_tibble
+#' @source <https://github.com/Tautulli/Tautulli/blob/master/API.md#get_user_ips>
+#' @examples
+#' \dontrun{
+#' get_user_ips(user_id = 192023)
+#' }
+get_user_ips <- function(url = NULL, apikey = NULL, user_id, order_column = NULL,
+                            order_dir = "desc", start = 0, length = 50, search = NULL) {
+  if (is.null(url)) {
+    url <- Sys.getenv("tautulli_url")
+  }
+  if (is.null(apikey)) {
+    apikey <- Sys.getenv("tautulli_apikey")
+  }
+  if (apikey == "" | url == "") {
+    stop("No URL or API-Key set, please see setup instructions")
+  }
+
+  result <- api_request(url, apikey, cmd = "get_user_ips", user_id = user_id,
+                        order_dir = order_dir, order_column = order_column,
+                        start = start, length = length, search = search)
+
+  if (result$result != "success") {
+    warning("Error in 'get_user_ips': ", result$result)
+    return(tibble())
+  }
+
+  result <- purrr::map_df(result$data$data, function(x) {
+    x$media_index <- as.character(x$media_index)
+    x$parent_media_index <- as.character(x$parent_media_index)
+    as_tibble(x)
+  })
+
+  result
+}
+
+#' Get User Logins
+#' @inheritParams api_request
+#' @inheritParams get_users_table
+#' @param user_id The `user_id` of the user.
+#'
+#' @return A `tbl`
+#' @export
+#' @importFrom purrr map_if
+#' @importFrom purrr map_df
+#' @importFrom tibble as_tibble
+#' @source <https://github.com/Tautulli/Tautulli/blob/master/API.md#get_user_logins>
+#' @examples
+#' \dontrun{
+#' get_user_logins(user_id = 192023)
+#' }
+get_user_logins <- function(url = NULL, apikey = NULL, user_id, order_column = NULL,
+                         order_dir = "desc", start = 0, length = 50, search = NULL) {
+  if (is.null(url)) {
+    url <- Sys.getenv("tautulli_url")
+  }
+  if (is.null(apikey)) {
+    apikey <- Sys.getenv("tautulli_apikey")
+  }
+  if (apikey == "" | url == "") {
+    stop("No URL or API-Key set, please see setup instructions")
+  }
+
+  result <- api_request(url, apikey, cmd = "get_user_logins", user_id = user_id,
+                        order_dir = order_dir, order_column = order_column,
+                        start = start, length = length, search = search)
+
+  if (result$result != "success") {
+    warning("Error in 'get_user_logins': ", result$result)
+    return(tibble())
+  }
+
+  result <- purrr::map_df(result$data$data, function(x) {
+    x <- map_if(x, is.null, ~return(""))
+    x$timestamp <- as.POSIXct(x$timestamp, origin = "1970-01-01")
     as_tibble(x)
   })
 
