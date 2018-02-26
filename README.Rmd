@@ -13,6 +13,8 @@ knitr::opts_chunk$set(
   fig.path = "man/figures/README-",
   out.width = "100%"
 )
+version <- desc::desc_get_version(system.file("DESCRIPTION", package = "tauturri"))
+
 library(tauturri)
 library(ggplot2)
 library(tidyr)
@@ -24,6 +26,7 @@ library(tidyr)
 [![CRAN status](http://www.r-pkg.org/badges/version/tauturri)](https://cran.r-project.org/package=tauturri)
 [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 
+This is `tauturri` version ``r version`` (`semver`).  
 The goal of `tauturri` is to get data out of [**Tautulli**](https://github.com/Tautulli/Tautulli) (formerly **PlexPy**) as simply as possible.
 
 The project is still pretty young, and while it's reasonably functional, there might still be some issues. At least it passes all the tests, I guess?
