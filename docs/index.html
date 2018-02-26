@@ -63,12 +63,15 @@
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#tauturri" class="anchor"></a>tauturri</h1></div>
 
-<p>The goal of <code>tauturri</code> is to get data out of <a href="https://github.com/Tautulli/Tautulli"><strong>Tautulli</strong></a> (formerly <strong>PlexPy</strong>) as simply as possible.</p>
+<p>This is <code>tauturri</code> version <code>0.2.0</code> (<code>semver</code>).<br>
+The goal of <code>tauturri</code> is to get data out of <a href="https://github.com/Tautulli/Tautulli"><strong>Tautulli</strong></a> (formerly <strong>PlexPy</strong>) as simply as possible.</p>
 <p>The project is still pretty young, and while it’s reasonably functional, there might still be some issues. At least it passes all the tests, I guess?</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<p>I don’t know if I want to push this to CRAN yet, so we stick with the GitHub version for no.</p>
+<p>Current stable version on CRAN:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">"tauturri"</span>)</code></pre></div>
+<p>Current development version on GitHub:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span> (<span class="op">!</span>(<span class="st">"remotes"</span> <span class="op">%in%</span><span class="st"> </span><span class="kw">installed.packages</span>())){
   <span class="kw">install.packages</span>(<span class="st">"remotes"</span>)
 }
@@ -78,6 +81,7 @@ remotes<span class="op">::</span><span class="kw">install_github</span>(<span cl
 <div id="setup" class="section level2">
 <h2 class="hasAnchor">
 <a href="#setup" class="anchor"></a>Setup</h2>
+<p>To use this package, you’ll need a working instance of <a href="http://tautulli.com/">Tautulli</a>, enable the API and store the URL and your API key.</p>
 <p>In your <code>~/.Renviron</code>, set the following:</p>
 <pre><code># Tautulli
 tautulli_url=&lt;Tautulli URL (with port, if necessary)&gt;
@@ -197,6 +201,7 @@ By participating in this project you agree to abide by its terms.</p>
 <li><a href="https://travis-ci.org/jemus42/tauturri"><img src="https://travis-ci.org/jemus42/tauturri.svg?branch=master" alt="Travis build status"></a></li>
 <li><a href="https://codecov.io/github/jemus42/tauturri?branch=master"><img src="https://codecov.io/gh/jemus42/tauturri/branch/master/graph/badge.svg" alt="Coverage status"></a></li>
 <li><a href="https://cran.r-project.org/package=tauturri"><img src="http://www.r-pkg.org/badges/version/tauturri" alt="CRAN status"></a></li>
+<li><a href="https://www.tidyverse.org/lifecycle/#maturing"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="lifecycle"></a></li>
 </ul>
 </div>
 
