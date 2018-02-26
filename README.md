@@ -13,7 +13,13 @@ The project is still pretty young, and while it's reasonably functional, there m
 Installation
 ------------
 
-I don't know if I want to push this to CRAN yet, so we stick with the GitHub version for no.
+Current stable version on CRAN:
+
+``` r
+install.packages("tauturri")
+```
+
+Current development version on GitHub:
 
 ``` r
 if (!("remotes" %in% installed.packages())){
@@ -25,6 +31,8 @@ remotes::install_github("jemus42/tauturri")
 
 Setup
 -----
+
+To use this package, you'll need a working instance of [Tautulli](http://tautulli.com/), enable the API and store the URL and your API key.
 
 In your `~/.Renviron`, set the following:
 
