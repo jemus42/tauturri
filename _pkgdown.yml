@@ -7,6 +7,7 @@ reference:
     contents:
     - api_request
     - get_activity
+    - search_server
   - title: Server Data
     desc: Know your servers.
     contents:
