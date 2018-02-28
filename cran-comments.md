@@ -5,10 +5,4 @@
 
 ## R CMD check results
 
-0 errors | 0 warnings | 1 note
-
-* This is a new release
-
-## Fixes from previous submissions
-
-* Fix quoting typo of application name in DESCRIPTION title
+0 errors | 0 warnings | 0 note
