@@ -1,10 +1,14 @@
-# tauturri 0.1.9000
+# tauturri 0.2.9000
+
+- Add `search_server` (`search`-API Method)
+- Minor documentation fixes
+
+# tauturri 0.2.0
 
 - Add `get_user_ips`.
 - Add `get_user_logins`.
 - Add `get_server_friendly_name`.
 - Add `get_server_id`.
-- Add `search_server` (`search`-API Method) 
 - Add `arnold()`, probably the most crucial function of them all.
 
 # tauturri 0.1.1
