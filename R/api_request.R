@@ -3,7 +3,7 @@
 #' @param url Server URL.
 #' @param apikey API key.
 #' @param cmd API command,
-#' see [the API docs](https://github.com/JonnyWong16/plexpy/blob/master/API.md). Defaults to
+#' see [the API docs](https://github.com/Tautulli/Tautulli/blob/master/API.md). Defaults to
 #' printing server information via the `get_servers_info` method.
 #' @param ... Optional (named) parameters.
 #' @return The API result, usually a `list`.

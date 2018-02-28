@@ -12,7 +12,7 @@ api_request(url = NULL, apikey = NULL, cmd = "get_servers_info", ...)
 \item{apikey}{API key.}
 
 \item{cmd}{API command,
-see \href{https://github.com/JonnyWong16/plexpy/blob/master/API.md}{the API docs}. Defaults to
+see \href{https://github.com/Tautulli/Tautulli/blob/master/API.md}{the API docs}. Defaults to
 printing server information via the \code{get_servers_info} method.}
 
 \item{...}{Optional (named) parameters.}
