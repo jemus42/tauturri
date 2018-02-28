@@ -1,4 +1,4 @@
-# tauturri 0.2.0
+# tauturri 0.1.9000
 
 - Add `get_user_ips`.
 - Add `get_user_logins`.
