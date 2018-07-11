@@ -9,6 +9,8 @@ status](https://travis-ci.org/jemus42/tauturri.svg?branch=master)](https://travi
 status](https://codecov.io/gh/jemus42/tauturri/branch/master/graph/badge.svg)](https://codecov.io/github/jemus42/tauturri?branch=master)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/tauturri)](https://cran.r-project.org/package=tauturri)
+[![CRAN
+downloads](https://cranlogs.r-pkg.org/badges/grand-total/tauturri)](https://cran.r-project.org/package=tauturri)
 [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 
 This is `tauturri` version `0.3.0` (`semver`(ish)).  
