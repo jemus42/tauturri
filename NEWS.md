@@ -1,9 +1,10 @@
-# tauturri 0.2.9000
+# tauturri 0.3.0
 
 - Add `search_server` (`search`-API Method)
 - Add `update_check` and `update_tautulli` for **Tautulli** updates
 - Add `get_pms_update` for **Plex Media Server** updates
 - Minor documentation fixes
+- Fix issues due to changes in the API
 
 # tauturri 0.2.0
 

@@ -1,17 +1,26 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-tauturri
-========
 
-[![Travis build status](https://travis-ci.org/jemus42/tauturri.svg?branch=master)](https://travis-ci.org/jemus42/tauturri) [![Coverage status](https://codecov.io/gh/jemus42/tauturri/branch/master/graph/badge.svg)](https://codecov.io/github/jemus42/tauturri?branch=master) [![CRAN status](https://www.r-pkg.org/badges/version/tauturri)](https://cran.r-project.org/package=tauturri) [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
+# tauturri
 
-This is `tauturri` version `0.2.9000` (`semver`).
-The goal of `tauturri` is to get data out of [**Tautulli**](https://github.com/Tautulli/Tautulli) (formerly **PlexPy**) as simply as possible.
+[![Travis build
+status](https://travis-ci.org/jemus42/tauturri.svg?branch=master)](https://travis-ci.org/jemus42/tauturri)
+[![Coverage
+status](https://codecov.io/gh/jemus42/tauturri/branch/master/graph/badge.svg)](https://codecov.io/github/jemus42/tauturri?branch=master)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/tauturri)](https://cran.r-project.org/package=tauturri)
+[![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 
-The project is still pretty young, and while it's reasonably functional, there might still be some issues. At least it passes all the tests, I guess?
+This is `tauturri` version `0.3.0` (`semver`(ish)).  
+The goal of `tauturri` is to get data out of
+[**Tautulli**](https://github.com/Tautulli/Tautulli) (formerly
+**PlexPy**) as simply as possible.
 
-Installation
-------------
+The project is still pretty young, and while it’s reasonably functional,
+there might still be some issues. At least it passes all the tests, I
+guess?
+
+## Installation
 
 Current stable version on CRAN:
 
@@ -29,10 +38,11 @@ if (!("remotes" %in% installed.packages())){
 remotes::install_github("jemus42/tauturri")
 ```
 
-Setup
------
+## Setup
 
-To use this package, you'll need a working instance of [Tautulli](http://tautulli.com/), enable the API and store the URL and your API key.
+To use this package, you’ll need a working instance of
+[Tautulli](http://tautulli.com/), enable the API and store the URL and
+your API key.
 
 In your `~/.Renviron`, set the following:
 
@@ -40,11 +50,11 @@ In your `~/.Renviron`, set the following:
     tautulli_url=<Tautulli URL (with port, if necessary)>
     tautulli_apikey=<Tautilli API key>
 
-That's it.
-Alternatively use `Sys.setenv()` to set the appropriate values in a script.
+That’s it.  
+Alternatively use `Sys.setenv()` to set the appropriate values in a
+script.
 
-Server Info
------------
+## Server Info
 
 ``` r
 info <- get_servers_info()
@@ -57,13 +67,13 @@ info[c("name", "version")]
 #> # A tibble: 1 x 2
 #>   name  version              
 #>   <chr> <chr>                
-#> 1 PPTH  1.11.3.4803-c40bba82e
+#> 1 PPTH  1.13.2.5154-fd05be322
 ```
 
-`get_plays_by` \[date|dayofweek|...\]
--------------------------------------
+## `get_plays_by` \[date|dayofweek|…\]
 
-All plays in the current year, per day:
+All plays in the current year, per
+day:
 
 ``` r
 plays <- get_plays_by_date(time_range = lubridate::yday(lubridate::now()))
@@ -83,7 +93,8 @@ plays %>%
 
 <img src="man/figures/README-get_plays_by_date-1.png" width="100%" />
 
-... per day of week:
+… per day of
+week:
 
 ``` r
 plays <- get_plays_by_dayofweek(time_range = lubridate::yday(lubridate::now()))
@@ -103,7 +114,8 @@ plays %>%
 
 <img src="man/figures/README-get_plays_by_dayofweek-1.png" width="100%" />
 
-... and per hour of day:
+… and per hour of
+day:
 
 ``` r
 plays <- get_plays_by_hourofday(time_range = lubridate::yday(lubridate::now()))
@@ -123,8 +135,7 @@ plays %>%
 
 <img src="man/figures/README-get_plays_by_hourofday-1.png" width="100%" />
 
-API Functions Not Yet Implemented
----------------------------------
+## API Functions Not Yet Implemented
 
 ``` r
 api_functions <- names(api_request(cmd = "docs")$data)
@@ -133,17 +144,18 @@ sort(api_functions[!(api_functions %in% getNamespaceExports("tauturri"))])
 #>  [1] "get_apikey"              "get_date_formats"       
 #>  [3] "get_geoip_lookup"        "get_logs"               
 #>  [5] "get_metadata"            "get_new_rating_keys"    
-#>  [7] "get_notification_log"    "get_notifier_config"    
-#>  [9] "get_notifier_parameters" "get_notifiers"          
-#> [11] "get_old_rating_keys"     "get_plex_log"           
-#> [13] "get_pms_token"           "get_pms_update"         
-#> [15] "get_server_pref"         "get_settings"           
-#> [17] "get_synced_items"        "get_user"               
-#> [19] "get_whois_lookup"
+#>  [7] "get_newsletter_config"   "get_newsletter_log"     
+#>  [9] "get_newsletters"         "get_notification_log"   
+#> [11] "get_notifier_config"     "get_notifier_parameters"
+#> [13] "get_notifiers"           "get_old_rating_keys"    
+#> [15] "get_plex_log"            "get_pms_token"          
+#> [17] "get_server_pref"         "get_settings"           
+#> [19] "get_stream_data"         "get_synced_items"       
+#> [21] "get_user"                "get_whois_lookup"
 ```
 
-CoC
----
+## CoC
 
-Please note that this project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md).
+Please note that this project is released with a [Contributor Code of
+Conduct](CODE_OF_CONDUCT.md).  
 By participating in this project you agree to abide by its terms.
