@@ -32,7 +32,8 @@ get_plays_by_date <- function(url = NULL, apikey = NULL,
   }
 
   result <- api_request(
-    url, apikey, cmd = "get_plays_by_date",
+    url, apikey,
+    cmd = "get_plays_by_date",
     time_range = time_range, y_axis = y_axis, user_id = user_id
   )
 
@@ -85,7 +86,8 @@ get_plays_by_hourofday <- function(url = NULL, apikey = NULL,
   }
 
   result <- api_request(
-    url, apikey, cmd = "get_plays_by_hourofday",
+    url, apikey,
+    cmd = "get_plays_by_hourofday",
     time_range = time_range, y_axis = y_axis, user_id = user_id
   )
 
@@ -138,7 +140,8 @@ get_plays_by_dayofweek <- function(url = NULL, apikey = NULL,
   }
 
   result <- api_request(
-    url, apikey, cmd = "get_plays_by_dayofweek",
+    url, apikey,
+    cmd = "get_plays_by_dayofweek",
     time_range = time_range, y_axis = y_axis, user_id = user_id
   )
 
@@ -191,7 +194,8 @@ get_plays_per_month <- function(url = NULL, apikey = NULL,
   }
 
   result <- api_request(
-    url, apikey, cmd = "get_plays_per_month",
+    url, apikey,
+    cmd = "get_plays_per_month",
     time_range = time_range, y_axis = y_axis, user_id = user_id
   )
 
@@ -244,7 +248,8 @@ get_plays_by_source_resolution <- function(url = NULL, apikey = NULL,
   }
 
   result <- api_request(
-    url, apikey, cmd = "get_plays_by_source_resolution",
+    url, apikey,
+    cmd = "get_plays_by_source_resolution",
     time_range = time_range, y_axis = y_axis, user_id = user_id
   )
 
@@ -298,7 +303,8 @@ get_plays_by_stream_resolution <- function(url = NULL, apikey = NULL,
   }
 
   result <- api_request(
-    url, apikey, cmd = "get_plays_by_stream_resolution",
+    url, apikey,
+    cmd = "get_plays_by_stream_resolution",
     time_range = time_range, y_axis = y_axis, user_id = user_id
   )
 
@@ -352,7 +358,8 @@ get_plays_by_stream_type <- function(url = NULL, apikey = NULL,
   }
 
   result <- api_request(
-    url, apikey, cmd = "get_plays_by_stream_type",
+    url, apikey,
+    cmd = "get_plays_by_stream_type",
     time_range = time_range, y_axis = y_axis, user_id = user_id
   )
 

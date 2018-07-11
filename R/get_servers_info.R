@@ -140,7 +140,8 @@ get_server_id <- function(url = NULL, apikey = NULL, hostname, port = 32400,
   }
 
   result <- api_request(
-    url, apikey, cmd = "get_server_id",
+    url, apikey,
+    cmd = "get_server_id",
     hostname = hostname, port = port,
     remote = remote, ssl = ssl
   )

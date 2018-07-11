@@ -48,7 +48,8 @@ get_history <- function(url = NULL, apikey = NULL,
   }
 
   result <- api_request(
-    url, apikey, cmd = "get_history",
+    url, apikey,
+    cmd = "get_history",
     grouping = grouping, user = user, user_id = user_id,
     rating_key = rating_key, parent_rating_key = parent_rating_key,
     grandparent_rating_key = grandparent_rating_key,

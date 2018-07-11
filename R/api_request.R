@@ -60,7 +60,8 @@ arnold <- function(url = NULL, apikey = NULL) {
   }
 
   result <- api_request(
-    url, apikey, cmd = "arnold"
+    url, apikey,
+    cmd = "arnold"
   )
   if (result$result == "error") {
     stop("Error in 'arnold': ", result$message)

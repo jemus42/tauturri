@@ -21,7 +21,8 @@ get_pms_update <- function(url = NULL, apikey = NULL) {
   }
 
   result <- api_request(
-    url, apikey, cmd = "get_pms_update"
+    url, apikey,
+    cmd = "get_pms_update"
   )
   if (result$result != "success") {
     stop("Error in 'get_pms_update': ", result$message)

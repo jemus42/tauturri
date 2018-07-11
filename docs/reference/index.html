@@ -18,11 +18,21 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
+
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+
+
+
+<meta property="og:title" content="Function reference" />
+
+
 
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
@@ -46,15 +56,25 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">tauturri</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">tauturri</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.2.9000</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
+  <a href="../index.html">
+    <span class="fa fa-home fa-lg"></span>
+     
+  </a>
+</li>
+<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
-  <a href="../news/index.html">News</a>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       
@@ -66,6 +86,7 @@
   </a>
 </li>
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -73,310 +94,306 @@
       
       </header>
 
-      <div class="row">
-  <div class="col-md-9">
+<div class="row">
+  <div class="contents col-md-9">
     <div class="page-header">
-      <h1>
-        Reference
-        <small>version&nbsp;0.2.9000</small>
-      </h1>
+      <h1>Reference</h1>
     </div>
 
-    <div class="contents">
-      <table class="ref-index">
+    <table class="ref-index">
 
-      <colgroup>
-        <col class="alias" />
-        <col class="title" />
-      </colgroup>
+    <colgroup>
+      
+      <col class="alias" />
+      <col class="title" />
+    </colgroup>
 
-      <tbody>
-        <tr>
-          <th colspan="2">
-            <h2 id="section-this-package" class="hasAnchor"><a href="#section-this-package" class="anchor"></a>This Package</h2>
-            <p class="section-desc"></p>
-          </th>
-        </tr>
-        <tr>
-          <!--  -->
-          <td>
-            <p><code><a href="tauturri-package.html">tauturri-package</a></code> </p>
-          </td>
-          <td><p>tauturri: Get Data Out of 'Tautulli' (Formerly 'PlexPy')</p></td>
-        </tr>
-      </tbody><tbody>
-        <tr>
-          <th colspan="2">
-            <h2 id="section-basic-api-interaction" class="hasAnchor"><a href="#section-basic-api-interaction" class="anchor"></a>Basic API Interaction</h2>
-            <p class="section-desc"><p>The, well, basics.</p></p>
-          </th>
-        </tr>
-        <tr>
-          <!--  -->
-          <td>
-            <p><code><a href="api_request.html">api_request</a></code> </p>
-          </td>
-          <td><p>Make an API GET-request</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="get_activity.html">get_activity</a></code> </p>
-          </td>
-          <td><p>Get Current Server Activity</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="search_server.html">search_server</a></code> </p>
-          </td>
-          <td><p>Search for Media Items</p></td>
-        </tr>
-      </tbody><tbody>
-        <tr>
-          <th colspan="2">
-            <h2 id="section-server-data" class="hasAnchor"><a href="#section-server-data" class="anchor"></a>Server Data</h2>
-            <p class="section-desc"><p>Know your servers.</p></p>
-          </th>
-        </tr>
-        <tr>
-          <!--  -->
-          <td>
-            <p><code><a href="get_server_friendly_name.html">get_server_friendly_name</a></code> </p>
-          </td>
-          <td><p>Get Server Friendly Name</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="get_server_id.html">get_server_id</a></code> </p>
-          </td>
-          <td><p>Get Server ID</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="get_server_identity.html">get_server_identity</a></code> </p>
-          </td>
-          <td><p>Get Server Identity</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="get_server_list.html">get_server_list</a></code> </p>
-          </td>
-          <td><p>Get Server List</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="get_servers_info.html">get_servers_info</a></code> </p>
-          </td>
-          <td><p>Get Server Information</p></td>
-        </tr>
-      </tbody><tbody>
-        <tr>
-          <th colspan="2">
-            <h2 id="section-library-and-media-data" class="hasAnchor"><a href="#section-library-and-media-data" class="anchor"></a>Library and Media Data</h2>
-            <p class="section-desc"><p>Info about media items</p></p>
-          </th>
-        </tr>
-        <tr>
-          <!--  -->
-          <td>
-            <p><code><a href="get_libraries_table.html">get_libraries_table</a></code> </p>
-          </td>
-          <td><p>Get All the Libraries-Table</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="get_libraries.html">get_libraries</a></code> </p>
-          </td>
-          <td><p>Get All the Libraries' Data</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="get_library_media_info.html">get_library_media_info</a></code> </p>
-          </td>
-          <td><p>Get A Library's Media Info</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="get_library_names.html">get_library_names</a></code> </p>
-          </td>
-          <td><p>Get Library Sections and Names</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="get_library_user_stats.html">get_library_user_stats</a></code> </p>
-          </td>
-          <td><p>Get Library User Stats</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="get_library_watch_time_stats.html">get_library_watch_time_stats</a></code> </p>
-          </td>
-          <td><p>Get Library Watch Time Stats</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="get_library.html">get_library</a></code> </p>
-          </td>
-          <td><p>Get A Single Library Information</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="get_recently_added.html">get_recently_added</a></code> </p>
-          </td>
-          <td><p>Get Recently Added Media Items</p></td>
-        </tr>
-      </tbody><tbody>
-        <tr>
-          <th colspan="2">
-            <h2 id="section-playback-data" class="hasAnchor"><a href="#section-playback-data" class="anchor"></a>Playback Data</h2>
-            <p class="section-desc"><p>Playback history data</p></p>
-          </th>
-        </tr>
-        <tr>
-          <!--  -->
-          <td>
-            <p><code><a href="get_history.html">get_history</a></code> </p>
-          </td>
-          <td><p>Get Playback History</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="get_home_stats.html">get_home_stats</a></code> </p>
-          </td>
-          <td><p>Get Home Stats</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="get_plays_by_date.html">get_plays_by_date</a></code> </p>
-          </td>
-          <td><p>Get Plays by Date</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="get_plays_by_dayofweek.html">get_plays_by_dayofweek</a></code> </p>
-          </td>
-          <td><p>Get Plays by Day of Week</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="get_plays_by_hourofday.html">get_plays_by_hourofday</a></code> </p>
-          </td>
-          <td><p>Get Plays by Hour of Day</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="get_plays_by_source_resolution.html">get_plays_by_source_resolution</a></code> </p>
-          </td>
-          <td><p>Get Plays by Source Resolution</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="get_plays_by_stream_resolution.html">get_plays_by_stream_resolution</a></code> </p>
-          </td>
-          <td><p>Get Plays by Stream Resolution</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="get_plays_by_stream_type.html">get_plays_by_stream_type</a></code> </p>
-          </td>
-          <td><p>Get Plays by Stream Type</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="get_plays_by_top_10_platforms.html">get_plays_by_top_10_platforms</a></code> </p>
-          </td>
-          <td><p>Get Plays by Top 10 Platforms</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="get_plays_by_top_10_users.html">get_plays_by_top_10_users</a></code> </p>
-          </td>
-          <td><p>Get Plays by Top 10 Users</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="get_plays_per_month.html">get_plays_per_month</a></code> </p>
-          </td>
-          <td><p>Get Plays by Month</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="get_stream_type_by_top_10_platforms.html">get_stream_type_by_top_10_platforms</a></code> </p>
-          </td>
-          <td><p>Get Stream Type by Top 10 Platforms</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="get_stream_type_by_top_10_users.html">get_stream_type_by_top_10_users</a></code> </p>
-          </td>
-          <td><p>Get Stream Type by Top 10 Users</p></td>
-        </tr>
-      </tbody><tbody>
-        <tr>
-          <th colspan="2">
-            <h2 id="section-user-specific-data" class="hasAnchor"><a href="#section-user-specific-data" class="anchor"></a>User specific data</h2>
-            <p class="section-desc"><p>Data about people’s usage</p></p>
-          </th>
-        </tr>
-        <tr>
-          <!--  -->
-          <td>
-            <p><code><a href="get_user_ips.html">get_user_ips</a></code> </p>
-          </td>
-          <td><p>Get User IPs</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="get_user_logins.html">get_user_logins</a></code> </p>
-          </td>
-          <td><p>Get User Logins</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="get_user_names.html">get_user_names</a></code> </p>
-          </td>
-          <td><p>Get User Names and IDs</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="get_user_player_stats.html">get_user_player_stats</a></code> </p>
-          </td>
-          <td><p>Get a Single User's Player Stats</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="get_user_watch_time_stats.html">get_user_watch_time_stats</a></code> </p>
-          </td>
-          <td><p>Get a Single User's Player Stats</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="get_users_table.html">get_users_table</a></code> </p>
-          </td>
-          <td><p>Get a Users Table</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="get_users.html">get_users</a></code> </p>
-          </td>
-          <td><p>Get Users</p></td>
-        </tr>
-      </tbody><tbody>
-        <tr>
-          <th colspan="2">
-            <h2 id="section-data" class="hasAnchor"><a href="#section-data" class="anchor"></a>Data</h2>
-            <p class="section-desc"><p>Just, well, data.</p></p>
-          </th>
-        </tr>
-        <tr>
-          <!--  -->
-          <td>
-            <p><code><a href="words.html">words</a></code> </p>
-          </td>
-          <td><p>Common English Words</p></td>
-        </tr>
-      </tbody>
-      </table>
-    </div>
+    <tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-this-package" class="hasAnchor"><a href="#section-this-package" class="anchor"></a>This Package</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="tauturri-package.html">tauturri-package</a></code> </p>
+        </td>
+        <td><p>tauturri: Get Data Out of 'Tautulli' (Formerly 'PlexPy')</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-basic-api-interaction" class="hasAnchor"><a href="#section-basic-api-interaction" class="anchor"></a>Basic API Interaction</h2>
+          <p class="section-desc"><p>The, well, basics.</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="api_request.html">api_request()</a></code> </p>
+        </td>
+        <td><p>Make an API GET-request</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="get_activity.html">get_activity()</a></code> </p>
+        </td>
+        <td><p>Get Current Server Activity</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="search_server.html">search_server()</a></code> </p>
+        </td>
+        <td><p>Search for Media Items</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-server-data" class="hasAnchor"><a href="#section-server-data" class="anchor"></a>Server Data</h2>
+          <p class="section-desc"><p>Know your servers.</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="get_server_friendly_name.html">get_server_friendly_name()</a></code> </p>
+        </td>
+        <td><p>Get Server Friendly Name</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="get_server_id.html">get_server_id()</a></code> </p>
+        </td>
+        <td><p>Get Server ID</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="get_server_identity.html">get_server_identity()</a></code> </p>
+        </td>
+        <td><p>Get Server Identity</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="get_server_list.html">get_server_list()</a></code> </p>
+        </td>
+        <td><p>Get Server List</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="get_servers_info.html">get_servers_info()</a></code> </p>
+        </td>
+        <td><p>Get Server Information</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-library-and-media-data" class="hasAnchor"><a href="#section-library-and-media-data" class="anchor"></a>Library and Media Data</h2>
+          <p class="section-desc"><p>Info about media items</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="get_libraries.html">get_libraries()</a></code> </p>
+        </td>
+        <td><p>Get All the Libraries' Data</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="get_libraries_table.html">get_libraries_table()</a></code> </p>
+        </td>
+        <td><p>Get All the Libraries-Table</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="get_library.html">get_library()</a></code> </p>
+        </td>
+        <td><p>Get A Single Library Information</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="get_library_media_info.html">get_library_media_info()</a></code> </p>
+        </td>
+        <td><p>Get A Library's Media Info</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="get_library_names.html">get_library_names()</a></code> </p>
+        </td>
+        <td><p>Get Library Sections and Names</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="get_library_user_stats.html">get_library_user_stats()</a></code> </p>
+        </td>
+        <td><p>Get Library User Stats</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="get_library_watch_time_stats.html">get_library_watch_time_stats()</a></code> </p>
+        </td>
+        <td><p>Get Library Watch Time Stats</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="get_recently_added.html">get_recently_added()</a></code> </p>
+        </td>
+        <td><p>Get Recently Added Media Items</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-playback-data" class="hasAnchor"><a href="#section-playback-data" class="anchor"></a>Playback Data</h2>
+          <p class="section-desc"><p>Playback history data</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="get_history.html">get_history()</a></code> </p>
+        </td>
+        <td><p>Get Playback History</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="get_home_stats.html">get_home_stats()</a></code> </p>
+        </td>
+        <td><p>Get Home Stats</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="get_plays_by_date.html">get_plays_by_date()</a></code> </p>
+        </td>
+        <td><p>Get Plays by Date</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="get_plays_by_dayofweek.html">get_plays_by_dayofweek()</a></code> </p>
+        </td>
+        <td><p>Get Plays by Day of Week</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="get_plays_by_hourofday.html">get_plays_by_hourofday()</a></code> </p>
+        </td>
+        <td><p>Get Plays by Hour of Day</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="get_plays_by_source_resolution.html">get_plays_by_source_resolution()</a></code> </p>
+        </td>
+        <td><p>Get Plays by Source Resolution</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="get_plays_by_stream_resolution.html">get_plays_by_stream_resolution()</a></code> </p>
+        </td>
+        <td><p>Get Plays by Stream Resolution</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="get_plays_by_stream_type.html">get_plays_by_stream_type()</a></code> </p>
+        </td>
+        <td><p>Get Plays by Stream Type</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="get_plays_by_top_10_platforms.html">get_plays_by_top_10_platforms()</a></code> </p>
+        </td>
+        <td><p>Get Plays by Top 10 Platforms</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="get_plays_by_top_10_users.html">get_plays_by_top_10_users()</a></code> </p>
+        </td>
+        <td><p>Get Plays by Top 10 Users</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="get_plays_per_month.html">get_plays_per_month()</a></code> </p>
+        </td>
+        <td><p>Get Plays by Month</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="get_stream_type_by_top_10_platforms.html">get_stream_type_by_top_10_platforms()</a></code> </p>
+        </td>
+        <td><p>Get Stream Type by Top 10 Platforms</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="get_stream_type_by_top_10_users.html">get_stream_type_by_top_10_users()</a></code> </p>
+        </td>
+        <td><p>Get Stream Type by Top 10 Users</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-user-specific-data" class="hasAnchor"><a href="#section-user-specific-data" class="anchor"></a>User specific data</h2>
+          <p class="section-desc"><p>Data about people’s usage</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="get_user_ips.html">get_user_ips()</a></code> </p>
+        </td>
+        <td><p>Get User IPs</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="get_user_logins.html">get_user_logins()</a></code> </p>
+        </td>
+        <td><p>Get User Logins</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="get_user_names.html">get_user_names()</a></code> </p>
+        </td>
+        <td><p>Get User Names and IDs</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="get_user_player_stats.html">get_user_player_stats()</a></code> </p>
+        </td>
+        <td><p>Get a Single User's Player Stats</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="get_user_watch_time_stats.html">get_user_watch_time_stats()</a></code> </p>
+        </td>
+        <td><p>Get a Single User's Player Stats</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="get_users.html">get_users()</a></code> </p>
+        </td>
+        <td><p>Get Users</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="get_users_table.html">get_users_table()</a></code> </p>
+        </td>
+        <td><p>Get a Users Table</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-data" class="hasAnchor"><a href="#section-data" class="anchor"></a>Data</h2>
+          <p class="section-desc"><p>Just, well, data.</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="words.html">words</a></code> </p>
+        </td>
+        <td><p>Common English Words</p></td>
+      </tr>
+    </tbody>
+    </table>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -399,11 +416,14 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+

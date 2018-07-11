@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get Current Server Activity — get_activity • tauturri</title>
+<title>Check for Tautulli Updates — update_check • tauturri</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Get Current Server Activity — get_activity" />
+<meta property="og:title" content="Check for Tautulli Updates — update_check" />
 
-<meta property="og:description" content="Get Current Server Activity" />
+<meta property="og:description" content="Check for Tautulli Updates" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -100,18 +100,18 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get Current Server Activity</h1>
-    <small class="dont-index">Source: <a href='https://github.com/jemus42/tauturri/blob/master/R/get_activity.R'><code>R/get_activity.R</code></a></small>
-    <div class="hidden name"><code>get_activity.Rd</code></div>
+    <h1>Check for Tautulli Updates</h1>
+    <small class="dont-index">Source: <a href='https://github.com/jemus42/tauturri/blob/master/R/tautulli.R'><code>R/tautulli.R</code></a></small>
+    <div class="hidden name"><code>update_check.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Get Current Server Activity</p>
+    <p>Check for Tautulli Updates</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>get_activity</span>(<span class='kw'>url</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>apikey</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>update_check</span>(<span class='kw'>url</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>apikey</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -126,14 +126,18 @@
     </tr>
     </table>
     
+    <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
+
+    <p><a href='https://github.com/Tautulli/Tautulli/blob/beta/API.md#update_check'>https://github.com/Tautulli/Tautulli/blob/beta/API.md#update_check</a></p>
+    
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code>list</code> with bandwidth + stream info and a session <code>tbl</code>.</p>
+    <p>Invisibly <code>TRUE</code> when an update is available, <code>FALSE</code> when no update is available.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><span class='co'># NOT RUN {</span>
-<span class='fu'>get_activity</span>()
+<span class='fu'>update_check</span>()
 <span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -141,6 +145,8 @@
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
+      <li><a href="#source">Source</a></li>
+
       <li><a href="#value">Value</a></li>
       
       <li><a href="#examples">Examples</a></li>

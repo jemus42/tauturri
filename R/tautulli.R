@@ -21,7 +21,8 @@ update_check <- function(url = NULL, apikey = NULL) {
   }
 
   result <- api_request(
-    url, apikey, cmd = "update_check"
+    url, apikey,
+    cmd = "update_check"
   )
   if (result$result == "error") {
     stop("Error in 'update_check': ", result$message)
@@ -59,7 +60,8 @@ update_tautulli <- function(url = NULL, apikey = NULL) {
   }
 
   result <- api_request(
-    url, apikey, cmd = "update"
+    url, apikey,
+    cmd = "update"
   )
   if (result$result == "error") {
     stop("Error in 'update_tautulli': ", result$message)

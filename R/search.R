@@ -25,7 +25,8 @@ search_server <- function(url = NULL, apikey = NULL, query, limit = 10) {
   }
 
   result <- api_request(
-    url, apikey, cmd = "search", query = query, limit = limit
+    url, apikey,
+    cmd = "search", query = query, limit = limit
   )
   if (result$result != "success") {
     stop("Error in 'search': ", result$message)

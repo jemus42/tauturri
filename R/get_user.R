@@ -182,7 +182,8 @@ get_users_table <- function(url = NULL, apikey = NULL, order_column = NULL,
   }
 
   result <- api_request(
-    url, apikey, cmd = "get_users_table",
+    url, apikey,
+    cmd = "get_users_table",
     order_dir = order_dir, order_column = order_column,
     start = start, length = length, search = search
   )
@@ -233,7 +234,8 @@ get_user_ips <- function(url = NULL, apikey = NULL, user_id, order_column = NULL
   }
 
   result <- api_request(
-    url, apikey, cmd = "get_user_ips", user_id = user_id,
+    url, apikey,
+    cmd = "get_user_ips", user_id = user_id,
     order_dir = order_dir, order_column = order_column,
     start = start, length = length, search = search
   )
@@ -280,7 +282,8 @@ get_user_logins <- function(url = NULL, apikey = NULL, user_id, order_column = N
   }
 
   result <- api_request(
-    url, apikey, cmd = "get_user_logins", user_id = user_id,
+    url, apikey,
+    cmd = "get_user_logins", user_id = user_id,
     order_dir = order_dir, order_column = order_column,
     start = start, length = length, search = search
   )

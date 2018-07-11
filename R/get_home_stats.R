@@ -33,7 +33,8 @@ get_home_stats <- function(url = NULL, apikey = NULL,
   }
 
   result <- api_request(
-    url, apikey, cmd = "get_home_stats",
+    url, apikey,
+    cmd = "get_home_stats",
     grouping = grouping, time_range = time_range,
     stats_type = stats_type, stats_count = stats_count
   )
