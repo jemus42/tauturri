@@ -20,7 +20,7 @@ test_that("get_server_list works", {
   res <- get_server_list()
   expect_is(res, "tbl")
   expect_named(res, c(
-    "httpsRequired", "is_cloud", "ip", "local", "clientIdentifier",
+    "httpsRequired", "is_cloud", "local", "ip", "uri", "clientIdentifier",
     "port", "value", "label"
   ))
   expect_error(get_server_list("", ""))
@@ -33,8 +33,8 @@ test_that("get_server_friendly_name works", {
 })
 
 test_that("get_server_id works", {
-  res <- get_server_id(hostname = "192.168.2.250")
-  expect_is(res, "character")
-  expect_error(get_server_id(hostname = "192.168.2.1"))
+  res <- get_server_id(hostname = "ppth.jemu.name")
+  expect_is(res, "list")
+  expect_null(get_server_id(hostname = "192.168.2.1")$identifier)
   expect_error(get_server_id("", "", hostname = "192.168.2.250"))
 })

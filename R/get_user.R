@@ -26,12 +26,19 @@ get_users <- function(url = NULL, apikey = NULL) {
     return(tibble())
   }
 
-  result <- map_df(result$data, flatten)
-  result$user_id <- as.character(result$user_id)
-  result$is_admin <- ifelse(result$is_admin == 1, TRUE, FALSE)
-  result$is_restricted <- ifelse(result$is_restricted == 1, TRUE, FALSE)
-  result$is_home_user <- ifelse(result$is_home_user == 1, TRUE, FALSE)
-  result$is_allow_sync <- ifelse(result$is_allow_sync == 1, TRUE, FALSE)
+  result <- map_df(result$data, function(x) {
+    tibble(
+      username = x$username,
+      user_id = x$user_id,
+      is_allow_sync = as.numeric(x$is_allow_sync) == 1,
+      user_token = pluck(x,"user_token", .default = NA),
+      is_admin = as.numeric(x$is_admin) == 1,
+      is_restricted = as.numeric(x$is_restricted) == 1,
+      is_home_user = as.numeric(x$is_home_user) == 1,
+      email = pluck(x, "email", .default = NA),
+      server_token = pluck(x, "server_token", .default = NA)
+    )
+  })
 
   result
 }

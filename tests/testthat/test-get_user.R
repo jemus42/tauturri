@@ -6,9 +6,8 @@ test_that("get_users works", {
   res <- get_users()
   expect_is(res, "tbl")
   expect_named(res, c(
-    "username", "filter_movies", "is_admin", "filter_music",
-    "user_id", "thumb", "filter_all", "filter_photos", "filter_tv",
-    "is_restricted", "is_home_user", "email", "is_allow_sync"
+    "username", "user_id", "is_allow_sync", "user_token", "is_admin",
+    "is_restricted", "is_home_user", "email", "server_token"
   ))
 
   expect_error(get_users("", ""))

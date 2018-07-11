@@ -3,7 +3,7 @@ context("test-get_library.R")
 test_that("get_library_names returns results", {
   res <- get_library_names()
   expect_is(res, "data.frame")
-  expect_length(res, 2)
+  expect_length(res, 3)
   expect_error(get_library_names(url = "323hhg"))
   expect_error(get_library_names(url = "", apikey = ""))
 })
@@ -46,8 +46,8 @@ test_that("get_libraries works", {
   expect_is(res, "tbl")
   expect_length(res, 8)
   expect_named(res, c(
-    "count", "art", "thumb", "section_type", "section_id", "section_name",
-    "parent_count", "child_count"
+    "count", "art", "thumb", "parent_count", "section_type", "section_id", "section_name",
+    "child_count"
   ))
   expect_error(get_library_watch_time_stats("", ""))
 })
