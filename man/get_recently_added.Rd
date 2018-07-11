@@ -15,7 +15,7 @@ get_recently_added(url = NULL, apikey = NULL, count = 10,
 
 \item{apikey}{API key.}
 
-\item{count}{THe number of items to return, default is \code{10}.}
+\item{count}{The number of items to return, default is \code{10}.}
 
 \item{section_id}{Optional. The id of the Plex library section, e.g. `1``}
 

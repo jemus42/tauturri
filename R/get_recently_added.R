@@ -1,7 +1,7 @@
 #' Get Recently Added Media Items
 #'
 #' @inheritParams api_request
-#' @param count THe number of items to return, default is `10`.
+#' @param count The number of items to return, default is `10`.
 #' @param section_id Optional. The id of the Plex library section, e.g. `1``
 #' @param start Optional. The item number to start at, e.g. `0`
 #'
