@@ -8,8 +8,9 @@
 }
 \usage{
 get_library_media_info(url = NULL, apikey = NULL, section_id = NULL,
-  rating_key = NULL, section_type = "movie", order_column = "added_at",
-  order_dir = "desc", start = 0, length = 25, search = NULL)
+  rating_key = NULL, section_type = "movie",
+  order_column = "added_at", order_dir = "desc", start = 0,
+  length = 25, search = NULL)
 }
 \arguments{
 \item{url}{Server URL.}

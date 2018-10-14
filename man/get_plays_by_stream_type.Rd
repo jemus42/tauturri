@@ -40,3 +40,4 @@ Other Playback History: \code{\link{get_plays_by_date}},
   \code{\link{get_plays_by_stream_resolution}},
   \code{\link{get_plays_per_month}}
 }
+\concept{Playback History}

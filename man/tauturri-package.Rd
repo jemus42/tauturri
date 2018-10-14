@@ -6,11 +6,13 @@
 \alias{tauturri-package}
 \title{tauturri: Get Data Out of 'Tautulli' (Formerly 'PlexPy')}
 \description{
-'Tautulli' (<http://tautulli.com>) is a monitoring application for 'Plex' Media Servers
-(<https://www.plex.tv>) which collects a lot of data about media items and server
-usage such as play counts. This package interacts with the 'Tautulli' API of any
-specified server to get said data into R. The 'Tautulli' API documentation is available
-at <https://github.com/Tautulli/Tautulli/blob/master/API.md>.
+'Tautulli' (<http://tautulli.com>) is a monitoring
+    application for 'Plex' Media Servers (<https://www.plex.tv>) which
+    collects a lot of data about media items and server usage such as play
+    counts. This package interacts with the 'Tautulli' API of any
+    specified server to get said data into R. The 'Tautulli' API
+    documentation is available at
+    <https://github.com/Tautulli/Tautulli/blob/master/API.md>.
 }
 \seealso{
 Useful links:

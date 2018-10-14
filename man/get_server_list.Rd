@@ -31,3 +31,4 @@ Other Server Information: \code{\link{get_server_friendly_name}},
   \code{\link{get_server_id}},
   \code{\link{get_servers_info}}
 }
+\concept{Server Information}
