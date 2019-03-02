@@ -1,7 +1,7 @@
 Type: Package
 Package: tauturri
 Title: Get Data Out of 'Tautulli' (Formerly 'PlexPy')
-Version: 0.3.0
+Version: 0.3.1
 Authors@R: 
     person(given = "Lukas Burk",
            role = c("aut", "cre"),
@@ -17,7 +17,7 @@ License: MIT + file LICENSE
 URL: https://github.com/jemus42/tauturri
 BugReports: https://github.com/jemus42/tauturri/issues
 Depends: 
-    R (>= 3.1)
+    R (>= 2.10)
 Imports: 
     httr,
     magrittr,
@@ -32,4 +32,4 @@ Suggests:
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 6.1.0
+RoxygenNote: 6.1.1

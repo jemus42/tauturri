@@ -5,6 +5,7 @@
 #' @return A `tbl` with columns `section_id` and `section_name`
 #' @export
 #' @importFrom purrr map_df
+#' @importFrom purrr map_if
 #' @importFrom tibble as_tibble
 #' @importFrom tibble tibble
 #' @examples
@@ -29,7 +30,10 @@ get_library_names <- function(url = NULL, apikey = NULL) {
     return(tibble())
   }
 
-  result <- map_df(result$data, as_tibble)
+  result <- map_df(result$data, function(x) {
+    x <- map_if(x, is.null, ~return(NA_character_))
+    as_tibble(x)
+  })
   result[order(result$section_id), ]
 }
 
