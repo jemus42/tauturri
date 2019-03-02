@@ -1,3 +1,7 @@
+# tauturri 0.3.1
+
+- Fix for new `agent` variable in library sections.
+
 # tauturri 0.3.0
 
 - Add `search_server` (`search`-API Method)
