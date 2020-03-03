@@ -7,8 +7,14 @@
 \url{https://github.com/Tautulli/Tautulli/blob/master/API.md#get_server_id}
 }
 \usage{
-get_server_id(url = NULL, apikey = NULL, hostname, port = 32400,
-  remote = 0, ssl = 0)
+get_server_id(
+  url = NULL,
+  apikey = NULL,
+  hostname,
+  port = 32400,
+  remote = 0,
+  ssl = 0
+)
 }
 \arguments{
 \item{url}{Server URL.}
@@ -33,9 +39,10 @@ get_server_id()
 }
 }
 \seealso{
-Other Server Information: \code{\link{get_server_friendly_name}},
-  \code{\link{get_server_identity}},
-  \code{\link{get_server_list}},
-  \code{\link{get_servers_info}}
+Other Server Information: 
+\code{\link{get_server_friendly_name}()},
+\code{\link{get_server_identity}()},
+\code{\link{get_server_list}()},
+\code{\link{get_servers_info}()}
 }
 \concept{Server Information}

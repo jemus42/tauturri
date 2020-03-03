@@ -9,8 +9,7 @@
 \url{https://github.com/Tautulli/Tautulli/blob/master/API.md#get_library_names}
 }
 \usage{
-get_library_watch_time_stats(url = NULL, apikey = NULL,
-  section_id = NULL)
+get_library_watch_time_stats(url = NULL, apikey = NULL, section_id = NULL)
 }
 \arguments{
 \item{url}{Server URL.}

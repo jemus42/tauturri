@@ -7,8 +7,13 @@
 \url{https://github.com/Tautulli/Tautulli/blob/master/API.md#get_stream_type_by_top_10_users}
 }
 \usage{
-get_stream_type_by_top_10_users(url = NULL, apikey = NULL,
-  time_range = 30, y_axis = "plays", user_id = NULL)
+get_stream_type_by_top_10_users(
+  url = NULL,
+  apikey = NULL,
+  time_range = 30,
+  y_axis = "plays",
+  user_id = NULL
+)
 }
 \arguments{
 \item{url}{Server URL.}

@@ -32,8 +32,12 @@ get_recently_added <- function(url = NULL, apikey = NULL, count = 10,
   )
 
   map_df(result$data$recently_added, function(x) {
-    x <- map_if(x, .p = ~is.null(.x), function(y) return(NA))
-    x <- map_if(x, .p = ~identical(.x, list()), function(y) return(NA))
+    x <- map_if(x, .p = ~ is.null(.x), function(y) {
+      return(NA)
+    })
+    x <- map_if(x, .p = ~ identical(.x, list()), function(y) {
+      return(NA)
+    })
 
     as_tibble(x)
   })

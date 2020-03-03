@@ -17,7 +17,7 @@ License: MIT + file LICENSE
 URL: https://github.com/jemus42/tauturri
 BugReports: https://github.com/jemus42/tauturri/issues
 Depends: 
-    R (>= 2.10)
+    R (>= 3.2)
 Imports: 
     httr,
     magrittr,
@@ -32,4 +32,4 @@ Suggests:
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 6.1.1
+RoxygenNote: 7.0.2

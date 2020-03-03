@@ -43,7 +43,7 @@ get_plays_by_date <- function(url = NULL, apikey = NULL,
   }
 
   res <- pluck(result, "data", "series") %>%
-    map(~as.numeric(.x$data)) %>%
+    map(~ as.numeric(.x$data)) %>%
     set_names(map_chr(result$data$series, "name")) %>%
     as_tibble()
   res$date <- pluck(result, "data", "categories") %>%
@@ -97,7 +97,7 @@ get_plays_by_hourofday <- function(url = NULL, apikey = NULL,
   }
 
   res <- pluck(result, "data", "series") %>%
-    map(~as.numeric(.x$data)) %>%
+    map(~ as.numeric(.x$data)) %>%
     set_names(map_chr(result$data$series, "name")) %>%
     as_tibble()
   res$hour <- pluck(result, "data", "categories") %>%
@@ -151,7 +151,7 @@ get_plays_by_dayofweek <- function(url = NULL, apikey = NULL,
   }
 
   res <- pluck(result, "data", "series") %>%
-    map(~as.numeric(.x$data)) %>%
+    map(~ as.numeric(.x$data)) %>%
     set_names(map_chr(result$data$series, "name")) %>%
     as_tibble()
   res$day <- pluck(result, "data", "categories") %>%
@@ -205,7 +205,7 @@ get_plays_per_month <- function(url = NULL, apikey = NULL,
   }
 
   res <- pluck(result, "data", "series") %>%
-    map(~as.numeric(.x$data)) %>%
+    map(~ as.numeric(.x$data)) %>%
     set_names(map_chr(result$data$series, "name")) %>%
     as_tibble()
   res$month <- pluck(result, "data", "categories") %>%
@@ -259,7 +259,7 @@ get_plays_by_source_resolution <- function(url = NULL, apikey = NULL,
   }
 
   res <- pluck(result, "data", "series") %>%
-    map(~as.numeric(.x$data)) %>%
+    map(~ as.numeric(.x$data)) %>%
     set_names(map_chr(result$data$series, "name")) %>%
     as_tibble()
   names(res) <- sub(" ", replacement = "_", x = names(res))
@@ -314,7 +314,7 @@ get_plays_by_stream_resolution <- function(url = NULL, apikey = NULL,
   }
 
   res <- pluck(result, "data", "series") %>%
-    map(~as.numeric(.x$data)) %>%
+    map(~ as.numeric(.x$data)) %>%
     set_names(map_chr(result$data$series, "name")) %>%
     as_tibble()
   names(res) <- sub(" ", replacement = "_", x = names(res))
@@ -369,7 +369,7 @@ get_plays_by_stream_type <- function(url = NULL, apikey = NULL,
   }
 
   res <- pluck(result, "data", "series") %>%
-    map(~as.numeric(.x$data)) %>%
+    map(~ as.numeric(.x$data)) %>%
     set_names(map_chr(result$data$series, "name")) %>%
     as_tibble()
   names(res) <- sub(" ", replacement = "_", x = names(res))

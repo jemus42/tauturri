@@ -7,8 +7,16 @@
 \url{https://github.com/Tautulli/Tautulli/blob/master/API.md#get_user_ips}
 }
 \usage{
-get_user_ips(url = NULL, apikey = NULL, user_id, order_column = NULL,
-  order_dir = "desc", start = 0, length = 50, search = NULL)
+get_user_ips(
+  url = NULL,
+  apikey = NULL,
+  user_id,
+  order_column = NULL,
+  order_dir = "desc",
+  start = 0,
+  length = 50,
+  search = NULL
+)
 }
 \arguments{
 \item{url}{Server URL.}

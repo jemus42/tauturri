@@ -7,8 +7,13 @@
 \url{https://github.com/Tautulli/Tautulli/blob/master/API.md#get_plays_by_month}
 }
 \usage{
-get_plays_per_month(url = NULL, apikey = NULL, time_range = 30,
-  y_axis = "plays", user_id = NULL)
+get_plays_per_month(
+  url = NULL,
+  apikey = NULL,
+  time_range = 30,
+  y_axis = "plays",
+  user_id = NULL
+)
 }
 \arguments{
 \item{url}{Server URL.}
@@ -33,11 +38,12 @@ get_plays_per_month()
 }
 }
 \seealso{
-Other Playback History: \code{\link{get_plays_by_date}},
-  \code{\link{get_plays_by_dayofweek}},
-  \code{\link{get_plays_by_hourofday}},
-  \code{\link{get_plays_by_source_resolution}},
-  \code{\link{get_plays_by_stream_resolution}},
-  \code{\link{get_plays_by_stream_type}}
+Other Playback History: 
+\code{\link{get_plays_by_date}()},
+\code{\link{get_plays_by_dayofweek}()},
+\code{\link{get_plays_by_hourofday}()},
+\code{\link{get_plays_by_source_resolution}()},
+\code{\link{get_plays_by_stream_resolution}()},
+\code{\link{get_plays_by_stream_type}()}
 }
 \concept{Playback History}

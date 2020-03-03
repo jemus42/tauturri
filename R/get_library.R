@@ -31,7 +31,7 @@ get_library_names <- function(url = NULL, apikey = NULL) {
   }
 
   result <- map_df(result$data, function(x) {
-    x <- map_if(x, is.null, ~return(NA_character_))
+    x <- map_if(x, is.null, ~ return(NA_character_))
     as_tibble(x)
   })
   result[order(result$section_id), ]
@@ -184,7 +184,7 @@ get_library <- function(url = NULL, apikey = NULL, section_id) {
     return(tibble())
   }
 
-  result$data <- map_if(result$data, is.null, ~return(""))
+  result$data <- map_if(result$data, is.null, ~ return(""))
   as_tibble(result$data)
 }
 
@@ -258,9 +258,9 @@ get_libraries_table <- function(url = NULL, apikey = NULL,
   }
 
   res <- map_df(result$data$data, function(x) {
-    x <- map_if(x, ~identical(list(), .x), ~return(""))
-    x <- map_if(x, is.null, ~return(""))
-    x <- map_if(x, is.list, ~paste0(.x, collapse = ", "))
+    x <- map_if(x, ~ identical(list(), .x), ~ return(""))
+    x <- map_if(x, is.null, ~ return(""))
+    x <- map_if(x, is.list, ~ paste0(.x, collapse = ", "))
     x <- map(x, as.character)
     as_tibble(x)
   })

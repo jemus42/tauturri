@@ -7,8 +7,15 @@
 \url{https://github.com/Tautulli/Tautulli/blob/master/API.md#get_users_table}
 }
 \usage{
-get_users_table(url = NULL, apikey = NULL, order_column = NULL,
-  order_dir = "desc", start = 0, length = 50, search = NULL)
+get_users_table(
+  url = NULL,
+  apikey = NULL,
+  order_column = NULL,
+  order_dir = "desc",
+  start = 0,
+  length = 50,
+  search = NULL
+)
 }
 \arguments{
 \item{url}{Server URL.}

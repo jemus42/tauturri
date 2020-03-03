@@ -69,7 +69,7 @@ get_history <- function(url = NULL, apikey = NULL,
 
   totals <- as_tibble(result$data[names(result$data) != "data"])
 
-  history <- map(result[["data"]][["data"]], ~as_tibble(flatten(.x))) %>%
+  history <- map(result[["data"]][["data"]], ~ as_tibble(flatten(.x))) %>%
     reduce(plyr::rbind.fill)
 
   history$started <- as.POSIXct(history$started, origin = "1970-01-01")

@@ -7,8 +7,13 @@
 \url{https://github.com/Tautulli/Tautulli/blob/master/API.md#get_recently_added}
 }
 \usage{
-get_recently_added(url = NULL, apikey = NULL, count = 10,
-  section_id = NULL, start = NULL)
+get_recently_added(
+  url = NULL,
+  apikey = NULL,
+  count = 10,
+  section_id = NULL,
+  start = NULL
+)
 }
 \arguments{
 \item{url}{Server URL.}

@@ -1,11 +1,24 @@
+# R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
+
 language: R
-sudo: false
 cache: packages
-r:
-- release
-- devel
-after_success:
-- Rscript -e 'covr::codecov()'
+
+matrix:
+  include:
+  - r: devel
+  - r: release
+    after_success:
+    - Rscript -e 'covr::codecov()'
+    before_cache: Rscript -e 'remotes::install_cran("pkgdown")'
+    deploy:
+      provider: script
+      script: Rscript -e 'pkgdown::deploy_site_github()'
+      skip_cleanup: true
+  - r: oldrel
+  - r: 3.4
+  - r: 3.3
+  - r: 3.2
+
 env:
   matrix:
     secure: cnlbTnJnmLyq6iOjngdW2fhODoUGBUSFAu/3K4vJ7kQ8mFgGPYL0+YQM9m6msgPeEl08dui8RwlwLnxRFXrsBISqUwWjyruVgFhNi/UmpNRKaCaZOpOvpYC9xdVPSI9j057wwSm3NJDWPRxinsg+J+B/cU37A7mi2lDaWeTsW3BwgQT1+eM74Bo72Jnq3UGh6GHxT2+xFEvFaKZ08K8yiTtX0i5eUyQO4bvBWzahhemSA6QLJwl9QB7IFimheXtcm/1hexPmR1IZW+5SYzzK38GnJuTJGmJ4JEkg6Ry8sabzyl++lIY9LU9u2fyxFQujXmlGRbsHXTQ2bx/DFWRT8+Cidn90TDGBA8Q8ZpUS30fIAd88cenqv8KNcC1If0HzEjiSgkgOeitA71KGN0xiMsajmeFZ725I6DSTybj0EHwBFixGcZqp/RPKS/Jy6wt1HHH26mF/ppuv1il6cwxA/AWlVF1+I8LV41EfAQ4QGamvwF6gqrfx4p3QuCHx9FzYNjJ86TTvwKUa4/SrzFAiGRzX2iMoMtMlqg3yYvbnuQ1u7F7jqy4HAe3lOanZE3SenOWheCRfdvjd30rkBWSCoeYdX/CpI+3Ghq5QXVOuOxAbsQETCOsCcs2NDmmnOI2v3HQBxFUyxt2ZFpv1MBNABIg8cvvkzmXqyo01lum9H5s=

@@ -11,3 +11,5 @@
 ^data-raw$
 ^build\.R$
 ^cran-comments\.md$
+^\.covrignore$
+^pkgdown$

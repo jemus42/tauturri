@@ -42,7 +42,7 @@ get_home_stats <- function(url = NULL, apikey = NULL,
   res <- result$data
 
   # It's a nasty list, baby steps.
-  names(res) <- map_chr(res, ~gsub(" ", "_", .x$stat_title))
+  names(res) <- map_chr(res, ~ gsub(" ", "_", .x$stat_title))
   res <- map(res, "rows")
 
   map(res, function(x) {

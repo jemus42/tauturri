@@ -301,7 +301,7 @@ get_user_logins <- function(url = NULL, apikey = NULL, user_id, order_column = N
   }
 
   result <- purrr::map_df(result$data$data, function(x) {
-    x <- map_if(x, is.null, ~return(""))
+    x <- map_if(x, is.null, ~ return(""))
     x$timestamp <- as.POSIXct(x$timestamp, origin = "1970-01-01")
     as_tibble(x)
   })

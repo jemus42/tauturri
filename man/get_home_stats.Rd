@@ -7,8 +7,14 @@
 \url{https://github.com/Tautulli/Tautulli/blob/master/API.md#get_home_stats}
 }
 \usage{
-get_home_stats(url = NULL, apikey = NULL, grouping = 0,
-  time_range = 30, stats_type = 0, stats_count = 5)
+get_home_stats(
+  url = NULL,
+  apikey = NULL,
+  grouping = 0,
+  time_range = 30,
+  stats_type = 0,
+  stats_count = 5
+)
 }
 \arguments{
 \item{url}{Server URL.}

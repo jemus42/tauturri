@@ -41,7 +41,7 @@ get_plays_by_top_10_users <- function(url = NULL, apikey = NULL,
   }
 
   res <- pluck(result, "data", "series") %>%
-    map(~as.numeric(.x$data)) %>%
+    map(~ as.numeric(.x$data)) %>%
     set_names(map_chr(result$data$series, "name")) %>%
     as_tibble()
   res$user <- pluck(result, "data", "categories") %>%
@@ -95,7 +95,7 @@ get_plays_by_top_10_platforms <- function(url = NULL, apikey = NULL,
   }
 
   res <- pluck(result, "data", "series") %>%
-    map(~as.numeric(.x$data)) %>%
+    map(~ as.numeric(.x$data)) %>%
     set_names(map_chr(result$data$series, "name")) %>%
     as_tibble()
   res$platform <- pluck(result, "data", "categories") %>%
@@ -149,7 +149,7 @@ get_stream_type_by_top_10_users <- function(url = NULL, apikey = NULL,
   }
 
   res <- pluck(result, "data", "series") %>%
-    map(~as.numeric(.x$data)) %>%
+    map(~ as.numeric(.x$data)) %>%
     set_names(map_chr(result$data$series, function(x) {
       sub(" ", "_", x$name)
     })) %>%
@@ -205,7 +205,7 @@ get_stream_type_by_top_10_platforms <- function(url = NULL, apikey = NULL,
   }
 
   res <- pluck(result, "data", "series") %>%
-    map(~as.numeric(.x$data)) %>%
+    map(~ as.numeric(.x$data)) %>%
     set_names(map_chr(result$data$series, function(x) {
       sub(" ", "_", x$name)
     })) %>%

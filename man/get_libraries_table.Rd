@@ -4,8 +4,15 @@
 \alias{get_libraries_table}
 \title{Get All the Libraries-Table}
 \usage{
-get_libraries_table(url = NULL, apikey = NULL, order_column = NULL,
-  order_dir = "desc", start = 0, length = 25, search = NULL)
+get_libraries_table(
+  url = NULL,
+  apikey = NULL,
+  order_column = NULL,
+  order_dir = "desc",
+  start = 0,
+  length = 25,
+  search = NULL
+)
 }
 \arguments{
 \item{url}{Server URL.}
