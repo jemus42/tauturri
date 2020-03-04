@@ -13,7 +13,6 @@ status](https://www.r-pkg.org/badges/version/tauturri)](https://cran.r-project.o
 downloads](https://cranlogs.r-pkg.org/badges/grand-total/tauturri)](https://cran.r-project.org/package=tauturri)
 [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 
-This is `tauturri` version `0.3.1` (`semver`(ish)).  
 The goal of `tauturri` is to get data out of
 [**Tautulli**](https://github.com/Tautulli/Tautulli) (formerly
 **PlexPy**) as simply as possible.
@@ -67,15 +66,14 @@ names(info)
 #> [4] "name"               "machine_identifier"
 info[c("name", "version")]
 #> # A tibble: 1 x 2
-#>   name  version             
-#>   <chr> <chr>               
-#> 1 PPTH  1.15.1.707-d893009fb
+#>   name  version              
+#>   <chr> <chr>                
+#> 1 PPTH  1.18.2.2041-3d469cb32
 ```
 
 ## `get_plays_by` \[date|dayofweek|…\]
 
-All plays in the current year, per
-day:
+All plays in the current year, per day:
 
 ``` r
 plays <- get_plays_by_date(time_range = lubridate::yday(lubridate::now()))
@@ -95,8 +93,7 @@ plays %>%
 
 <img src="man/figures/README-get_plays_by_date-1.png" width="100%" />
 
-… per day of
-week:
+… per day of week:
 
 ``` r
 plays <- get_plays_by_dayofweek(time_range = lubridate::yday(lubridate::now()))
@@ -116,8 +113,7 @@ plays %>%
 
 <img src="man/figures/README-get_plays_by_dayofweek-1.png" width="100%" />
 
-… and per hour of
-day:
+… and per hour of day:
 
 ``` r
 plays <- get_plays_by_hourofday(time_range = lubridate::yday(lubridate::now()))
