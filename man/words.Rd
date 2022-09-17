@@ -4,7 +4,9 @@
 \name{words}
 \alias{words}
 \title{Common English Words}
-\format{A \code{character} of length 283 containing words.}
+\format{
+A \code{character} of length 283 containing words.
+}
 \source{
 \url{https://gist.github.com/deekayen/4148741/01c6252ccc5b5fb307c1bb899c95989a8a284616/}
 }

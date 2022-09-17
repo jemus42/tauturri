@@ -3,9 +3,7 @@ Package: tauturri
 Title: Get Data Out of 'Tautulli' (Formerly 'PlexPy')
 Version: 0.3.1
 Authors@R: 
-    person(given = "Lukas Burk",
-           role = c("aut", "cre"),
-           email = "lukas@quantenbrot.de")
+    person("Lukas Burk", , , "lukas@quantenbrot.de", role = c("aut", "cre"))
 Description: 'Tautulli' (<http://tautulli.com>) is a monitoring
     application for 'Plex' Media Servers (<https://www.plex.tv>) which
     collects a lot of data about media items and server usage such as play
@@ -32,4 +30,4 @@ Suggests:
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.0.2
+RoxygenNote: 7.2.1

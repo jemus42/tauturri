@@ -62,31 +62,35 @@ info <- get_servers_info()
 
 # Probably shouldn't show URL etc.
 names(info)
-#> [1] "port"               "host"               "version"           
-#> [4] "name"               "machine_identifier"
+#> [1] "name"               "machine_identifier" "host"              
+#> [4] "port"               "version"
 info[c("name", "version")]
-#> # A tibble: 1 x 2
+#> # A tibble: 1 × 2
 #>   name  version              
 #>   <chr> <chr>                
-#> 1 PPTH  1.18.2.2041-3d469cb32
+#> 1 PPTH  1.28.2.6151-914ddd2b3
 ```
 
-## `get_plays_by` \[date|dayofweek|…\]
+## `get_plays_by` \[date\|dayofweek\|…\]
 
 All plays in the current year, per day:
 
 ``` r
 plays <- get_plays_by_date(time_range = lubridate::yday(lubridate::now()))
 
-plays %>% 
+plays %>%
   gather(category, playcount, TV, Movies, Music) %>%
   ggplot(aes(x = date, y = playcount, fill = category)) +
   geom_col() +
-  scale_fill_brewer(palette = "Set1", 
-                    breaks = c("Movies", "TV", "Music")) +
-  labs(title = "Plex Plays by Date",
-       subtitle = "Showing Movie, TV and Music Categories",
-       x = "Date", y = "Plays", fill = "Category") +
+  scale_fill_brewer(
+    palette = "Set1",
+    breaks = c("Movies", "TV", "Music")
+  ) +
+  labs(
+    title = "Plex Plays by Date",
+    subtitle = "Showing Movie, TV and Music Categories",
+    x = "Date", y = "Plays", fill = "Category"
+  ) +
   theme_minimal() +
   theme(legend.position = "top")
 ```
@@ -98,15 +102,19 @@ plays %>%
 ``` r
 plays <- get_plays_by_dayofweek(time_range = lubridate::yday(lubridate::now()))
 
-plays %>% 
+plays %>%
   gather(category, playcount, TV, Movies, Music) %>%
   ggplot(aes(x = day, y = playcount, fill = category)) +
   geom_col() +
-  scale_fill_brewer(palette = "Set1", 
-                    breaks = c("Movies", "TV", "Music")) +
-  labs(title = "Plex Plays by Day of Week",
-       subtitle = "Showing Movie, TV and Music Categories",
-       x = "Day", y = "Plays", fill = "Category") +
+  scale_fill_brewer(
+    palette = "Set1",
+    breaks = c("Movies", "TV", "Music")
+  ) +
+  labs(
+    title = "Plex Plays by Day of Week",
+    subtitle = "Showing Movie, TV and Music Categories",
+    x = "Day", y = "Plays", fill = "Category"
+  ) +
   theme_minimal() +
   theme(legend.position = "top")
 ```
@@ -118,15 +126,19 @@ plays %>%
 ``` r
 plays <- get_plays_by_hourofday(time_range = lubridate::yday(lubridate::now()))
 
-plays %>% 
+plays %>%
   gather(category, playcount, TV, Movies, Music) %>%
   ggplot(aes(x = hms::hms(hours = hour), y = playcount, fill = category)) +
   geom_col() +
-  scale_fill_brewer(palette = "Set1", 
-                    breaks = c("Movies", "TV", "Music")) +
-  labs(title = "Plex Plays by Hour of Day",
-       subtitle = "Showing Movie, TV and Music Categories",
-       x = "Hour", y = "Plays", fill = "Category") +
+  scale_fill_brewer(
+    palette = "Set1",
+    breaks = c("Movies", "TV", "Music")
+  ) +
+  labs(
+    title = "Plex Plays by Hour of Day",
+    subtitle = "Showing Movie, TV and Music Categories",
+    x = "Hour", y = "Plays", fill = "Category"
+  ) +
   theme_minimal() +
   theme(legend.position = "top")
 ```
@@ -139,17 +151,21 @@ plays %>%
 api_functions <- names(api_request(cmd = "docs")$data)
 api_functions <- api_functions[grepl("^get_", api_functions)]
 sort(api_functions[!(api_functions %in% getNamespaceExports("tauturri"))])
-#>  [1] "get_apikey"              "get_date_formats"       
-#>  [3] "get_geoip_lookup"        "get_logs"               
-#>  [5] "get_metadata"            "get_new_rating_keys"    
-#>  [7] "get_newsletter_config"   "get_newsletter_log"     
-#>  [9] "get_newsletters"         "get_notification_log"   
-#> [11] "get_notifier_config"     "get_notifier_parameters"
-#> [13] "get_notifiers"           "get_old_rating_keys"    
-#> [15] "get_plex_log"            "get_pms_token"          
-#> [17] "get_server_pref"         "get_settings"           
-#> [19] "get_stream_data"         "get_synced_items"       
-#> [21] "get_user"                "get_whois_lookup"
+#>  [1] "get_apikey"                "get_children_metadata"    
+#>  [3] "get_collections_table"     "get_date_formats"         
+#>  [5] "get_export_fields"         "get_exports_table"        
+#>  [7] "get_geoip_lookup"          "get_item_user_stats"      
+#>  [9] "get_item_watch_time_stats" "get_logs"                 
+#> [11] "get_metadata"              "get_new_rating_keys"      
+#> [13] "get_newsletter_config"     "get_newsletter_log"       
+#> [15] "get_newsletters"           "get_notification_log"     
+#> [17] "get_notifier_config"       "get_notifier_parameters"  
+#> [19] "get_notifiers"             "get_old_rating_keys"      
+#> [21] "get_playlists_table"       "get_plex_log"             
+#> [23] "get_server_info"           "get_server_pref"          
+#> [25] "get_settings"              "get_stream_data"          
+#> [27] "get_synced_items"          "get_tautulli_info"        
+#> [29] "get_user"                  "get_whois_lookup"
 ```
 
 ## CoC
