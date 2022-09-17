@@ -3,8 +3,9 @@
 
 # tauturri
 
-[![Travis build
-status](https://travis-ci.org/jemus42/tauturri.svg?branch=master)](https://travis-ci.org/jemus42/tauturri)
+<!-- badges: start -->
+
+[![R-CMD-check](https://github.com/jemus42/tauturri/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jemus42/tauturri/actions/workflows/R-CMD-check.yaml)
 [![Coverage
 status](https://codecov.io/gh/jemus42/tauturri/branch/master/graph/badge.svg)](https://codecov.io/github/jemus42/tauturri?branch=master)
 [![CRAN
@@ -12,6 +13,7 @@ status](https://www.r-pkg.org/badges/version/tauturri)](https://cran.r-project.o
 [![CRAN
 downloads](https://cranlogs.r-pkg.org/badges/grand-total/tauturri)](https://cran.r-project.org/package=tauturri)
 [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
+<!-- badges: end -->
 
 The goal of `tauturri` is to get data out of
 [**Tautulli**](https://github.com/Tautulli/Tautulli) (formerly
@@ -78,8 +80,8 @@ All plays in the current year, per day:
 ``` r
 plays <- get_plays_by_date(time_range = lubridate::yday(lubridate::now()))
 
-plays %>%
-  gather(category, playcount, TV, Movies, Music) %>%
+plays |>
+  gather(category, playcount, TV, Movies, Music) |>
   ggplot(aes(x = date, y = playcount, fill = category)) +
   geom_col() +
   scale_fill_brewer(
@@ -102,8 +104,8 @@ plays %>%
 ``` r
 plays <- get_plays_by_dayofweek(time_range = lubridate::yday(lubridate::now()))
 
-plays %>%
-  gather(category, playcount, TV, Movies, Music) %>%
+plays |>
+  gather(category, playcount, TV, Movies, Music) |>
   ggplot(aes(x = day, y = playcount, fill = category)) +
   geom_col() +
   scale_fill_brewer(
@@ -126,8 +128,8 @@ plays %>%
 ``` r
 plays <- get_plays_by_hourofday(time_range = lubridate::yday(lubridate::now()))
 
-plays %>%
-  gather(category, playcount, TV, Movies, Music) %>%
+plays |>
+  gather(category, playcount, TV, Movies, Music) |>
   ggplot(aes(x = hms::hms(hours = hour), y = playcount, fill = category)) +
   geom_col() +
   scale_fill_brewer(
