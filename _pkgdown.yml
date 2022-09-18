@@ -1,34 +1,34 @@
+url: https://jemus42.github.io/tauturri/
+template:
+  bootstrap: 5
 reference:
-  - title: This Package
-    contents:
-    - tauturri
-  - title: Basic API Interaction
-    desc: The, well, basics.
-    contents:
-    - api_request
-    - get_activity
-    - search_server
-  - title: Server Data
-    desc: Know your servers.
-    contents:
-    - starts_with("get_server")
-  - title: Library and Media Data
-    desc: Info about media items
-    contents:
-    - starts_with("get_libra")
-    - get_recently_added
-  - title: Playback Data
-    desc: Playback history data
-    contents:
-    - get_history
-    - get_home_stats
-    - starts_with("get_plays")
-    - contains("top_10")
-  - title: User specific data
-    desc: Data about people's usage
-    contents:
-    - starts_with("get_user")
-  - title: Data
-    desc: Just, well, data.
-    contents:
-    - words
+- title: This Package
+  contents: tauturri
+- title: Basic API Interaction
+  desc: The, well, basics.
+  contents:
+  - api_request
+  - get_activity
+  - search_server
+- title: Server Data
+  desc: Know your servers.
+  contents: starts_with("get_server")
+- title: Library and Media Data
+  desc: Info about media items
+  contents:
+  - starts_with("get_libra")
+  - get_recently_added
+- title: Playback Data
+  desc: Playback history data
+  contents:
+  - get_history
+  - get_home_stats
+  - starts_with("get_plays")
+  - contains("top_10")
+- title: User specific data
+  desc: Data about people's usage
+  contents: starts_with("get_user")
+- title: Data
+  desc: Just, well, data.
+  contents: words
+
