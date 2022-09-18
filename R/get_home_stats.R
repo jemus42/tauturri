@@ -22,18 +22,9 @@
 get_home_stats <- function(url = NULL, apikey = NULL,
                            grouping = 0, time_range = 30, stats_type = 0,
                            stats_count = 5) {
-  if (is.null(url)) {
-    url <- Sys.getenv("tautulli_url")
-  }
-  if (is.null(apikey)) {
-    apikey <- Sys.getenv("tautulli_apikey")
-  }
-  if (apikey == "" | url == "") {
-    stop("No URL or API-Key set, please see setup instructions")
-  }
 
   result <- api_request(
-    url, apikey,
+    url = url, apikey = apikey,
     cmd = "get_home_stats",
     grouping = grouping, time_range = time_range,
     stats_type = stats_type, stats_count = stats_count

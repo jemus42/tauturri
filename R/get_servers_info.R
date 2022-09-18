@@ -13,15 +13,6 @@
 #' get_servers_info()
 #' }
 get_servers_info <- function(url = NULL, apikey = NULL) {
-  if (is.null(url)) {
-    url <- Sys.getenv("tautulli_url")
-  }
-  if (is.null(apikey)) {
-    apikey <- Sys.getenv("tautulli_apikey")
-  }
-  if (apikey == "" | url == "") {
-    stop("No URL or API-Key set, please see setup instructions")
-  }
 
   result <- api_request(url, apikey, cmd = "get_servers_info")
   map_df(result$data, as_tibble)
@@ -41,15 +32,6 @@ get_servers_info <- function(url = NULL, apikey = NULL) {
 #' get_server_identity()
 #' }
 get_server_identity <- function(url = NULL, apikey = NULL) {
-  if (is.null(url)) {
-    url <- Sys.getenv("tautulli_url")
-  }
-  if (is.null(apikey)) {
-    apikey <- Sys.getenv("tautulli_apikey")
-  }
-  if (apikey == "" | url == "") {
-    stop("No URL or API-Key set, please see setup instructions")
-  }
 
   result <- api_request(url, apikey, cmd = "get_server_identity")
   as_tibble(result$data)
@@ -71,15 +53,6 @@ get_server_identity <- function(url = NULL, apikey = NULL) {
 #' get_server_list()
 #' }
 get_server_list <- function(url = NULL, apikey = NULL) {
-  if (is.null(url)) {
-    url <- Sys.getenv("tautulli_url")
-  }
-  if (is.null(apikey)) {
-    apikey <- Sys.getenv("tautulli_apikey")
-  }
-  if (apikey == "" | url == "") {
-    stop("No URL or API-Key set, please see setup instructions")
-  }
 
   result <- api_request(url, apikey, cmd = "get_server_list")
   map_df(result$data, as_tibble)
@@ -98,15 +71,6 @@ get_server_list <- function(url = NULL, apikey = NULL) {
 #' get_server_friendly_name()
 #' }
 get_server_friendly_name <- function(url = NULL, apikey = NULL) {
-  if (is.null(url)) {
-    url <- Sys.getenv("tautulli_url")
-  }
-  if (is.null(apikey)) {
-    apikey <- Sys.getenv("tautulli_apikey")
-  }
-  if (apikey == "" | url == "") {
-    stop("No URL or API-Key set, please see setup instructions")
-  }
 
   result <- api_request(url, apikey, cmd = "get_server_friendly_name")
   result$data
@@ -129,15 +93,6 @@ get_server_friendly_name <- function(url = NULL, apikey = NULL) {
 #' }
 get_server_id <- function(url = NULL, apikey = NULL, hostname, port = 32400,
                           remote = 0, ssl = 0) {
-  if (is.null(url)) {
-    url <- Sys.getenv("tautulli_url")
-  }
-  if (is.null(apikey)) {
-    apikey <- Sys.getenv("tautulli_apikey")
-  }
-  if (apikey == "" | url == "") {
-    stop("No URL or API-Key set, please see setup instructions")
-  }
 
   result <- api_request(
     url, apikey,

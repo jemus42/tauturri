@@ -21,15 +21,6 @@
 #' }
 get_plays_by_date <- function(url = NULL, apikey = NULL,
                               time_range = 30, y_axis = "plays", user_id = NULL) {
-  if (is.null(url)) {
-    url <- Sys.getenv("tautulli_url")
-  }
-  if (is.null(apikey)) {
-    apikey <- Sys.getenv("tautulli_apikey")
-  }
-  if (apikey == "" | url == "") {
-    stop("No URL or API-Key set, please see setup instructions")
-  }
 
   result <- api_request(
     url, apikey,
@@ -75,15 +66,6 @@ get_plays_by_date <- function(url = NULL, apikey = NULL,
 #' }
 get_plays_by_hourofday <- function(url = NULL, apikey = NULL,
                                    time_range = 30, y_axis = "plays", user_id = NULL) {
-  if (is.null(url)) {
-    url <- Sys.getenv("tautulli_url")
-  }
-  if (is.null(apikey)) {
-    apikey <- Sys.getenv("tautulli_apikey")
-  }
-  if (apikey == "" | url == "") {
-    stop("No URL or API-Key set, please see setup instructions")
-  }
 
   result <- api_request(
     url, apikey,
@@ -129,15 +111,6 @@ get_plays_by_hourofday <- function(url = NULL, apikey = NULL,
 #' }
 get_plays_by_dayofweek <- function(url = NULL, apikey = NULL,
                                    time_range = 30, y_axis = "plays", user_id = NULL) {
-  if (is.null(url)) {
-    url <- Sys.getenv("tautulli_url")
-  }
-  if (is.null(apikey)) {
-    apikey <- Sys.getenv("tautulli_apikey")
-  }
-  if (apikey == "" | url == "") {
-    stop("No URL or API-Key set, please see setup instructions")
-  }
 
   result <- api_request(
     url, apikey,
@@ -183,15 +156,6 @@ get_plays_by_dayofweek <- function(url = NULL, apikey = NULL,
 #' }
 get_plays_per_month <- function(url = NULL, apikey = NULL,
                                 time_range = 30, y_axis = "plays", user_id = NULL) {
-  if (is.null(url)) {
-    url <- Sys.getenv("tautulli_url")
-  }
-  if (is.null(apikey)) {
-    apikey <- Sys.getenv("tautulli_apikey")
-  }
-  if (apikey == "" | url == "") {
-    stop("No URL or API-Key set, please see setup instructions")
-  }
 
   result <- api_request(
     url, apikey,
@@ -237,15 +201,6 @@ get_plays_per_month <- function(url = NULL, apikey = NULL,
 #' }
 get_plays_by_source_resolution <- function(url = NULL, apikey = NULL,
                                            time_range = 30, y_axis = "plays", user_id = NULL) {
-  if (is.null(url)) {
-    url <- Sys.getenv("tautulli_url")
-  }
-  if (is.null(apikey)) {
-    apikey <- Sys.getenv("tautulli_apikey")
-  }
-  if (apikey == "" | url == "") {
-    stop("No URL or API-Key set, please see setup instructions")
-  }
 
   result <- api_request(
     url, apikey,
@@ -292,15 +247,6 @@ get_plays_by_source_resolution <- function(url = NULL, apikey = NULL,
 #' }
 get_plays_by_stream_resolution <- function(url = NULL, apikey = NULL,
                                            time_range = 30, y_axis = "plays", user_id = NULL) {
-  if (is.null(url)) {
-    url <- Sys.getenv("tautulli_url")
-  }
-  if (is.null(apikey)) {
-    apikey <- Sys.getenv("tautulli_apikey")
-  }
-  if (apikey == "" | url == "") {
-    stop("No URL or API-Key set, please see setup instructions")
-  }
 
   result <- api_request(
     url, apikey,
@@ -347,15 +293,6 @@ get_plays_by_stream_resolution <- function(url = NULL, apikey = NULL,
 #' }
 get_plays_by_stream_type <- function(url = NULL, apikey = NULL,
                                      time_range = 30, y_axis = "plays", user_id = NULL) {
-  if (is.null(url)) {
-    url <- Sys.getenv("tautulli_url")
-  }
-  if (is.null(apikey)) {
-    apikey <- Sys.getenv("tautulli_apikey")
-  }
-  if (apikey == "" | url == "") {
-    stop("No URL or API-Key set, please see setup instructions")
-  }
 
   result <- api_request(
     url, apikey,

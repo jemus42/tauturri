@@ -10,15 +10,6 @@
 #' update_check()
 #' }
 update_check <- function(url = NULL, apikey = NULL) {
-  if (is.null(url)) {
-    url <- Sys.getenv("tautulli_url")
-  }
-  if (is.null(apikey)) {
-    apikey <- Sys.getenv("tautulli_apikey")
-  }
-  if (apikey == "" | url == "") {
-    stop("No URL or API-Key set, please see setup instructions")
-  }
 
   result <- api_request(
     url, apikey,
@@ -30,11 +21,7 @@ update_check <- function(url = NULL, apikey = NULL) {
 
   message(result$message)
 
-  if (result$message == "Tautulli is up to date") {
-    invisible(FALSE)
-  } else {
-    invisible(TRUE)
-  }
+  invisible(result$message == "Tautulli is up to date")
 }
 
 #' Apply Tautulli Updates
@@ -49,15 +36,6 @@ update_check <- function(url = NULL, apikey = NULL) {
 #' update_tautulli()
 #' }
 update_tautulli <- function(url = NULL, apikey = NULL) {
-  if (is.null(url)) {
-    url <- Sys.getenv("tautulli_url")
-  }
-  if (is.null(apikey)) {
-    apikey <- Sys.getenv("tautulli_apikey")
-  }
-  if (apikey == "" | url == "") {
-    stop("No URL or API-Key set, please see setup instructions")
-  }
 
   result <- api_request(
     url, apikey,
@@ -69,9 +47,5 @@ update_tautulli <- function(url = NULL, apikey = NULL) {
 
   message(result$message)
 
-  if (result$message == "Updating Tautulli") {
-    invisible(TRUE)
-  } else {
-    invisible(FALSE)
-  }
+  invisible(result$message == "Updating Tautulli")
 }

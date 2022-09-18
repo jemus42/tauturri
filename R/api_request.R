@@ -19,10 +19,10 @@
 #' }
 api_request <- function(url = NULL, apikey = NULL, cmd = "get_servers_info", ...) {
   if (is.null(url)) {
-    url <- Sys.getenv("tautulli_url")
+    url <- Sys.getenv("tautulli_url", unset = "")
   }
   if (is.null(apikey)) {
-    apikey <- Sys.getenv("tautulli_apikey")
+    apikey <- Sys.getenv("tautulli_apikey", unset = "")
   }
 
   if (apikey == "" | url == "") {
@@ -49,18 +49,9 @@ api_request <- function(url = NULL, apikey = NULL, cmd = "get_servers_info", ...
 #' arnold()
 #' }
 arnold <- function(url = NULL, apikey = NULL) {
-  if (is.null(url)) {
-    url <- Sys.getenv("tautulli_url")
-  }
-  if (is.null(apikey)) {
-    apikey <- Sys.getenv("tautulli_apikey")
-  }
-  if (apikey == "" | url == "") {
-    stop("No URL or API-Key set, please see setup instructions")
-  }
 
   result <- api_request(
-    url, apikey,
+    url = url, apikey = apikey,
     cmd = "arnold"
   )
   if (result$result == "error") {

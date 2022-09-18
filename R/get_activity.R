@@ -14,17 +14,8 @@
 #' get_activity()
 #' }
 get_activity <- function(url = NULL, apikey = NULL) {
-  if (is.null(url)) {
-    url <- Sys.getenv("tautulli_url")
-  }
-  if (is.null(apikey)) {
-    apikey <- Sys.getenv("tautulli_apikey")
-  }
-  if (apikey == "" | url == "") {
-    stop("No URL or API-Key set, please see setup instructions")
-  }
 
-  result <- api_request(url, apikey, cmd = "get_activity")
+  result <- api_request(url = url, apikey = apikey, cmd = "get_activity")
 
   if (result$result != "success") {
     warning("Error in 'get_activity': ", result$result)

@@ -13,15 +13,6 @@
 #' get_library_names()
 #' }
 get_library_names <- function(url = NULL, apikey = NULL) {
-  if (is.null(url)) {
-    url <- Sys.getenv("tautulli_url")
-  }
-  if (is.null(apikey)) {
-    apikey <- Sys.getenv("tautulli_apikey")
-  }
-  if (apikey == "" | url == "") {
-    stop("No URL or API-Key set, please see setup instructions")
-  }
 
   result <- api_request(url = url, apikey = apikey, cmd = "get_library_names")
 
@@ -66,15 +57,6 @@ get_library_media_info <- function(url = NULL, apikey = NULL,
                                    section_type = "movie", order_column = "added_at",
                                    order_dir = "desc", start = 0, length = 25,
                                    search = NULL) {
-  if (is.null(url)) {
-    url <- Sys.getenv("tautulli_url")
-  }
-  if (is.null(apikey)) {
-    apikey <- Sys.getenv("tautulli_apikey")
-  }
-  if (apikey == "" | url == "") {
-    stop("No URL or API-Key set, please see setup instructions")
-  }
 
   if (is.null(section_id) & is.null(rating_key)) {
     stop("Either 'section_id' OR 'rating_key' must be supplied")
@@ -127,15 +109,6 @@ get_library_media_info <- function(url = NULL, apikey = NULL,
 #' }
 get_library_watch_time_stats <- function(url = NULL, apikey = NULL,
                                          section_id = NULL) {
-  if (is.null(url)) {
-    url <- Sys.getenv("tautulli_url")
-  }
-  if (is.null(apikey)) {
-    apikey <- Sys.getenv("tautulli_apikey")
-  }
-  if (apikey == "" | url == "") {
-    stop("No URL or API-Key set, please see setup instructions")
-  }
 
   result <- api_request(
     url = url, apikey = apikey, cmd = "get_library_watch_time_stats",
@@ -164,15 +137,6 @@ get_library_watch_time_stats <- function(url = NULL, apikey = NULL,
 #' get_library(section_id = 1)
 #' }
 get_library <- function(url = NULL, apikey = NULL, section_id) {
-  if (is.null(url)) {
-    url <- Sys.getenv("tautulli_url")
-  }
-  if (is.null(apikey)) {
-    apikey <- Sys.getenv("tautulli_apikey")
-  }
-  if (apikey == "" | url == "") {
-    stop("No URL or API-Key set, please see setup instructions")
-  }
 
   result <- api_request(
     url = url, apikey = apikey, cmd = "get_library",
@@ -201,15 +165,6 @@ get_library <- function(url = NULL, apikey = NULL, section_id) {
 #' get_libraries()
 #' }
 get_libraries <- function(url = NULL, apikey = NULL) {
-  if (is.null(url)) {
-    url <- Sys.getenv("tautulli_url")
-  }
-  if (is.null(apikey)) {
-    apikey <- Sys.getenv("tautulli_apikey")
-  }
-  if (apikey == "" | url == "") {
-    stop("No URL or API-Key set, please see setup instructions")
-  }
 
   result <- api_request(url = url, apikey = apikey, cmd = "get_libraries")
 
@@ -236,15 +191,6 @@ get_libraries <- function(url = NULL, apikey = NULL) {
 get_libraries_table <- function(url = NULL, apikey = NULL,
                                 order_column = NULL, order_dir = "desc",
                                 start = 0, length = 25, search = NULL) {
-  if (is.null(url)) {
-    url <- Sys.getenv("tautulli_url")
-  }
-  if (is.null(apikey)) {
-    apikey <- Sys.getenv("tautulli_apikey")
-  }
-  if (apikey == "" | url == "") {
-    stop("No URL or API-Key set, please see setup instructions")
-  }
 
   result <- api_request(
     url = url, apikey = apikey, cmd = "get_libraries_table",
@@ -289,15 +235,6 @@ get_libraries_table <- function(url = NULL, apikey = NULL,
 #' get_library_user_stats(section_id = 1)
 #' }
 get_library_user_stats <- function(url = NULL, apikey = NULL, section_id) {
-  if (is.null(url)) {
-    url <- Sys.getenv("tautulli_url")
-  }
-  if (is.null(apikey)) {
-    apikey <- Sys.getenv("tautulli_apikey")
-  }
-  if (apikey == "" | url == "") {
-    stop("No URL or API-Key set, please see setup instructions")
-  }
 
   result <- api_request(
     url = url, apikey = apikey, cmd = "get_library_user_stats",

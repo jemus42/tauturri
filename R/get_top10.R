@@ -19,18 +19,9 @@
 #' }
 get_plays_by_top_10_users <- function(url = NULL, apikey = NULL,
                                       time_range = 30, y_axis = "plays", user_id = NULL) {
-  if (is.null(url)) {
-    url <- Sys.getenv("tautulli_url")
-  }
-  if (is.null(apikey)) {
-    apikey <- Sys.getenv("tautulli_apikey")
-  }
-  if (apikey == "" | url == "") {
-    stop("No URL or API-Key set, please see setup instructions")
-  }
 
   result <- api_request(
-    url, apikey,
+    url = url, apikey = apikey,
     cmd = "get_plays_by_top_10_users",
     time_range = time_range, y_axis = y_axis, user_id = user_id
   )
@@ -73,18 +64,9 @@ get_plays_by_top_10_users <- function(url = NULL, apikey = NULL,
 #' }
 get_plays_by_top_10_platforms <- function(url = NULL, apikey = NULL,
                                           time_range = 30, y_axis = "plays", user_id = NULL) {
-  if (is.null(url)) {
-    url <- Sys.getenv("tautulli_url")
-  }
-  if (is.null(apikey)) {
-    apikey <- Sys.getenv("tautulli_apikey")
-  }
-  if (apikey == "" | url == "") {
-    stop("No URL or API-Key set, please see setup instructions")
-  }
 
   result <- api_request(
-    url, apikey,
+    url = url, apikey = apikey,
     cmd = "get_plays_by_top_10_platforms",
     time_range = time_range, y_axis = y_axis, user_id = user_id
   )
@@ -127,18 +109,9 @@ get_plays_by_top_10_platforms <- function(url = NULL, apikey = NULL,
 #' }
 get_stream_type_by_top_10_users <- function(url = NULL, apikey = NULL,
                                             time_range = 30, y_axis = "plays", user_id = NULL) {
-  if (is.null(url)) {
-    url <- Sys.getenv("tautulli_url")
-  }
-  if (is.null(apikey)) {
-    apikey <- Sys.getenv("tautulli_apikey")
-  }
-  if (apikey == "" | url == "") {
-    stop("No URL or API-Key set, please see setup instructions")
-  }
 
   result <- api_request(
-    url, apikey,
+    url = url, apikey = apikey,
     cmd = "get_stream_type_by_top_10_users",
     time_range = time_range, y_axis = y_axis, user_id = user_id
   )
@@ -183,18 +156,9 @@ get_stream_type_by_top_10_users <- function(url = NULL, apikey = NULL,
 #' }
 get_stream_type_by_top_10_platforms <- function(url = NULL, apikey = NULL,
                                                 time_range = 30, y_axis = "plays", user_id = NULL) {
-  if (is.null(url)) {
-    url <- Sys.getenv("tautulli_url")
-  }
-  if (is.null(apikey)) {
-    apikey <- Sys.getenv("tautulli_apikey")
-  }
-  if (apikey == "" | url == "") {
-    stop("No URL or API-Key set, please see setup instructions")
-  }
 
   result <- api_request(
-    url, apikey,
+    url = url, apikey = apikey,
     cmd = "get_stream_type_by_top_10_platforms",
     time_range = time_range, y_axis = y_axis, user_id = user_id
   )

@@ -9,15 +9,6 @@
 #' get_users()
 #' }
 get_users <- function(url = NULL, apikey = NULL) {
-  if (is.null(url)) {
-    url <- Sys.getenv("tautulli_url")
-  }
-  if (is.null(apikey)) {
-    apikey <- Sys.getenv("tautulli_apikey")
-  }
-  if (apikey == "" | url == "") {
-    stop("No URL or API-Key set, please see setup instructions")
-  }
 
   result <- api_request(url, apikey, cmd = "get_users")
 
@@ -55,15 +46,6 @@ get_users <- function(url = NULL, apikey = NULL) {
 #' get_user_names()
 #' }
 get_user_names <- function(url = NULL, apikey = NULL, add_pseudonym = FALSE) {
-  if (is.null(url)) {
-    url <- Sys.getenv("tautulli_url")
-  }
-  if (is.null(apikey)) {
-    apikey <- Sys.getenv("tautulli_apikey")
-  }
-  if (apikey == "" | url == "") {
-    stop("No URL or API-Key set, please see setup instructions")
-  }
 
   result <- api_request(url, apikey, cmd = "get_user_names")
 
@@ -96,15 +78,6 @@ get_user_names <- function(url = NULL, apikey = NULL, add_pseudonym = FALSE) {
 #' get_user_player_stats(user_id = 1352909)
 #' }
 get_user_player_stats <- function(url = NULL, apikey = NULL, user_id) {
-  if (is.null(url)) {
-    url <- Sys.getenv("tautulli_url")
-  }
-  if (is.null(apikey)) {
-    apikey <- Sys.getenv("tautulli_apikey")
-  }
-  if (apikey == "" | url == "") {
-    stop("No URL or API-Key set, please see setup instructions")
-  }
 
   result <- api_request(url, apikey, cmd = "get_user_player_stats", user_id = user_id)
 
@@ -133,15 +106,6 @@ get_user_player_stats <- function(url = NULL, apikey = NULL, user_id) {
 #' get_user_watch_time_stats(user_id = 1352909)
 #' }
 get_user_watch_time_stats <- function(url = NULL, apikey = NULL, user_id) {
-  if (is.null(url)) {
-    url <- Sys.getenv("tautulli_url")
-  }
-  if (is.null(apikey)) {
-    apikey <- Sys.getenv("tautulli_apikey")
-  }
-  if (apikey == "" | url == "") {
-    stop("No URL or API-Key set, please see setup instructions")
-  }
 
   result <- api_request(url, apikey, cmd = "get_user_watch_time_stats", user_id = user_id)
 
@@ -178,18 +142,9 @@ get_user_watch_time_stats <- function(url = NULL, apikey = NULL, user_id) {
 #' }
 get_users_table <- function(url = NULL, apikey = NULL, order_column = NULL,
                             order_dir = "desc", start = 0, length = 50, search = NULL) {
-  if (is.null(url)) {
-    url <- Sys.getenv("tautulli_url")
-  }
-  if (is.null(apikey)) {
-    apikey <- Sys.getenv("tautulli_apikey")
-  }
-  if (apikey == "" | url == "") {
-    stop("No URL or API-Key set, please see setup instructions")
-  }
 
   result <- api_request(
-    url, apikey,
+    url = url, apikey = apikey,
     cmd = "get_users_table",
     order_dir = order_dir, order_column = order_column,
     start = start, length = length, search = search
@@ -230,18 +185,9 @@ get_users_table <- function(url = NULL, apikey = NULL, order_column = NULL,
 #' }
 get_user_ips <- function(url = NULL, apikey = NULL, user_id, order_column = NULL,
                          order_dir = "desc", start = 0, length = 50, search = NULL) {
-  if (is.null(url)) {
-    url <- Sys.getenv("tautulli_url")
-  }
-  if (is.null(apikey)) {
-    apikey <- Sys.getenv("tautulli_apikey")
-  }
-  if (apikey == "" | url == "") {
-    stop("No URL or API-Key set, please see setup instructions")
-  }
 
   result <- api_request(
-    url, apikey,
+    url = url, apikey = apikey,
     cmd = "get_user_ips", user_id = user_id,
     order_dir = order_dir, order_column = order_column,
     start = start, length = length, search = search
@@ -278,18 +224,9 @@ get_user_ips <- function(url = NULL, apikey = NULL, user_id, order_column = NULL
 #' }
 get_user_logins <- function(url = NULL, apikey = NULL, user_id, order_column = NULL,
                             order_dir = "desc", start = 0, length = 50, search = NULL) {
-  if (is.null(url)) {
-    url <- Sys.getenv("tautulli_url")
-  }
-  if (is.null(apikey)) {
-    apikey <- Sys.getenv("tautulli_apikey")
-  }
-  if (apikey == "" | url == "") {
-    stop("No URL or API-Key set, please see setup instructions")
-  }
 
   result <- api_request(
-    url, apikey,
+    url = url, apikey = apikey,
     cmd = "get_user_logins", user_id = user_id,
     order_dir = order_dir, order_column = order_column,
     start = start, length = length, search = search

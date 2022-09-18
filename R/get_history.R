@@ -37,18 +37,9 @@ get_history <- function(url = NULL, apikey = NULL,
                         transcode_decision = NULL, order_column = NULL,
                         order_dir = "desc", start = 0, length = 25,
                         search = NULL) {
-  if (is.null(url)) {
-    url <- Sys.getenv("tautulli_url")
-  }
-  if (is.null(apikey)) {
-    apikey <- Sys.getenv("tautulli_apikey")
-  }
-  if (apikey == "" | url == "") {
-    stop("No URL or API-Key set, please see setup instructions")
-  }
 
   result <- api_request(
-    url, apikey,
+    url = url, apikey = apikey,
     cmd = "get_history",
     grouping = grouping, user = user, user_id = user_id,
     rating_key = rating_key, parent_rating_key = parent_rating_key,
