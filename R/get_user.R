@@ -44,6 +44,8 @@ get_users <- function(url = NULL, apikey = NULL) {
 #' @examples
 #' \dontrun{
 #' get_user_names()
+#'
+#' get_user_names(add_pseudonym = TRUE)
 #' }
 get_user_names <- function(url = NULL, apikey = NULL, add_pseudonym = FALSE) {
 
@@ -54,14 +56,14 @@ get_user_names <- function(url = NULL, apikey = NULL, add_pseudonym = FALSE) {
     return(tibble())
   }
 
-  result <- map_df(result$data, flatten)
-  result$user_id <- as.character(result$user_id)
+  result <- map_df(result$data, tibble::as_tibble)
 
   if (add_pseudonym) {
-    words <- sample(tauturri::words, nrow(result))
-    result$pseudonym <- words
+    result$pseudonym <- tauturri::words[(result$user_id + 1) %% length(tauturri::words)]
   }
 
+
+  result$user_id <- as.character(result$user_id)
   result
 }
 

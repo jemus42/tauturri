@@ -3,7 +3,7 @@ Package: tauturri
 Title: Get Data Out of 'Tautulli' (Formerly 'PlexPy')
 Version: 0.3.1
 Authors@R: 
-    person("Lukas Burk", , , "lukas@quantenbrot.de", role = c("aut", "cre"))
+    person("Lukas Burk", , , "github@quantenbrot.de", role = c("aut", "cre"))
 Description: 'Tautulli' (<http://tautulli.com>) is a monitoring
     application for 'Plex' Media Servers (<https://www.plex.tv>) which
     collects a lot of data about media items and server usage such as play
